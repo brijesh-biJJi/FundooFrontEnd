@@ -1,0 +1,24 @@
+<mat-card class="container">
+    <mat-card-header>
+        <mat-card-title class="title">Registration</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field>
+        <input matInput  [formControl]="emailErrorMsg" placeholder="Enter your email">
+        <mat-error *ngIf="emailErrorMsg.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput placeholder="Password">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <input matInput placeholder="Phone">
+    </mat-form-field>
+
+    <mat-card-actions>
+      <button mat-raised-button>Register</button>
+      <a mat-button routerLink='/login'>Already registered?</a>
+    </mat-card-actions>
+    
+</mat-card>
