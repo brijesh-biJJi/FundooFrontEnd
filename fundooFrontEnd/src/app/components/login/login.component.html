@@ -1,20 +1,37 @@
-
-<mat-card class="container">
-    <mat-card-header>
-        <mat-card-title class="title">Login</mat-card-title>
-    </mat-card-header>
-
-    <mat-form-field>
-        <input matInput  [formControl]="emailErrorMsg" placeholder="Enter your email">
-        <mat-error *ngIf="emailErrorMsg.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field><br>
-
-    <mat-form-field>
-        <input matInput placeholder="Password">
-    </mat-form-field>
-    <mat-card-actions>
-      <button mat-raised-button>Login</button>
-      <a mat-button routerLink='/register'>Register</a>
-    </mat-card-actions>
-    
-</mat-card>
+<div class="loginContainer" >
+    <mat-card>
+        
+      <mat-card-header>
+        <mat-card-title >
+        <div class="mat-display-1">FundooNotes</div>
+        </mat-card-title>
+        <mat-card-subtitle >
+            <div class="mat-typography"><h1 class="title">Login</h1></div>
+        </mat-card-subtitle>
+      </mat-card-header>
+     
+      <div class="loginContent" >
+        <mat-card-content  >
+        <div>
+           <mat-form-field appearance="outline" >
+            <mat-label>Email</mat-label>
+              <input matInput placeholder="Ex. abc@example.com" type="email" [formControl]="emailMessage"   >
+              <mat-error  *ngIf="emailMessage.invalid">{{emailErrorMessage()}}</mat-error>
+           </mat-form-field>
+        </div>
+        <div>
+           <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" type="password" [formControl]="passwordMessage"   >
+                <mat-error  *ngIf="passwordMessage.invalid">{{passwordErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <mat-card-actions>
+            <button mat-raised-button  (click)="onSubmit()" type="submit"> Login</button><br/><br/>
+            <a routerLink="/register">Register</a> &nbsp;&nbsp;&nbsp;
+            <a routerLink="/forgotPassword">Forgot password  ?</a>
+        </mat-card-actions>
+       </mat-card-content>
+      </div>
+    </mat-card>
+  </div>
