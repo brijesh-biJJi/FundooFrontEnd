@@ -12,18 +12,20 @@ export class LoginComponent implements OnInit {
   ngOnInit():void {}
   
   emailMessage = new FormControl('', [Validators.required, Validators.email]);
-  passwordMessage = new FormControl('', [Validators.required,Validators.minLength(4)]);
+  passwordMessage = new FormControl('', [Validators.required,Validators.minLength(8)]);
   
 
   
 
   emailErrorMessage() {
     return this.emailMessage.hasError('required') ? 'You must enter an Email' :
-           this.emailMessage.hasError('email') ? 'Not a valid email' :'';
+           this.emailMessage.hasError('email') ? 'Not a valid email' :
+           this.emailMessage.hasError('pattern')?"Enter proper Email Id. abc@gmail.com":
+  '';
   }
   passwordErrorMessage() {
     return this.passwordMessage.hasError('required') ? 'You must enter a Password' :
-           this.passwordMessage.hasError('email') ? 'Not a valid password' :'';
+           this.passwordMessage.hasError('minlength') ? 'Password must contain minimum 8 character' :'';
   }
 }
 
