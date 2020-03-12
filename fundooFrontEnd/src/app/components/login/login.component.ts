@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   ngOnInit():void {}
   
   emailMessage = new FormControl('', [Validators.required, Validators.email]);
-  passwordMessage = new FormControl('', [Validators.required]);
+  passwordMessage = new FormControl('', [Validators.required,Validators.minLength(4)]);
   
 
   
