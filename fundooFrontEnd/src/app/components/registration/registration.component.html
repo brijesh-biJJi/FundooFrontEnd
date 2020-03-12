@@ -1,5 +1,5 @@
 <div class="registrationContainer" >
-    <mat-card>
+    <mat-card class="box">
         
       <mat-card-header>
         <mat-card-title >
@@ -11,37 +11,39 @@
       </mat-card-header>
      
       <div class="registrationContent" >
+        <form [formGroup]="registrationForm">
         <mat-card-content  >
-            <div>
+            <div class="form-group">
                 <mat-form-field floatLabel="auto" >
-                   <input matInput placeholder="Enter your Name" type="text"   >
+                   <input formControlName="userName" class="form-control" matInput placeholder="Enter your Name" type="text"   >
                 </mat-form-field>
              </div>
-            <div>
+             <div class="form-group">
                 <mat-form-field floatLabel="auto" >
-                   <input matInput placeholder="Enter your Email" type="email" [formControl]="emailMessage"   >
+                   <input formControlName="email" matInput placeholder="Enter your Email" type="email" [formControl]="emailMessage"   >
                    <mat-error  *ngIf="emailMessage.invalid">{{emailErrorMessage()}}</mat-error>
                 </mat-form-field>
              </div>
-             <div>
+             <div class="form-group">
                 <mat-form-field >
-                     <input matInput placeholder="Password" type="password" [formControl]="passwordMessage"   >
+                     <input formControlName="password" matInput placeholder="Password" type="password" [formControl]="passwordMessage"   >
                      <mat-error  *ngIf="passwordMessage.invalid">{{passwordErrorMessage()}}</mat-error>
                  </mat-form-field>
              </div>
 
-             <div>
+             <div class="form-group">
                 <mat-form-field floatLabel="auto" >
-                   <input matInput placeholder="Enter your Mobile Number" type="text"   >
+                   <input formControlName="phone" matInput placeholder="Enter your Mobile Number" type="text"   >
                    <mat-icon color="primary">phone</mat-icon>
                 </mat-form-field>
              </div>
 
             <mat-card-actions>
                 <button mat-raised-button  (click)="onSubmit()" type="submit"> Registration</button><br/><br/><br><br>
-                <a routerLink="/login">Already registred  ?</a> 
+                <a routerLink="/login">Sign in instead</a> 
             </mat-card-actions>
         </mat-card-content>
+      </form>
       </div>
     </mat-card>
 </div>

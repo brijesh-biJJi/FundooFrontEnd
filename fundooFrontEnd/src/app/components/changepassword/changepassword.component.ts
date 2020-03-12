@@ -1,24 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,Validators, FormGroup,FormBuilder} from '@angular/forms';
+import { FormControl,Validators} from '@angular/forms';
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  selector: 'app-changepassword',
+  templateUrl: './changepassword.component.html',
+  styleUrls: ['./changepassword.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class ChangepasswordComponent implements OnInit {
 
-  constructor(private formBuilder:FormBuilder) { }
+  constructor() { }
 
   ngOnInit() {
   }
-
-  registrationForm=this.formBuilder.group({
-    userName:[''],
-    email:[''],
-    password:[''],
-    confirmPassword:[''],
-    phone:['']
-  })
   
   emailMessage = new FormControl('', [Validators.required, Validators.email]);
   passwordMessage = new FormControl('', [Validators.required, Validators.email]);

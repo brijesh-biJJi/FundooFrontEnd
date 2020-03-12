@@ -11,14 +11,12 @@ export class ForgotpasswordComponent implements OnInit {
 
   ngOnInit() {
   }
-  passwordMessage = new FormControl('', [Validators.required, Validators.email]);
   
-
+  emailMessage = new FormControl('', [Validators.required, Validators.email]);
   
-
-
-  forgotPasswordErrorMessage() {
-    return this.passwordMessage.hasError('required') ? 'You must enter a value' :
-           this.passwordMessage.hasError('email') ? 'Not a valid password' :'';
+  emailErrorMessage() {
+    return this.emailMessage.hasError('required') ? 'You must enter an Email' :
+           this.emailMessage.hasError('email') ? 'Not a valid email' :'';
   }
+
 }
