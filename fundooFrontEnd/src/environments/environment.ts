@@ -9,7 +9,7 @@ export const environment = {
   registerUrl:'/register',
   loginURL:'/login',
   userActivUrl:'/register/activ',
-  forgotPasswordUrl:'/verifyUser',
+  forgotPasswordUrl:'/forgotpassword',
   changePasswordUrl:'/changePassword',
 };
 

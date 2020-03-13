@@ -23,12 +23,17 @@ export class UserServiceService
         return this._httpService.postRequest(this.userApiUrl+environment.registerUrl,userDetails,this.httpContent);
    }
  
-   loginUser(userDetails:any):Observable<any>
+   loginUser(loginDetails:any):Observable<any>
   {
     console.log("calling to.."+`${this.userApiUrl}/${environment.loginURL}`);
-    return this._httpService.postRequest(this.userApiUrl+environment.loginURL,userDetails,this.httpContent);
+    return this._httpService.postRequest(this.userApiUrl+environment.loginURL,loginDetails,this.httpContent);
   }
 
+  forgotPasswordVerifyMail(forgotPassDetails:any):Observable<any>
+  {
+    console.log("calling to.."+this.userApiUrl+environment.forgotPasswordUrl);
+    return this._httpService.postRequest(this.userApiUrl+environment.forgotPasswordUrl,forgotPassDetails,this.httpContent);
+  }
 
  
 }
