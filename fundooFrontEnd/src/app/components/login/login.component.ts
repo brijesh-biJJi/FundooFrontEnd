@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,Validators} from '@angular/forms';
+import { LoginModel } from 'src/app/model/login-model.model';
+import {UserServiceService} from 'src/app/services/user-service.service'
+import { MatSnackBar} from '@angular/material';
+import {error} from 'util'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,25 +12,47 @@ import { FormControl,Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginModel:LoginModel=new LoginModel();
+  constructor(private userService:UserServiceService, private snackBar:MatSnackBar,private router:Router) { }
 
   ngOnInit():void {}
   
-  emailMessage = new FormControl('', [Validators.required, Validators.email]);
-  passwordMessage = new FormControl('', [Validators.required,Validators.minLength(8)]);
+  emailId = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required,Validators.minLength(8)]);
   
 
   
 
   emailErrorMessage() {
-    return this.emailMessage.hasError('required') ? 'You must enter an Email' :
-           this.emailMessage.hasError('email') ? 'Not a valid email' :
-           this.emailMessage.hasError('pattern')?"Enter proper Email Id. abc@gmail.com":
+    return this.emailId.hasError('required') ? 'You must enter an Email' :
+           this.emailId.hasError('email') ? 'Not a valid email' :
+           this.emailId.hasError('pattern')?"Enter proper Email Id. abc@gmail.com":
   '';
   }
   passwordErrorMessage() {
-    return this.passwordMessage.hasError('required') ? 'You must enter a Password' :
-           this.passwordMessage.hasError('minlength') ? 'Password must contain minimum 8 character' :'';
+    return this.password.hasError('required') ? 'You must enter a Password' :
+           this.password.hasError('minlength') ? 'Password must contain minimum 8 character' :'';
+  }
+
+  onLoginSubmit()
+  {
+    this.loginModel.email=this.emailId.value;
+    this.loginModel.password=this.password.value;  
+    
+    this.userService.loginUser(this.loginModel).subscribe(
+      (response:any)=>{
+        console.log(response.obj);
+        if(response.statusCode===200){
+          localStorage.setItem('jwt-token',response.token);
+          this.router.navigate(["/register"]);
+        }else{
+          this.snackBar.open('Login fail',"",{duration:2000});
+        }
+      },
+      (error:any)=>{
+        console.log(error.error.statusMessage);
+      }
+    );
   }
 }
 

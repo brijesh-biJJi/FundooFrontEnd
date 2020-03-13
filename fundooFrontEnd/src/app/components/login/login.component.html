@@ -16,21 +16,21 @@
         <div>
            <mat-form-field appearance="outline" >
             <mat-label>Email</mat-label>
-              <input matInput placeholder="Ex. abc@example.com" type="email" [formControl]="emailMessage"   >
-              <mat-error  *ngIf="emailMessage.invalid">{{emailErrorMessage()}}</mat-error>
+              <input matInput placeholder="Ex. abc@example.com" type="email" [formControl]="emailId"   >
+              <mat-error  *ngIf="emailId.invalid">{{emailErrorMessage()}}</mat-error>
            </mat-form-field>
         </div>
         <div>
            <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" type="password" [formControl]="passwordMessage"   >
-                <mat-error  *ngIf="passwordMessage.invalid">{{passwordErrorMessage()}}</mat-error>
+                <input matInput placeholder="Password" type="password" [formControl]="password"   >
+                <mat-error  *ngIf="password.invalid">{{passwordErrorMessage()}}</mat-error>
             </mat-form-field>
         </div>
         <mat-card-actions>
-            <button mat-raised-button  (click)="onSubmit()" type="submit"> Login</button><br/><br/>
+            <button mat-raised-button  (click)="onLoginSubmit()" type="submit"  [disabled]="emailErrorMessage() != '' || passwordErrorMessage() != ''"> Login</button><br/><br/>
             <a routerLink="/register">Create Account</a> &nbsp;&nbsp;&nbsp;
-            <a routerLink="/forgotPassword">Forgot password  ?</a>
+            <a routerLink="/forgotPassword">Forgot password ?</a>
         </mat-card-actions>
        </mat-card-content>
       </div>

@@ -10,6 +10,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import {  MatSnackBarModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
