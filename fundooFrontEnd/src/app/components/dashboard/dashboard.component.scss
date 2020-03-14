@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    position: fixed;
+  }
+ 
+  mat-sidenav-container{
+    display: flex;
+  }
+  mat-sidenav-content{
+    justify-content: center;
+    overflow: scroll;
+  }
+  mat-sidenav{
+    margin-top: 0px;
+    // border-color: 1px whitesmoke;
+    background-color: powderblue;
+    width: 250px;
+    justify-content: center;
+    padding: 16px;
+  }

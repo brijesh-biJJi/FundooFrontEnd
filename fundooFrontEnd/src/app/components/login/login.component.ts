@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         if(response.statusCode===200){
           console.log(" login token ",response.token);
           localStorage.setItem("token",response.token);
-          this.router.navigate(["/register"]);
+          this.router.navigate(["/dashboard"]);
         }else{
           this.snackBar.open('Login fail',"",{duration:2000});
         }

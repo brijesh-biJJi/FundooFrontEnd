@@ -1,0 +1,24 @@
+<div class="container">
+    <div>
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="sidenav.toggle()"> <mat-icon> menu</mat-icon></button>
+            <div><h1>FundooNotes</h1></div>
+        </mat-toolbar>
+    </div>
+    <div style="height: 100%; width: 100%;   overflow: auto;">
+    <mat-sidenav-container style="width: 100%; height: 100%;  display: flex;">
+       
+        <mat-sidenav  #sidenav mode="side" >
+            <ul>
+                <li><h3>Notes</h3></li>
+                <li><h3>Label</h3></li>
+            </ul>
+            
+        </mat-sidenav>
+       
+        <mat-sidenav-content style="background-color: whitesmoke; width: 100%; align-content: center;padding: 30px;">
+            <span>Contents</span>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    </div>
+</div>

@@ -12,6 +12,7 @@ import { ChangepasswordComponent } from './components/changepassword/changepassw
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import {  MatSnackBarModule } from '@angular/material';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import {  MatSnackBarModule } from '@angular/material';
     RegistrationComponent,
     ForgotpasswordComponent,
     ChangepasswordComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

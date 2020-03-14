@@ -5,6 +5,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'' ,redirectTo:'/login', pathMatch:'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:'register',component:RegistrationComponent},
   {path:'forgotPassword',component:ForgotpasswordComponent},
   {path:'changePassword',component:ChangepasswordComponent},
+  {path:'dashboard',component:DashboardComponent},
   {path:'**',component:PageNotFoundComponent}
 ];
 
