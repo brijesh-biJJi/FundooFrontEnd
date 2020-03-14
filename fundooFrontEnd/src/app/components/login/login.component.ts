@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit():void {}
   
   emailId = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required,Validators.minLength(8)]);
+  password = new FormControl('', [Validators.required,Validators.minLength(4)]);
   
 
   
@@ -41,9 +41,10 @@ export class LoginComponent implements OnInit {
     
     this.userService.loginUser(this.loginModel).subscribe(
       (response:any)=>{
-        console.log(response.obj);
+        console.log('hello'+response.token);
         if(response.statusCode===200){
-          localStorage.setItem('jwt-token',response.token);
+          console.log(" login token ",response.token);
+          localStorage.setItem("token",response.token);
           this.router.navigate(["/register"]);
         }else{
           this.snackBar.open('Login fail',"",{duration:2000});

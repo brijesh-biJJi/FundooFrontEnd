@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,Validators} from '@angular/forms';
+import {UserServiceService} from 'src/app/services/user-service.service'
+import { MatSnackBar} from '@angular/material';
+import {error} from 'util'
+import { Router } from '@angular/router';
+import { ChangePassModel } from 'src/app/model/change-pass-model.model';
 @Component({
   selector: 'app-changepassword',
   templateUrl: './changepassword.component.html',
@@ -7,23 +12,46 @@ import { FormControl,Validators} from '@angular/forms';
 })
 export class ChangepasswordComponent implements OnInit {
 
-  constructor() { }
+  changePassModel:ChangePassModel=new ChangePassModel();
+  constructor(private userService:UserServiceService, private snackBar:MatSnackBar,private router:Router) { }
 
   ngOnInit() {
   }
   
-  emailMessage = new FormControl('', [Validators.required, Validators.email]);
-  passwordMessage = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required,Validators.minLength(4)]);
+  confirmPassword = new FormControl('', [Validators.required,Validators.minLength(4)]);
   
 
-  
-
-  emailErrorMessage() {
-    return this.emailMessage.hasError('required') ? 'You must enter a value' :
-           this.emailMessage.hasError('email') ? 'Not a valid email' :'';
-  }
   passwordErrorMessage() {
-    return this.passwordMessage.hasError('required') ? 'You must enter a value' :
-           this.passwordMessage.hasError('email') ? 'Not a valid password' :'';
+    return this.password.hasError('required') ? 'You must enter a Password' :
+           this.password.hasError('minlength') ? 'Password must contain minimum 8 character' :'';
+  }
+
+  confirmPasswordErrorMessage(){
+    return this.confirmPassword.hasError('required') ? 'You must enter a Password' :
+           this.confirmPassword.hasError('minlength') ? 'Password must contain minimum 8 character' :'';
+  }
+
+  onForgotPassword(){
+    try{
+      if(this.password.value===this.confirmPassword.value)
+      {
+        this.changePassModel.confirmPassword=this.confirmPassword.value;
+        this.changePassModel.password=this.password.value;  
+        this.userService.changePassword(this.changePassModel).subscribe(
+          (Response:any)=>{
+            console.log('UI check '+Response.message);
+            this.router.navigate(["/login"]);
+            this.snackBar.open(Response.message,"OK",{duration:4000});
+          },
+          (error:any)=>{
+            console.log('Error ');
+            // this.snackBar.open(error.error.statusMessage,"",{duration:4000});
+          }
+        );
+      }
+    }catch(error){
+        this.snackBar.open("Confirm Password and Password mismatch", "", {duration:3000})
+       }
   }
 }

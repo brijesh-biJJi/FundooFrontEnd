@@ -18,6 +18,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
   }
 
+  
   // registrationForm=this.formBuilder.group({
   //   userName:[null,[Validators.required,Validators.pattern('[a-zA-Z]*')]],
   //   emailMessage:[null, [Validators.required, Validators.email]],
@@ -28,8 +29,8 @@ export class RegistrationComponent implements OnInit {
   
   userName=new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z]*')]);
   emailId = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required,Validators.minLength(8)]);
-  confirmPassword = new FormControl('', [Validators.required,Validators.minLength(8)]);
+  password = new FormControl('', [Validators.required,Validators.minLength(4)]);
+  confirmPassword = new FormControl('', [Validators.required,Validators.minLength(4)]);
   phoneNumber = new FormControl('',[Validators.required,Validators.pattern('[0-9]{10,10}')]);
   
 

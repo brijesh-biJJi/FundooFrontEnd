@@ -35,5 +35,13 @@ export class UserServiceService
     return this._httpService.postRequest(this.userApiUrl+environment.forgotPasswordUrl,forgotPassDetails,this.httpContent);
   }
 
+  changePassword(changePassDetails:any):Observable<any>                                                                                                                                                                                                                                                                                               
+  {
+    console.log('hi token '+localStorage.token)
+    console.log('URL check '+this.userApiUrl+environment.changePasswordUrl);
+    console.log('Details '+changePassDetails.password);
+    return this._httpService.putRequest(this.userApiUrl+environment.changePasswordUrl,changePassDetails,{headers:new HttpHeaders({'token':localStorage.token})});
+    // {headers:new HttpHeaders().get(localStorage.jwt-token)
+  }
  
 }

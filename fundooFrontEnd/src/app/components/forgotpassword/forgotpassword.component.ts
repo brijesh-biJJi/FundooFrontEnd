@@ -33,7 +33,7 @@ export class ForgotpasswordComponent implements OnInit {
     this.userService.forgotPasswordVerifyMail(this.forgotModel).subscribe(
       (Response:any)=>{
         this.router.navigate(["/login"]);
-        localStorage.setItem("jwt-token",Response.token)
+        // localStorage.setItem("token",Response.token)
         this.snackBar.open('Reset password link sent Successfull..!',"OK",{duration:4000});
       },
       (error:any)=>{
