@@ -26,7 +26,7 @@
   mat-sidenav{
     margin-top: 0px;
     // border-color: 1px whitesmoke;
-    background-color: powderblue;
+    background-color:rgb(255,250,250);
     width: 20%;
     justify-content: center;
     padding: 16px;
@@ -44,9 +44,29 @@
   }
   .card {
     border: 1px solid lightgray;
-    background-color: lightgray;
-    border-radius: 7px;
+    background-color: rgb(234, 237, 237);
+    border-radius: 1em;
     width: 50%;
+    height: 60%;
    margin-right: 60px;
    outline: none;
+   padding-bottom: 20px;
   }
+
+  .nav{
+    padding-right: 1.5em;
+  }
+
+  .navIcon:hover {
+      background-color: lightgrey;
+    }
+  
+  .navButton{
+    background-color: Transparent;
+    border: none;
+    border-radius: 1em;
+    width: 90%;
+    text-align: left;
+  }
+
+ 

@@ -14,13 +14,28 @@
                 </button>
                
                 <mat-form-field class="example-form-field" >
-                    <input placeholder="Search" matInput type="text" [(ngModel)]="value">
+                    <input placeholder="Search" matInput type="search" [(ngModel)]="value">
                     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                       <mat-icon>close</mat-icon>
                     </button>
                   </mat-form-field>
+
+                  
+                  
               </div>
-            
+              <div class="nav">
+                <button class="navIcon" mat-icon-button><mat-icon>refresh</mat-icon></button>  
+            </div>
+            <div class="nav">
+                <button class="navIcon" mat-icon-button><mat-icon>list</mat-icon></button> 
+            </div>
+            <div class="nav">
+                <button class="navIcon" mat-icon-button><mat-icon>settings</mat-icon></button> 
+            </div>
+            <div class="nav">
+                <button class="navIcon" mat-icon-button><mat-icon>apps</mat-icon></button> 
+            </div>
+             
         </mat-toolbar>
     </div>
     <mat-divider class="divider"></mat-divider>
@@ -29,14 +44,15 @@
        
         <mat-sidenav  #sidenav mode="side" >
             <div>
-                <button mat-raised-button (click)="onNote()" type="submit">
-                  <mat-icon>lightbulb_outline</mat-icon>
+                <button mat-raised-button class="navButton" style="margin-bottom: 1em; " (click)="onNote()" type="submit">
+                  <mat-icon  style="margin-right: 0.5em ;">lightbulb_outline</mat-icon>
                   <span>Notes</span>
                 </button>
               </div>
+              
               <div>
-                <button mat-raised-button (click)="onNote();onReminder()" type="submit">
-                  <mat-icon>notifications</mat-icon>
+                <button class="navButton"  mat-raised-button (click)="onReminder()" type="submit">
+                  <mat-icon  style="margin-right: 0.5em ;">notifications</mat-icon>
                   <span>Reminders</span>
                 </button>
         
