@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  value = '';
   ngOnInit() {
   }
 

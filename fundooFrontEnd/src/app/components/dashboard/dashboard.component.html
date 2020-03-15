@@ -1,18 +1,46 @@
 <div class="container">
     <div>
-        <mat-toolbar color="primary">
+        <mat-toolbar class="toolbar">
             <button mat-icon-button (click)="sidenav.toggle()"> <mat-icon> menu</mat-icon></button>
-            <div><h1>FundooNotes</h1></div>
+           
+            <img class="image" src="https://ssl.gstatic.com/keep/keep.ico" />
+            <!-- <span class="keep">Fundoo</span> -->
+            <mat-card-subtitle >
+                <div class="mat-typography"><h1 class="keep">Fundoo</h1></div>
+            </mat-card-subtitle>
+            <div class="card">
+                <button mat-icon-button class="search" (click)="searchTermView()">
+                  <mat-icon>search</mat-icon>
+                </button>
+               
+                <mat-form-field class="example-form-field" >
+                    <input placeholder="Search" matInput type="text" [(ngModel)]="value">
+                    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+              </div>
+            
         </mat-toolbar>
     </div>
+    <mat-divider class="divider"></mat-divider>
     <div style="height: 100%; width: 100%;   overflow: auto;">
     <mat-sidenav-container style="width: 100%; height: 100%;  display: flex;">
        
         <mat-sidenav  #sidenav mode="side" >
-            <ul>
-                <li><h3>Notes</h3></li>
-                <li><h3>Label</h3></li>
-            </ul>
+            <div>
+                <button mat-raised-button (click)="onNote()" type="submit">
+                  <mat-icon>lightbulb_outline</mat-icon>
+                  <span>Notes</span>
+                </button>
+              </div>
+              <div>
+                <button mat-raised-button (click)="onNote();onReminder()" type="submit">
+                  <mat-icon>notifications</mat-icon>
+                  <span>Reminders</span>
+                </button>
+        
+              </div>
             
         </mat-sidenav>
        
