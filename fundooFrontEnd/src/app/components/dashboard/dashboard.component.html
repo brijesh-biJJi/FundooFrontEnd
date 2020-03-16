@@ -1,7 +1,7 @@
 <div class="container">
     <div>
         <mat-toolbar class="toolbar">
-            <button mat-icon-button (click)="sidenav.toggle()"> <mat-icon class="iconGrey"> menu</mat-icon></button>
+            <button mat-icon-button matTooltip="Main menu" matTooltipHideDelay="1000" (click)="sidenav.toggle()"> <mat-icon class="iconGrey"> menu</mat-icon></button>
            
             <img class="image" src="https://ssl.gstatic.com/keep/keep.ico" />
             <!-- <span class="keep">Fundoo</span> -->
@@ -10,7 +10,7 @@
             </mat-card-subtitle>
             <div class="card">
                 <button mat-icon-button class="search" (click)="searchTermView()">
-                  <mat-icon class="iconGrey">search</mat-icon>
+                  <mat-icon matTooltip="Search"class="iconGrey">search</mat-icon>
                 </button>
                
                 <mat-form-field class="example-form-field" >
@@ -24,16 +24,16 @@
                   
               </div>
               <div class="nav">
-                <button class="navIcon" mat-icon-button><mat-icon class="iconGrey">refresh</mat-icon></button>  
+                <button class="navIcon" matTooltip="Refresh" mat-icon-button><mat-icon class="iconGrey">refresh</mat-icon></button>  
             </div>
             <div class="nav">
-                <button class="navIcon" mat-icon-button><mat-icon class="iconGrey">list</mat-icon></button> 
+                <button class="navIcon" matTooltip="List View" mat-icon-button><mat-icon class="iconGrey">list</mat-icon></button> 
             </div>
             <div class="nav">
-                <button class="navIcon" mat-icon-button><mat-icon class="iconGrey">settings</mat-icon></button> 
+                <button class="navIcon" matTooltip="Settings"  mat-icon-button><mat-icon class="iconGrey">settings</mat-icon></button> 
             </div>
             <div class="nav">
-                <button class="navIcon" mat-icon-button><mat-icon class="iconGrey">apps</mat-icon></button> 
+                <button class="navIcon" matTooltip="Google Apps"  mat-icon-button><mat-icon class="iconGrey">apps</mat-icon></button> 
             </div>
              
         </mat-toolbar>
@@ -45,14 +45,14 @@
         <mat-sidenav style="border: transparent;background-color: whitesmoke;" #sidenav mode="side" >
             <div>
                 <button mat-raised-button class="navButton" style="margin-bottom: 1em; " (click)="onNote()" type="submit">
-                  <mat-icon class="matSidenavIcon" style="color: grey;">lightbulb_outline</mat-icon>
-                  <span>Notes</span>
+                  <mat-icon class="matSidenavIcon" >lightbulb_outline</mat-icon>
+                  <span >Notes</span>
                 </button>
               </div>
               
               <div>
                 <button class="navButton"  mat-raised-button (click)="onReminder()" type="submit">
-                  <mat-icon  class="matSidenavIcon" style="color: grey;">notifications</mat-icon>
+                  <mat-icon  class="matSidenavIcon" >notifications</mat-icon>
                   <span>Reminders</span>
                 </button>
               </div>
@@ -64,7 +64,7 @@
             </div>
               <div>
                 <button class="navButton" mat-raised-button (click)="openLabelDialog()" type="submit">
-                  <mat-icon class="matSidenavIcon" style="color: grey;">create</mat-icon>
+                  <mat-icon class="matSidenavIcon" >create</mat-icon>
                   <span>Edit labels</span>
                 </button>
               </div>
@@ -73,13 +73,13 @@
         
               <div>
                 <button class="navButton" mat-raised-button (click)="onArchive()" type="submit">
-                  <mat-icon class="matSidenavIcon" style="color: grey;">archive</mat-icon>
+                  <mat-icon class="matSidenavIcon" >archive</mat-icon>
                   <span>Archive</span>
                 </button>
               </div>
               <div>
                 <button class="navButton" mat-raised-button (click)="onTrash()" type="submit">
-                  <mat-icon class="matSidenavIcon" style="color: grey;">delete</mat-icon>
+                  <mat-icon class="matSidenavIcon" >delete</mat-icon>
                   <span>Trash</span>
                 </button>
               </div>

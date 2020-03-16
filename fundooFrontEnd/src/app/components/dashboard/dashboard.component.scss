@@ -16,7 +16,7 @@
     background-color: whitesmoke;
   }
   .divider{
-    background-color: grey;
+    background-color: lightgrey;
   }
  
   mat-sidenav-container{
@@ -66,14 +66,19 @@
   
   .navButton{
     background-color: Transparent;
-    border: none;
-    border-radius: 1em;
+    // border: none;
+    border: transparent;
+    // border-radius: 1em;
     width: 90%;
     text-align: left;
     margin-top: 1em;
   }
   .navButton:hover{
-    background-color: lightgrey;
+    background-color: lightgray;
+  }
+
+  .navButton:active { 
+    color:lightgrey;
   }
 
 
