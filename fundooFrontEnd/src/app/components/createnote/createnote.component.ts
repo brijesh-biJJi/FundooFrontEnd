@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CreatenoteComponent implements OnInit {
 
   constructor() { }
-
+  open: boolean = false;
   ngOnInit() {
   }
 
