@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { HttpClientModule } from '@angular/common/http';
 import {  MatSnackBarModule } from '@angular/material';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CreatenoteComponent } from './components/createnote/createnote.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ForgotpasswordComponent,
     ChangepasswordComponent,
     PageNotFoundComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreatenoteComponent
   ],
   imports: [
     BrowserModule,
