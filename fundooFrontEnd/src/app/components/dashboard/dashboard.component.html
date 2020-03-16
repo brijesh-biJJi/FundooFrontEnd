@@ -1,7 +1,7 @@
 <div class="container">
     <div>
         <mat-toolbar class="toolbar">
-            <button mat-icon-button (click)="sidenav.toggle()"> <mat-icon> menu</mat-icon></button>
+            <button mat-icon-button (click)="sidenav.toggle()"> <mat-icon class="iconGrey"> menu</mat-icon></button>
            
             <img class="image" src="https://ssl.gstatic.com/keep/keep.ico" />
             <!-- <span class="keep">Fundoo</span> -->
@@ -10,13 +10,13 @@
             </mat-card-subtitle>
             <div class="card">
                 <button mat-icon-button class="search" (click)="searchTermView()">
-                  <mat-icon>search</mat-icon>
+                  <mat-icon class="iconGrey">search</mat-icon>
                 </button>
                
                 <mat-form-field class="example-form-field" >
                     <input placeholder="Search" matInput type="search" [(ngModel)]="value">
                     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                      <mat-icon>close</mat-icon>
+                      <mat-icon class="iconGrey">close</mat-icon>
                     </button>
                   </mat-form-field>
 
@@ -24,16 +24,16 @@
                   
               </div>
               <div class="nav">
-                <button class="navIcon" mat-icon-button><mat-icon>refresh</mat-icon></button>  
+                <button class="navIcon" mat-icon-button><mat-icon class="iconGrey">refresh</mat-icon></button>  
             </div>
             <div class="nav">
-                <button class="navIcon" mat-icon-button><mat-icon>list</mat-icon></button> 
+                <button class="navIcon" mat-icon-button><mat-icon class="iconGrey">list</mat-icon></button> 
             </div>
             <div class="nav">
-                <button class="navIcon" mat-icon-button><mat-icon>settings</mat-icon></button> 
+                <button class="navIcon" mat-icon-button><mat-icon class="iconGrey">settings</mat-icon></button> 
             </div>
             <div class="nav">
-                <button class="navIcon" mat-icon-button><mat-icon>apps</mat-icon></button> 
+                <button class="navIcon" mat-icon-button><mat-icon class="iconGrey">apps</mat-icon></button> 
             </div>
              
         </mat-toolbar>
@@ -42,26 +42,52 @@
     <div style="height: 100%; width: 100%;   overflow: auto;">
     <mat-sidenav-container style="width: 100%; height: 100%;  display: flex;">
        
-        <mat-sidenav  #sidenav mode="side" >
+        <mat-sidenav style="border: transparent;background-color: whitesmoke;" #sidenav mode="side" >
             <div>
                 <button mat-raised-button class="navButton" style="margin-bottom: 1em; " (click)="onNote()" type="submit">
-                  <mat-icon  style="margin-right: 0.5em ;">lightbulb_outline</mat-icon>
+                  <mat-icon class="matSidenavIcon" style="color: grey;">lightbulb_outline</mat-icon>
                   <span>Notes</span>
                 </button>
               </div>
               
               <div>
                 <button class="navButton"  mat-raised-button (click)="onReminder()" type="submit">
-                  <mat-icon  style="margin-right: 0.5em ;">notifications</mat-icon>
+                  <mat-icon  class="matSidenavIcon" style="color: grey;">notifications</mat-icon>
                   <span>Reminders</span>
                 </button>
-        
               </div>
+              <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;"></mat-divider>
             
+              <div>
+                <mat-card-subtitle >
+              <span class="label">LABELS</span> </mat-card-subtitle>
+            </div>
+              <div>
+                <button class="navButton" mat-raised-button (click)="openLabelDialog()" type="submit">
+                  <mat-icon class="matSidenavIcon" style="color: grey;">create</mat-icon>
+                  <span>Edit labels</span>
+                </button>
+              </div>
+        
+              <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;"></mat-divider>
+        
+              <div>
+                <button class="navButton" mat-raised-button (click)="onArchive()" type="submit">
+                  <mat-icon class="matSidenavIcon" style="color: grey;">archive</mat-icon>
+                  <span>Archive</span>
+                </button>
+              </div>
+              <div>
+                <button class="navButton" mat-raised-button (click)="onTrash()" type="submit">
+                  <mat-icon class="matSidenavIcon" style="color: grey;">delete</mat-icon>
+                  <span>Trash</span>
+                </button>
+              </div>
         </mat-sidenav>
        
         <mat-sidenav-content style="background-color: whitesmoke; width: 100%; align-content: center;padding: 30px;">
-            <span>Contents</span>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolores quo impedit, aliquid quaerat debitis at nihil temporibus. Magnam tempore aut corrupti recusandae expedita minus, velit, in repudiandae obcaecati rerum provident inventore, necessitatibus libero dolore? Nemo laboriosam aperiam voluptatem accusantium excepturi consequatur, esse et asperiores, ipsum repudiandae sit doloremque sapiente vel perspiciatis nihil consequuntur! Amet porro nostrum architecto magnam, vel suscipit. Sed quibusdam hic praesentium itaque. Velit porro vel at doloribus consequuntur repellat quae et error vitae maiores, iste officia dolore dicta deserunt nihil non quas earum molestiae facilis. Architecto rem cupiditate suscipit vel unde praesentium amet voluptatibus impedit molestias.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure odio voluptatem unde repellat, facilis perspiciatis harum, obcaecati hic exercitationem consequatur nulla delectus ducimus eos? Aliquid quis nesciunt at expedita, dolores fugiat ipsum, consectetur, rerum quaerat veritatis vero eos necessitatibus hic optio similique velit quisquam laboriosam. Dolorum delectus ipsam commodi reprehenderit?</p>
         </mat-sidenav-content>
     </mat-sidenav-container>
     </div>

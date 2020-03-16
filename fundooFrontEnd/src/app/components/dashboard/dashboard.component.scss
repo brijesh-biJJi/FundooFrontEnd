@@ -9,11 +9,14 @@
     position: fixed;
   }
 
+  .iconGrey{
+    color: grey;
+  }
   .toolbar{
     background-color: whitesmoke;
   }
   .divider{
-    background-color: black;
+    background-color: grey;
   }
  
   mat-sidenav-container{
@@ -56,7 +59,7 @@
   .nav{
     padding-right: 1.5em;
   }
-
+  
   .navIcon:hover {
       background-color: lightgrey;
     }
@@ -67,6 +70,15 @@
     border-radius: 1em;
     width: 90%;
     text-align: left;
+    margin-top: 1em;
+  }
+  .navButton:hover{
+    background-color: lightgrey;
+  }
+
+
+  .matSidenavIcon{
+    margin-right: 1em ;
   }
 
  
