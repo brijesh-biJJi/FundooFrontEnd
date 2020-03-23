@@ -1,7 +1,104 @@
-.container{
+
+#container{
     display: flex;
     justify-content: center;
-    width: 10px;
-    margin-top: 20px;
+    width: 100%;
+    height: 80%;
+    margin-top: 5%;
     margin-bottom: 4%;
+   
 }
+
+.closeBtn:hover{
+    background-color: #f4f4f4;
+}
+
+.searchBar
+{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 70%;
+    border:none;
+    outline:none;
+    float: left;
+}
+.before{
+    display: flex;
+    justify-content: center;
+    width: 35%;
+    border-radius: 1em;
+    height: 4%;
+}
+.icon{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 30%;
+    border-radius: 1em;
+    height: 4%;
+    
+}
+
+.iconMargin{
+    margin-left: 10px;   
+}
+.after{
+    display: flex;
+    justify-content: center;
+    width: 35%;
+    border-radius: 1em;
+    height: 10em;
+    
+} 
+textarea{
+    border: none;
+    height: 1.2em;
+    margin-bottom: 0px;
+    padding: 16px;
+    font-weight: bolder;
+    outline: none;
+}
+input:placeholder-shown{
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Product Sans',Arial,sans-serif;
+  }
+#title::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+#desc::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+.title{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+.description{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+icon{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+button{
+    display: flex;
+     background-color: whitesmoke;
+     border: none;
+     color: black;
+     text-align: center;
+     text-decoration: none;
+     font-size: 16px;
+     padding: 10px;
+     margin-left: 10%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    outline: none;
+    margin-top: 85%;
+    padding-right: 45px;
+  }

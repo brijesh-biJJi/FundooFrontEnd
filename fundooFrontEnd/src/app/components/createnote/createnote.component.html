@@ -1,16 +1,23 @@
-<div class="container">
-    <mat-card style="height: 4em; border: 1px gray; padding:20px;"  *ngIf="!open"  (click)="onClickCreateNoteOpen()">
+<div id="container" >
+    <mat-card  class="before" *ngIf="!hide" (click)="onClick()">
         <input matInput class="searchBar" placeholder="Take a note...">
+        <div class="icon">
+            <mat-icon class="iconMargin" >event_available</mat-icon>
+            <mat-icon class="iconMargin" >edit</mat-icon>
+            <mat-icon class="iconMargin" >image</mat-icon>
+        </div>
     </mat-card>
-    <mat-card style="height: 12em;"  *ngIf="open" >
-       
-          
-            <textarea id="title"  style="border: none;" matInput type="text" class="input" placeholder="Title"></textarea>
-        <textarea style="border: none; " matInput type="text" class="input" placeholder="Take a note"></textarea>
-            <div class="icon" >
-                <!-- <app-notes-iconlist class="app-note-list" ></app-notes-iconlist> -->
-                <div class="div-button" button  (click)="onSubmit()||open=!open">
-                    <button style="border: none; padding-right: 45px;">Close</button></div>
+    <mat-card class="after"  *ngIf="hide"  fxLayout="column">
+        <div>
+         <textarea class="title"   [formControl] ="title" matInput type="text" class="input" placeholder="Title" style="border: none;"></textarea>
+        </div>
+        <div>   
+         <textarea class="description"  [formControl] ="description" matInput type="text" class="input" placeholder="Take a note" style="border: none; " ></textarea>
+        </div>   
+         <div class="icon" >
+                <div (click)="hide=!hide">
+                    <button class="closeBtn" (click)="onClickCreateNote()" >Close</button>
+                </div>
             </div>
     </mat-card>
 </div>

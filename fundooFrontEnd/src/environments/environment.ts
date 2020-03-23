@@ -5,12 +5,15 @@
 export const environment = {
   production: true,
   userApiUrl:'http://localhost:8080/users',
+  noteApiURL:'http://localhost:8080/note',
+
 
   registerUrl:'/register',
   loginURL:'/login',
   userActivUrl:'/register/activ',
   forgotPasswordUrl:'/forgotpassword',
   changePasswordUrl:'/changePassword',
+  createNote:'/create',
 };
 
 /*
