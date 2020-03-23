@@ -10,7 +10,14 @@
 }
 
 .closeBtn:hover{
+    background-color: lightgray;
+   
+}
+
+.closeBtn{
+    text-align: center;
     background-color: #f4f4f4;
+    border-radius: 1rem;
 }
 
 .searchBar
@@ -29,10 +36,13 @@
     width: 35%;
     border-radius: 1em;
     height: 4%;
+    margin-top: 1rem;
 }
 .icon{
     display: flex;
-    justify-content: center;
+    
+    // text-align: right;
+     justify-content: flex-end;
     height: 100%;
     width: 30%;
     border-radius: 1em;
@@ -41,7 +51,8 @@
 }
 
 .iconMargin{
-    margin-left: 10px;   
+    margin-left: 10px;
+    padding-right: 1rem;   
 }
 .after{
     display: flex;
@@ -49,7 +60,7 @@
     width: 35%;
     border-radius: 1em;
     height: 10em;
-    
+    margin-top: 1rem;
 } 
 textarea{
     border: none;

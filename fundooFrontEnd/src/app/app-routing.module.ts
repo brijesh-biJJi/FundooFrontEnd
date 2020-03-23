@@ -14,11 +14,10 @@ const routes: Routes = [
   {path:'register',component:RegistrationComponent},
   {path:'forgotPassword',component:ForgotpasswordComponent},
   {path:'changePassword',component:ChangepasswordComponent},
-  {path:'dashboard',component:DashboardComponent},
-  // children:[
-  //   {path:'',component:CreatenoteComponent},
-  //   {path:'createnote',component:CreatenoteComponent}]},
-  {path:'createnote',component:CreatenoteComponent},
+  {path:'dashboard',component:DashboardComponent,
+  children:[
+     {path:'',component:CreatenoteComponent},
+     {path:'createnote',component:CreatenoteComponent}]},
   {path:'**',component:PageNotFoundComponent}
 ];
 

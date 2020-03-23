@@ -9,10 +9,15 @@
     position: fixed;
   }
 
+  .image{
+    margin-left: 1rem;
+  }
   .iconGrey{
     color: grey;
   }
   .toolbar{
+    display: flex;
+    flex-direction: row;
     background-color: whitesmoke;
   }
   .divider{
@@ -36,9 +41,14 @@
   }
 
   .keep{
-    padding: 10%;
-   margin-right: 2em;
-   
+  //   padding: 1rem;
+   margin: 0 3rem 0 .5rem;
+   color: #5f6368;
+    opacity: 1;
+    display: inline-block;
+    font-family: 'Product Sans',Arial,sans-serif;
+    font-size: 22px;
+    line-height: 24px;
   }
 
   .example-form-field {

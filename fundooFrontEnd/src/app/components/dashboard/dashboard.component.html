@@ -4,10 +4,10 @@
             <button mat-icon-button matTooltip="Main menu" matTooltipHideDelay="1000" (click)="sidenav.toggle()"> <mat-icon class="iconGrey"> menu</mat-icon></button>
            
             <img class="image" src="https://ssl.gstatic.com/keep/keep.ico" />
-            <!-- <span class="keep">Fundoo</span> -->
-            <mat-card-subtitle >
-                <div class="mat-typography"><h1 class="keep">Fundoo</h1></div>
-            </mat-card-subtitle>
+            <span class="keep"><h1> Fundoo</h1></span>
+            
+                <!-- <div class="mat-typography"><h1 class="keep">Fundoo</h1></div> -->
+            
             <div class="card">
                 <button mat-icon-button class="search" (click)="searchTermView()">
                   <mat-icon matTooltip="Search"class="iconGrey">search</mat-icon>
@@ -89,7 +89,7 @@
         </mat-sidenav>
        
         <mat-sidenav-content style="background-color: whitesmoke; width: 100%; align-content: center;padding: 30px;">
-          <!-- <router-outlet></router-outlet> -->
+  
           <app-createnote></app-createnote>
         </mat-sidenav-content>
     </mat-sidenav-container>
