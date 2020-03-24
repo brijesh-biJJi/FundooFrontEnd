@@ -7,13 +7,16 @@ export const environment = {
   userApiUrl:'http://localhost:8080/users',
   noteApiURL:'http://localhost:8080/note',
 
-
+  /*Authentication URl*/
   registerUrl:'/register',
   loginURL:'/login',
   userActivUrl:'/register/activ',
   forgotPasswordUrl:'/forgotpassword',
   changePasswordUrl:'/changePassword',
+
+  // Note URL
   createNote:'/create',
+  getAllNotes:'/getAllNotes'
 };
 
 /*

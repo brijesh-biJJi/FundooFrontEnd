@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 #container{
     display: flex;
     justify-content: center;
@@ -15,9 +15,19 @@
 }
 
 .closeBtn{
-    text-align: center;
-    background-color: #f4f4f4;
-    border-radius: 1rem;
+    box-sizing: border-box;
+    color: rgba(0,0,0,0.87);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: .01785714em;
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    height: 36px;
+    padding: 8px 24px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
 }
 
 .searchBar
@@ -34,10 +44,20 @@
     display: flex;
     justify-content: center;
     width: 35%;
-    border-radius: 1em;
-    height: 4%;
+    border-radius: 10px;
+    height: 2rem;
     margin-top: 1rem;
 }
+
+.after{
+    display: flex;
+    justify-content: center;
+    width: 35%;
+    border-radius: 10px;
+    height: 8rem;
+    margin-top: 1rem;
+} 
+
 .icon{
     display: flex;
     
@@ -54,14 +74,7 @@
     margin-left: 10px;
     padding-right: 1rem;   
 }
-.after{
-    display: flex;
-    justify-content: center;
-    width: 35%;
-    border-radius: 1em;
-    height: 10em;
-    margin-top: 1rem;
-} 
+
 textarea{
     border: none;
     height: 1.2em;
@@ -84,12 +97,22 @@ input:placeholder-shown{
     font-size: 16px;
 }
 .title{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
+    letter-spacing: .00625em;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    min-height: 43px;
+    padding: 10px 15px;
+    background-color: #fff;
+    text-decoration: none;
 }
 .description{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
+    letter-spacing: .01428571em;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
 }
 icon{
     padding-top: 10px;

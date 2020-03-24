@@ -28,7 +28,7 @@
             </mat-form-field>
         </div>
         <mat-card-actions>
-            <button mat-raised-button  (click)="onLoginSubmit()" type="submit"  [disabled]="emailErrorMessage() != '' || passwordErrorMessage() != ''"> Login</button><br/><br/>
+            <button mat-raised-button class="loginBtn" color="primary" (click)="onLoginSubmit()" type="submit"  [disabled]="emailErrorMessage() != '' || passwordErrorMessage() != ''"> Login</button><br/><br/>
             <a routerLink="/register">Create Account</a> &nbsp;&nbsp;&nbsp;
             <a routerLink="/forgotPassword">Forgot password ?</a>
         </mat-card-actions>

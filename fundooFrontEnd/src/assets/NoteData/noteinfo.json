@@ -1,0 +1,13 @@
+[
+    {
+        "noteid":1,
+        "title":"First Note",
+        "description":"First note desc",
+        "isArchived":"false",
+        "isPinned":"false",
+        "isTrashed":"false",
+        "createdAt":"9:20:07 AM",
+        "updatedAt":"",
+        "reminder":""
+    }
+]
