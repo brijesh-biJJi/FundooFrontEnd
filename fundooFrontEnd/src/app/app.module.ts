@@ -11,9 +11,10 @@ import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassw
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
-import {  MatSnackBarModule } from '@angular/material';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreatenoteComponent } from './components/createnote/createnote.component';
+import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { CreatenoteComponent } from './components/createnote/createnote.componen
     ChangepasswordComponent,
     PageNotFoundComponent,
     DashboardComponent,
-    CreatenoteComponent
+    CreatenoteComponent,
+    DisplayNotesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import { CreatenoteComponent } from './components/createnote/createnote.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

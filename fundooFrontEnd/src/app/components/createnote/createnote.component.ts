@@ -37,13 +37,5 @@ export class CreatenoteComponent implements OnInit {
         this.matSnackBar.open(error.error.message, "Not Created", {duration:5000})
       }
     );
-  }
-
-  //varialble for storing NOte Data
-  private noteDetails:[];
-  onClickGetAllNotes(){
-    this._noteService.getAllNotes()
-          .subscribe((noteData => this.noteDetails=noteData));
-  }
-  
+  }  
 }

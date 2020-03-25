@@ -8,16 +8,15 @@
         </div>
     </mat-card>
     <mat-card class="after"  *ngIf="hide"  fxLayout="column">
-        <div>
          <textarea class="title"   [formControl] ="title" matInput type="text" class="input" placeholder="Title" style="border: none;"></textarea>
-        </div>
-        <div>   
+        
+           
          <textarea class="description"  [formControl] ="description" matInput type="text" class="input" placeholder="Take a note" style="border: none; " ></textarea>
-        </div>   
-         <div class="icon" >
+      
+         
                 <div (click)="hide=!hide">
                     <button class="closeBtn" (click)="onClickCreateNote()" >Close</button>
                 </div>
-            </div>
+          
     </mat-card>
 </div>

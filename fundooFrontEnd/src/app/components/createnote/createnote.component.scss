@@ -15,21 +15,20 @@
 }
 
 .closeBtn{
+    display: flex;
     box-sizing: border-box;
     color: rgba(0,0,0,0.87);
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    letter-spacing: .01785714em;
-    font-size: .875rem;
-    font-weight: 500;
-    line-height: 1.25rem;
-    height: 36px;
-    padding: 8px 24px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
+   
+     background-color: whitesmoke;
+     border: none;
+     color: black;
+     text-decoration: none;
+     font-size: 16px;
+     padding: 10px;
+     float:right;
+     border-radius: 0.5rem;
 }
-
 .searchBar
 {
     display: flex;
@@ -46,7 +45,7 @@
     width: 35%;
     border-radius: 10px;
     height: 2rem;
-    margin-top: 1rem;
+    margin-top: 0;
 }
 
 .after{
@@ -56,6 +55,7 @@
     border-radius: 10px;
     height: 8rem;
     margin-top: 1rem;
+    margin-top: 0;
 } 
 
 .icon{
@@ -77,11 +77,14 @@
 
 textarea{
     border: none;
-    height: 1.2em;
-    margin-bottom: 0px;
+    height: 1em;
+    margin: 0.5rem;
     padding: 16px;
     font-weight: bolder;
     outline: none;
+    resize: none;
+    overflow:hidden;
+    width: auto;
 }
 input:placeholder-shown{
     font-size: 20px;
@@ -112,7 +115,7 @@ input:placeholder-shown{
     font-family: Roboto,Arial,sans-serif;
     font-size: .875rem;
     font-weight: 400;
-    line-height: 1.25rem;
+    // line-height: 1.25rem;
 }
 icon{
     padding-top: 10px;
@@ -120,19 +123,19 @@ icon{
     flex-direction: row;
     justify-content: space-between;
 }
-button{
-    display: flex;
-     background-color: whitesmoke;
-     border: none;
-     color: black;
-     text-align: center;
-     text-decoration: none;
-     font-size: 16px;
-     padding: 10px;
-     margin-left: 10%;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    outline: none;
-    margin-top: 85%;
-    padding-right: 45px;
-  }
+// button{
+//     display: flex;
+//      background-color: whitesmoke;
+//      border: none;
+//      color: black;
+//      text-align: center;
+//      text-decoration: none;
+//      font-size: 16px;
+//      padding: 10px;
+//      margin-left: 10%;
+//     font-family: 'Open Sans', sans-serif;
+//     font-weight: bold;
+//     outline: none;
+//     margin-top: 85%;
+//     padding-right: 45px;
+//   }

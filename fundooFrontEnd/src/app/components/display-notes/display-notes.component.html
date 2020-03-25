@@ -1,0 +1,8 @@
+<h1>Note Details</h1>
+<div >
+    <button (click)="onClickGetAllNotes()" >Display</button>
+</div>
+<ul *ngFor="let note of noteDetails">
+    <li>{{note.title}}</li>
+    <li>{{note.description}}</li>
+</ul>

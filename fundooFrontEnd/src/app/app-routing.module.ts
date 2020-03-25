@@ -7,6 +7,7 @@ import { ChangepasswordComponent } from './components/changepassword/changepassw
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreatenoteComponent } from './components/createnote/createnote.component';
+import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 
 const routes: Routes = [
   {path:'' ,redirectTo:'/login', pathMatch:'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   children:[
      {path:'',component:CreatenoteComponent},
      {path:'createnote',component:CreatenoteComponent}]},
+   {path:'displaynote',component:DisplayNotesComponent},  
   {path:'**',component:PageNotFoundComponent}
 ];
 
@@ -33,5 +35,6 @@ export const routingComponents=[
   ChangepasswordComponent,
   PageNotFoundComponent,
   DashboardComponent,
-  CreatenoteComponent
+  CreatenoteComponent,
+  DisplayNotesComponent
 ]
