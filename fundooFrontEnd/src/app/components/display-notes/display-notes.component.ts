@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/note-service.service';
+import { NoteModel } from 'src/app/model/note-model.model';
 
 @Component({
   selector: 'app-display-notes',
@@ -9,15 +10,18 @@ import { NoteServiceService } from 'src/app/services/note-service.service';
 export class DisplayNotesComponent implements OnInit {
 
   constructor(private _noteService:NoteServiceService) { }
-
+ //varialble for storing NOte Data
+ private noteDetails:NoteModel[];
   ngOnInit() {
-  }
-
-  //varialble for storing NOte Data
-  private noteDetails:[];
-  onClickGetAllNotes(){
     this._noteService.getAllNotes()
           .subscribe((noteData => this.noteDetails=noteData));
           console.log('Notes ',this.noteDetails);
   }
+
+ 
+  // onClickGetAllNotes(){
+  //   this._noteService.getAllNotes()
+  //         .subscribe((noteData => this.noteDetails=noteData));
+  //         console.log('Notes ',this.noteDetails);
+  // }
 }

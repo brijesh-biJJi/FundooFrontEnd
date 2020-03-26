@@ -1,5 +1,5 @@
 export class NoteModel {
-    noteId:number;
+    noteid:number;
     title:string;
     description:string;
     isArchived:boolean;

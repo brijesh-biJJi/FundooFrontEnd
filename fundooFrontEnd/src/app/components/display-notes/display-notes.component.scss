@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+#container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    margin-left: 1rem;
+}
+
+.matDisplay{
+    width: 15rem;
+    height: auto;
+}
+
+

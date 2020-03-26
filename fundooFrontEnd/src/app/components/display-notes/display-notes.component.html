@@ -1,8 +1,24 @@
-<h1>Note Details</h1>
-<div >
+ <!-- <h1>Note Details</h1>
+ <div >
     <button (click)="onClickGetAllNotes()" >Display</button>
 </div>
 <ul *ngFor="let note of noteDetails">
     <li>{{note.title}}</li>
     <li>{{note.description}}</li>
-</ul>
+</ul>  -->
+<div id="container">
+    <div class="matDisplay" *ngFor="let note of noteDetails" >
+        <mat-card [style.background-color]="note.colour">
+            <div class="matTitle">
+                <mat-card-title>
+                    {{note.title}}
+                </mat-card-title>
+            </div>
+            <div class="matDesc">
+                <mat-card-content>
+                    {{note.description}}
+                </mat-card-content>
+            </div>
+        </mat-card>
+    </div>
+</div>

@@ -3,7 +3,7 @@ import {environment} from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {HttpserviceService} from 'src/app/services/httpservice.service';
 import { Observable } from 'rxjs';
-
+import { NoteModel } from 'src/app/model/note-model.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,11 +26,11 @@ export class NoteServiceService {
    }
 
    //Url for retrieving Note Data
-   private _getNotesUrl:string='src/assets/NoteData/noteinfo.json';
-   getAllNotes():Observable<any>
+   private _getNotesUrl:string='/assets/NoteData/noteinfo.json';
+   getAllNotes():Observable<NoteModel[]>
    {
-    
-     return this._httpService.getRequest(this._getNotesUrl);
+    return this._httpClient.get<NoteModel[]>(this._getNotesUrl);
+    //  return this._httpService.getRequest(this._getNotesUrl);
     //  return this._httpService.getRequest(this.noteApiUrl+this.getAllNotesUrl);
    }
 }
