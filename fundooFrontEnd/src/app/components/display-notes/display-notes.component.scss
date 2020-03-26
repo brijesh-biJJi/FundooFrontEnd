@@ -4,12 +4,30 @@
     justify-content: space-around;
     flex-wrap: wrap;
     font-family: 'Google Sans',Roboto,Arial,sans-serif;
-    margin-left: 1rem;
+    margin-left: 8rem;
+    margin-right: 5rem;
+    align-items: flex-end;
+    width: auto;
 }
 
 .matDisplay{
-    width: 15rem;
+    display: flex;
+    width: 20rem;
     height: auto;
+    //  justify-content: space-between;
+   
 }
 
+mat-card{
+    border-radius: 15px;
+    border: 1px solid transparent;
+    margin-bottom: 0.75rem;
+    margin-right: 0;
+}
+
+.noteIcon{
+    display: flex;
+    justify-content: space-around;
+    
+}
 

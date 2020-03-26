@@ -1,6 +1,8 @@
 <div id="container" >
-    <mat-card  class="before" *ngIf="!hide" (click)="onClick()">
+    <mat-card  class="before" *ngIf="!hide" (click)="onClick()" >
+        <div>
         <input matInput class="searchBar" placeholder="Take a note...">
+    </div>
         <div class="icon">
             <mat-icon class="iconMargin" >event_available</mat-icon>
             <mat-icon class="iconMargin" >edit</mat-icon>
