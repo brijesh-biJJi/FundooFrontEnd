@@ -1,8 +1,8 @@
 [
     {
         "noteid":1,
-        "title":"First Note Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        "description":"First note desc",
+        "title":"First Note",
+        "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         "isArchived":"false",
         "isPinned":"false",
         "isTrashed":"false",
@@ -14,7 +14,7 @@
     {
         "noteid":1,
         "title":"Second Note",
-        "description":"Second note desc  Numquam eveniet architecto veritatis tempora aliquid veniam autem sit,",
+        "description":"Numquam eveniet architecto veritatis tempora aliquid veniam autem sit,",
         "isArchived":"false",
         "isPinned":"false",
         "isTrashed":"false",
@@ -26,7 +26,7 @@
     {
         "noteid":1,
         "title":"Third Note",
-        "description":"Third note desc Labore atque sunt, assumenda facilis temporibus culpa!",
+        "description":"Labore atque sunt, assumenda facilis temporibus culpa!",
         "isArchived":"false",
         "isPinned":"false",
         "isTrashed":"false",
@@ -49,8 +49,8 @@
     },
     {
         "noteid":1,
-        "title":"Fifth Note  qui cupiditate ipsam est nemo a?",
-        "description":"Fifth note desc ",
+        "title":"Fifth Note  ",
+        "description":"Fifth note desc qui cupiditate ipsam est nemo a?",
         "isArchived":"false",
         "isPinned":"false",
         "isTrashed":"false",
@@ -61,8 +61,8 @@
     },
     {
         "noteid":1,
-        "title":"Fifth Note  qui cupiditate ipsam est nemo a?",
-        "description":"Fifth note desc ",
+        "title":"Fifth Note ",
+        "description":"Fifth note desc qui cupiditate ipsam est nemo a?",
         "isArchived":"false",
         "isPinned":"false",
         "isTrashed":"false",
