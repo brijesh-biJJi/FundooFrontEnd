@@ -20,4 +20,14 @@ export class DashboardComponent implements OnInit {
   onSignout() {
     localStorage.clear();
   }
+
+  onClickNote(){
+    this._router.navigateByUrl('dashboard');
+  }
+  onClickArchive(){
+    this._router.navigateByUrl('dashboard/archive');
+  }
+  onClickTrash(){
+    this._router.navigateByUrl('dashboard/trash');
+  }
 }

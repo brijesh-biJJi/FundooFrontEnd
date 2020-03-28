@@ -27,10 +27,17 @@ export class NoteServiceService {
 
    //Url for retrieving Note Data
    private _getNotesUrl:string='/assets/NoteData/noteinfo.json';
-   getAllNotes():Observable<NoteModel[]>
-   {
-    return this._httpClient.get<NoteModel[]>(this._getNotesUrl);
-    //  return this._httpService.getRequest(this._getNotesUrl);
-    //  return this._httpService.getRequest(this.noteApiUrl+this.getAllNotesUrl);
-   }
+      getArchiveNotes():Observable<any>
+      {
+        return this._httpClient.get<any>(this._getNotesUrl);
+      }
+
+   //Url for retrieving Note Data
+  //  private _getNotesUrl:string='/assets/NoteData/noteinfo.json';
+  //  getAllNotes():Observable<any>
+  //  {
+  //   return this._httpClient.get<any>(this._getNotesUrl);
+  //   //  return this._httpService.getRequest(this._getNotesUrl);
+  //   //  return this._httpService.getRequest(this.noteApiUrl+this.getAllNotesUrl);
+  //  }
 }

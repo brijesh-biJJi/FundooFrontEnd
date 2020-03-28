@@ -1,6 +1,6 @@
 <div class="container">
-    <div >
-        <mat-toolbar class="toolbar">
+    <div class="toolbar">
+        <mat-toolbar >
             <button class="tl" mat-icon-button matTooltip="Main menu" matTooltipHideDelay="1000" (click)="sidenav.toggle()"> <mat-icon class="iconGrey"> menu</mat-icon></button>
            
             <img class="tl" class="image" src="https://ssl.gstatic.com/keep/keep.ico" />
@@ -37,7 +37,16 @@
                 <button class="navIcon" matTooltip="Google Apps"  mat-icon-button><mat-icon class="iconGrey">apps</mat-icon></button> 
             </div>
             <div>
-              <button class="navIcon" matTooltip="SignOut" class="iconGrey" [routerLink]="['']" (click)="onSignout()" mat-button class="signout-button">Signout</button>
+              <!-- <button class="navIcon" matTooltip="SignOut" class="iconGrey" [routerLink]="['']" (click)="onSignout()" mat-button class="signout-button">Signout</button> -->
+              <button  class="navIcon" matTooltip="SignOut" style="color: grey;"  mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>person_outline</mat-icon>
+              </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item [routerLink]="['']" (click)="onSignout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    Sign Out
+                  </button>
+                </mat-menu>
             </div>
              
         </mat-toolbar>
@@ -48,20 +57,20 @@
        
         <mat-sidenav style="border: transparent;" #sidenav mode="side" >
             <div>
-                <button mat-raised-button class="navButton" style="margin-bottom: 1em; " (click)="onNote()" type="submit">
+                <button mat-raised-button class="navButton" style="margin-bottom: 1em; " (click)="onClickNote()" type="submit">
                   <mat-icon class="matSidenavIcon" >lightbulb_outline</mat-icon>
                   <span >Notes</span>
                 </button>
               </div>
               
               <div>
-                <button class="navButton"  mat-raised-button (click)="onReminder()" type="submit">
+                <button class="navButton"  mat-raised-button (click)="onClickReminder()" type="submit">
                   <mat-icon  class="matSidenavIcon" >notifications</mat-icon>
                   <span>Reminders</span>
                 </button>
               </div>
               <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;"></mat-divider>
-            
+              <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;" class="divider"></mat-divider>
               <div>
                 <mat-card-subtitle >
               <span class="label">LABELS</span> </mat-card-subtitle>
@@ -73,16 +82,16 @@
                 </button>
               </div>
         
-              <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;"></mat-divider>
+              <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;" class="divider"></mat-divider>
         
               <div>
-                <button class="navButton" mat-raised-button (click)="onArchive()" type="submit">
+                <button class="navButton" mat-raised-button (click)="onClickArchive()" type="submit">
                   <mat-icon class="matSidenavIcon" >archive</mat-icon>
                   <span>Archive</span>
                 </button>
               </div>
               <div>
-                <button class="navButton" mat-raised-button (click)="onTrash()" type="submit">
+                <button class="navButton" mat-raised-button (click)="onClickTrash()" type="submit">
                   <mat-icon class="matSidenavIcon" >delete</mat-icon>
                   <span>Trash</span>
                 </button>

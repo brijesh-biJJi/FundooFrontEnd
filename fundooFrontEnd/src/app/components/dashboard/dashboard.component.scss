@@ -24,6 +24,10 @@
      background-color: white;
   }
 
+  mat-toolbar{
+    height: 5rem;
+  }
+
  .tl{
    margin: 1rem 0;
  }
@@ -121,9 +125,9 @@
     margin-right: 1em ;
   }
 
-  .signout-button{
-    border: 1px solid gray;
-  }
+  // .signout-button{
+  //   border: 1px solid gray;
+  // }
 
  .label{
   padding: 15px 24px 10px;

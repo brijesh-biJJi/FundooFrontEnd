@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreatenoteComponent } from './components/createnote/createnote.component';
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 import {SingleNoteComponent} from './components/single-note/single-note.component';
+import { ArchiveComponent } from './components/archive/archive.component';
 const routes: Routes = [
   {path:'' ,redirectTo:'/login', pathMatch:'full'},
   {path:'login' ,component:LoginComponent},
@@ -22,9 +23,13 @@ const routes: Routes = [
      },
      {
        path:'createnote',component:CreatenoteComponent
-     }]},
+     },
+     {
+       path:'archive',component:ArchiveComponent
+    }
+    ]},
    {path:'displaynote',component:DisplayNotesComponent},  
-   {path:'singlenote',component:SingleNoteComponent}, 
+   {path:'singlenote',component:SingleNoteComponent},  
   {path:'**',component:PageNotFoundComponent}
 ];
 
@@ -42,5 +47,6 @@ export const routingComponents=[
   DashboardComponent,
   CreatenoteComponent,
   DisplayNotesComponent,
-  SingleNoteComponent
+  SingleNoteComponent,
+  ArchiveComponent
 ]

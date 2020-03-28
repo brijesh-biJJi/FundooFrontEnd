@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/note-service.service';
 import { NoteModel } from 'src/app/model/note-model.model';
+import { GetNotesService } from 'src/app/services/get-notes.service';
 
 @Component({
   selector: 'app-display-notes',
@@ -9,7 +10,7 @@ import { NoteModel } from 'src/app/model/note-model.model';
 })
 export class DisplayNotesComponent implements OnInit {
 
-  constructor(private _noteService:NoteServiceService) { }
+  constructor(private _noteService:NoteServiceService,private _getNoteService:GetNotesService) { }
 
 
  //varialble for storing NOte Data
@@ -23,8 +24,10 @@ export class DisplayNotesComponent implements OnInit {
 
  
   onClickGetAllNotes(){
-    this._noteService.getAllNotes()
-          .subscribe((noteData => this.noteDetails=noteData));
-          console.log('Notes ',this.noteDetails);
+    this._getNoteService.getAllNotes()
+    .subscribe((noteData => this.noteDetails=noteData));
+    // this._noteService.getAllNotes()
+    //       .subscribe((noteData => this.noteDetails=noteData));
+    //       console.log('Notes ',this.noteDetails);
   }
 }
