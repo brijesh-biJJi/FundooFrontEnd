@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     this._router.navigateByUrl('dashboard');
   }
   onClickArchive(){
-    this._router.navigateByUrl('dashboard/archive');
+    this._router.navigate(['/noteComp','archive']);
   }
   onClickTrash(){
     this._router.navigateByUrl('dashboard/trash');

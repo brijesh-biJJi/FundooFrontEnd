@@ -16,7 +16,7 @@ import { CreatenoteComponent } from './components/createnote/createnote.componen
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { SingleNoteComponent } from './components/single-note/single-note.component';
-import { ArchiveComponent } from './components/archive/archive.component';
+import { NotesComponent } from './components/notes/notes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
     CreatenoteComponent,
     DisplayNotesComponent,
     SingleNoteComponent,
-    ArchiveComponent
+    NotesComponent
   ],
   imports: [
     BrowserModule,

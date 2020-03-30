@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {HttpserviceService} from 'src/app/services/httpservice.service';
-import { Observable } from 'rxjs';
+import { Observable ,Subject, BehaviorSubject} from 'rxjs';
 import { NoteModel } from 'src/app/model/note-model.model';
 
 @Injectable({
@@ -13,6 +13,8 @@ export class NoteServiceService {
   private noteApiUrl=environment.noteApiURL;
   private createNoteUrl=environment.createNote;
   private getAllNotesUrl=environment.getAllNotes;
+
+  private archiveNoteList = new Subject<any>();
   
   private httpContent={
     headers:new HttpHeaders({'content-type':'application/json'})
@@ -30,6 +32,15 @@ export class NoteServiceService {
       getArchiveNotes():Observable<any>
       {
         return this._httpClient.get<any>(this._getNotesUrl);
+      }
+
+      setArchiveNotesList(message:  NoteModel[]) {
+        console.log("Set Archive Note");
+        this.archiveNoteList.next({ notes: message });
+      }
+      getArchiveNotesList(): Observable<any> {
+        console.log("Get Archive Note");
+        return this.archiveNoteList.asObservable();
       }
 
    //Url for retrieving Note Data

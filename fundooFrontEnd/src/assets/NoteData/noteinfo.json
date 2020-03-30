@@ -12,10 +12,10 @@
         "reminder":""
     },
     {
-        "noteid":1,
+        "noteid":2,
         "title":"Second Note",
         "description":"Numquam eveniet architecto veritatis tempora aliquid veniam autem sit,",
-        "isArchived":"false",
+        "isArchived":"true",
         "isPinned":"false",
         "isTrashed":"false",
         "createdAt":"9:20:07 AM",
@@ -24,7 +24,7 @@
         "reminder":""
     },
     {
-        "noteid":1,
+        "noteid":3,
         "title":"Third Note",
         "description":"Labore atque sunt, assumenda facilis temporibus culpa!",
         "isArchived":"false",
@@ -36,10 +36,10 @@
         "reminder":""
     },
     {
-        "noteid":1,
+        "noteid":4,
         "title":"Fourth Note",
         "description":"Fourth note desc",
-        "isArchived":"false",
+        "isArchived":"true",
         "isPinned":"false",
         "isTrashed":"false",
         "createdAt":"9:20:07 AM",
