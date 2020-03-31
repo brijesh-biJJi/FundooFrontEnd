@@ -24,11 +24,16 @@ const routes: Routes = [
      },
      {
        path:'createnote',component:CreatenoteComponent
+     },
+     {
+      path:'',component:DisplayNotesComponent
+     },
+     {
+      path:'displaynote',component:DisplayNotesComponent
      }
     ]},
-   {path:'displaynote',component:DisplayNotesComponent},
+    {path:'note',component:NotesComponent},
    {path:'displaynote/:note',component:DisplayNotesComponent},
-   {path:'noteComp/:note',component:NotesComponent},  
    {path:'singlenote',component:SingleNoteComponent},  
   {path:'**',component:PageNotFoundComponent}
 ];
@@ -47,5 +52,6 @@ export const routingComponents=[
   DashboardComponent,
   CreatenoteComponent,
   DisplayNotesComponent,
-  SingleNoteComponent
+  SingleNoteComponent,
+  NotesComponent
 ]

@@ -29,19 +29,19 @@ export class NoteServiceService {
 
    //Url for retrieving Note Data
    private _getNotesUrl:string='/assets/NoteData/noteinfo.json';
-      getArchiveNotes():Observable<any>
+      getAllNotes():Observable<any>
       {
         return this._httpClient.get<any>(this._getNotesUrl);
       }
 
-      setArchiveNotesList(message:  NoteModel[]) {
-        console.log("Set Archive Note");
-        this.archiveNoteList.next({ notes: message });
-      }
-      getArchiveNotesList(): Observable<any> {
-        console.log("Get Archive Note");
-        return this.archiveNoteList.asObservable();
-      }
+      // setArchiveNotesList(message:  NoteModel[]) {
+      //   console.log("Set Archive Note");
+      //   this.archiveNoteList.next({ notes: message });
+      // }
+      // getArchiveNotesList(): Observable<any> {
+      //   console.log("Get Archive Note");
+      //   return this.archiveNoteList.asObservable();
+      // }
 
    //Url for retrieving Note Data
   //  private _getNotesUrl:string='/assets/NoteData/noteinfo.json';
