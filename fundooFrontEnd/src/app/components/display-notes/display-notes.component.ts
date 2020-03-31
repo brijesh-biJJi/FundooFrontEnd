@@ -19,7 +19,7 @@ export class DisplayNotesComponent implements OnInit {
 //  private archiveNoteDetails:NoteModel[];
 private notes:NoteModel[];
  private noteDetails=new Array<NoteModel>();
-
+private pinNotes=new Array<NoteModel>();
 private param:any;
   ngOnInit() 
   {
@@ -34,14 +34,30 @@ private param:any;
     }
     else
     {
-      this._getNoteService.getAllNotes()
-    .subscribe((noteData => this.noteDetails=noteData));
+      this.displayNotes();
     }
-
-    
-    
   }
 
+  displayNotes(){
+    this._getNoteService.getAllNotes()
+    .subscribe(
+      (noteData:any)=>{
+        this.notes=noteData;
+        this.notes.filter(othersNote=>othersNote.isPinned===false).map(othersNote=>this.noteDetails.push(othersNote));
+        console.log('Others Notes ',this.noteDetails);
+      } 
+      );
+
+    this._getNoteService.getAllNotes()
+    .subscribe(
+      (allNotes:any)=>{
+        this.notes=allNotes;
+        this.notes.filter(pinNote=>pinNote.isPinned===true&&pinNote.isArchived===false&&pinNote.isTrashed===false).map(pinNote=>this.pinNotes.push(pinNote));
+        console.log('Pinned Notes ',this.pinNotes);
+        
+      }
+    );
+  }
   getAllArchiveNotes() 
   {
       console.log("Archive");

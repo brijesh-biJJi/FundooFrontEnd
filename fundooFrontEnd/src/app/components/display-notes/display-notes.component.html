@@ -1,7 +1,22 @@
-<div id="container" fxLayout="row wrap" fxLayout.xs="coloum wrap">
-<div   *ngFor="let noteD of noteDetails">
-    <app-single-note [noteDetail]="noteD" ></app-single-note>
-</div>
+<div id="container" fxLayout="column wrap" fxLayout.xs="coloum wrap">
+    
+        <div>
+            PINNED NOTES
+        </div> 
+        <div class="items"  fxLayout="row wrap">
+            <div  *ngFor="let noteD of pinNotes"  >
+                <app-single-note [noteDetail]="noteD" ></app-single-note>
+            </div>
+         </div>
+    
+        <div>
+            OTHER'S
+        </div>  
+        <div class="items" fxLayout="row wrap">
+            <div   *ngFor="let noteD of noteDetails"  >
+                <app-single-note [noteDetail]="noteD" ></app-single-note>
+            </div>
+        </div>
 </div>
 <!-- <div id="container">
     <div class="matDisplay" *ngFor="let note of noteDetails" >

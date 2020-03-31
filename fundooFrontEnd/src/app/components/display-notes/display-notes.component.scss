@@ -1,38 +1,12 @@
 #container{
-    margin-left: 8rem;
+    margin: 0 5rem;
+    // display: flex;
+    // flex-direction: column;
 }
 
-// @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-// #container{
-//     display: flex;
-//     justify-content: space-around;
-//     flex-wrap: wrap;
-//     font-family: 'Google Sans',Roboto,Arial,sans-serif;
-//     margin-left: 8rem;
-//     margin-right: 5rem;
-//     align-items: flex-end;
-//     width: auto;
-// }
+.items{
+    margin-bottom: 3rem;
+    justify-content: flex-start;
+}
 
-// .matDisplay{
-//     display: flex;
-//     width: 20rem;
-//     height: auto;
-//     //  justify-content: space-between;
-   
-// }
-
-// mat-card{
-//     border-radius: 15px;
-//     border: 1px solid transparent;
-//     margin-bottom: 0.75rem;
-//     margin-right: 0;
-//     background-color: transparent;
-// }
-
-// .noteIcon{
-//     display: flex;
-//     justify-content: space-around;
-    
-// }
 

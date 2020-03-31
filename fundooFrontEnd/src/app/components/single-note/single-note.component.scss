@@ -1,17 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 #container{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    // display: flex;
+    // justify-content: space-around;
+    // flex-wrap: wrap;
     font-family: 'Google Sans',Roboto,Arial,sans-serif;
     margin: 0.75rem;
     // margin-right: 5rem;
-    align-items: flex-end;
+    // align-items: flex-end;
     width: auto;
 }
 
+.matDesc{
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+}
+
+mat-card-content{
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: medium;
+}
+
 .matDisplay{
-    display: flex;
+    // display: flex;
     width: 20rem;
     height: auto;
     //  justify-content: space-between;
