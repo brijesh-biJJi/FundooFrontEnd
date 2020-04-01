@@ -41,3 +41,20 @@ mat-card{
     
 }
 
+.matdiv {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+img {
+    align-items: flex-end;
+  }
+  .pindiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 17em;
+    visibility: visible;
+    margin: 0;
+  }
+

@@ -10,6 +10,11 @@ import { NoteModel } from 'src/app/model/note-model.model';
 })
 export class NoteServiceService {
 
+  private _refresh= new Subject();
+  get refresh() {
+    return this._refresh;
+  }
+
   private noteApiUrl=environment.noteApiURL;
   private createNoteUrl=environment.createNote;
   private getAllNotesUrl=environment.getAllNotes;

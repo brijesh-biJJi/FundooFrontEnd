@@ -1,7 +1,7 @@
 
 import { Component, OnInit, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
@@ -12,7 +12,7 @@ import { Router} from '@angular/router';
 export class DashboardComponent implements OnInit {
   value = '';
 
-  constructor(private _router:Router) { }
+  constructor(private _router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -25,9 +25,11 @@ export class DashboardComponent implements OnInit {
     this._router.navigateByUrl('dashboard');
   }
   onClickArchive(){
-    this._router.navigate(['/displaynote','archive']);
+    // this._router.navigate(['/dashboard/displaynote','archive']);
+    this._router.navigate(['archive'],{relativeTo:this.route});
   }
   onClickTrash(){
-    this._router.navigate(['/displaynote','trash']);
+    // this._router.navigate(['/dashboard/displaynote','trash']);
+    this._router.navigate(['trash'],{relativeTo:this.route});
   }
 }

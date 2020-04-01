@@ -11,6 +11,11 @@ import { DisplayNotesComponent } from '../display-notes/display-notes.component'
 export class SingleNoteComponent implements OnInit {
   
   @Input() noteDetail:NoteModel;
+
+ 
+
+  pin:boolean=true;
+  unpin:boolean=true;
   constructor() { }
 
   ngOnInit() {

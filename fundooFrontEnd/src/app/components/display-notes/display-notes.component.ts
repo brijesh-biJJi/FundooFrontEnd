@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/note-service.service';
 import { NoteModel } from 'src/app/model/note-model.model';
 import { GetNotesService } from 'src/app/services/get-notes.service';
-import {ActivatedRoute,Router} from '@angular/router';
+import {ActivatedRoute,Router,ParamMap} from '@angular/router';
+import { Note } from 'src/app/model/note.model';
 
 @Component({
   selector: 'app-display-notes',
@@ -11,8 +12,16 @@ import {ActivatedRoute,Router} from '@angular/router';
 })
 export class DisplayNotesComponent implements OnInit {
 
-  constructor(private _router:Router,private _noteService:NoteServiceService,private _getNoteService:GetNotesService,private _route:ActivatedRoute) { }
+  constructor(private _router:Router,private _noteService:NoteServiceService,private _getNoteService:GetNotesService,private _route:ActivatedRoute) {
+    this._noteService.refresh.subscribe(() => {
+      this.displayNotes();
+      this.getAllTrashedNotes();
+      this.getAllArchiveNotes();
+    });
 
+   }
+  trashedNotes: boolean = false;
+  archiveNotes: boolean = false;
 
  //varialble for storing NOte Data
 //  private noteDetails:NoteModel[];
@@ -20,17 +29,26 @@ export class DisplayNotesComponent implements OnInit {
 private notes:NoteModel[];
  private noteDetails=new Array<NoteModel>();
 private pinNotes=new Array<NoteModel>();
+private otherNoteDetails=new Array<NoteModel>();
+
 private param:any;
   ngOnInit() 
   {
-    this.param=this._route.snapshot.paramMap.get('note');
+    console.log('Inside Disp Init');
+    
+    // this.param=this._route.snapshot.paramMap.get('note');
+    this._route.paramMap.subscribe(
+      (params:ParamMap)=>{
+        this.param=params.get('note');
+      }
+    )
     if (this.param == "archive") 
     {
       this.getAllArchiveNotes();
     }
     else if(this.param == "trash")
     {
-      this.getAllTrashNotes();
+      this.getAllTrashedNotes();
     }
     else
     {
@@ -39,12 +57,14 @@ private param:any;
   }
 
   displayNotes(){
+    this.trashedNotes = false;
+    this.archiveNotes = false;
     this._getNoteService.getAllNotes()
     .subscribe(
       (noteData:any)=>{
         this.notes=noteData;
-        this.notes.filter(othersNote=>othersNote.isPinned===false).map(othersNote=>this.noteDetails.push(othersNote));
-        console.log('Others Notes ',this.noteDetails);
+        this.notes.filter(othersNote=>othersNote.isPinned===false).map(othersNote=>this.otherNoteDetails.push(othersNote));
+        console.log('Others Notes ',this.otherNoteDetails);
       } 
       );
 
@@ -60,6 +80,8 @@ private param:any;
   }
   getAllArchiveNotes() 
   {
+    this.archiveNotes = true;
+    this.trashedNotes = false;
       console.log("Archive");
           this._noteService.getAllNotes()
                .subscribe(
@@ -75,7 +97,9 @@ private param:any;
 
   }
 
-  getAllTrashNotes(){
+  getAllTrashedNotes(){
+    this.trashedNotes = true;
+    this.archiveNotes = false;
     console.log("Trash");
     this._noteService.getAllNotes()
         .subscribe(

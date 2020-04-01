@@ -19,21 +19,27 @@ const routes: Routes = [
   {path:'changePassword',component:ChangepasswordComponent},
   {path:'dashboard',component:DashboardComponent,
   children:[
-     {
-       path:'',component:CreatenoteComponent
+    //  {
+    //    path:'',component:CreatenoteComponent
+    //  },
+    {
+      path:'',component:DisplayNotesComponent
      },
      {
        path:'createnote',component:CreatenoteComponent
      },
-     {
-      path:'',component:DisplayNotesComponent
-     },
+     
      {
       path:'displaynote',component:DisplayNotesComponent
-     }
+     },
+     {
+       path:':note',component:DisplayNotesComponent
+    },
+    {path:'singlenote',component:SingleNoteComponent},  
     ]},
+   
     {path:'note',component:NotesComponent},
-   {path:'displaynote/:note',component:DisplayNotesComponent},
+   
    {path:'singlenote',component:SingleNoteComponent},  
   {path:'**',component:PageNotFoundComponent}
 ];
