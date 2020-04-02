@@ -19,12 +19,10 @@ const routes: Routes = [
   {path:'changePassword',component:ChangepasswordComponent},
   {path:'dashboard',component:DashboardComponent,
   children:[
-    //  {
-    //    path:'',component:CreatenoteComponent
-    //  },
-    {
+  
+     {
       path:'',component:DisplayNotesComponent
-     },
+     }, 
      {
        path:'createnote',component:CreatenoteComponent
      },
@@ -38,7 +36,7 @@ const routes: Routes = [
     {path:'singlenote',component:SingleNoteComponent},  
     ]},
    
-    {path:'note',component:NotesComponent},
+    // {path:'note',component:NotesComponent},
    
    {path:'singlenote',component:SingleNoteComponent},  
   {path:'**',component:PageNotFoundComponent}

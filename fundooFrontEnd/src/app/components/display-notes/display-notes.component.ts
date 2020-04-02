@@ -12,13 +12,8 @@ import { Note } from 'src/app/model/note.model';
 })
 export class DisplayNotesComponent implements OnInit {
 
-  constructor(private _router:Router,private _noteService:NoteServiceService,private _getNoteService:GetNotesService,private _route:ActivatedRoute) {
-    this._noteService.refresh.subscribe(() => {
-      this.displayNotes();
-      this.getAllTrashedNotes();
-      this.getAllArchiveNotes();
-    });
-
+  constructor(private _router:Router,private _route:ActivatedRoute,private _noteService:NoteServiceService,private _getNoteService:GetNotesService) {
+    
    }
   trashedNotes: boolean = false;
   archiveNotes: boolean = false;
@@ -34,7 +29,13 @@ private otherNoteDetails=new Array<NoteModel>();
 private param:any;
   ngOnInit() 
   {
-    console.log('Inside Disp Init');
+    this._noteService.refreshNeeded$.subscribe(() => {
+      this.displayNotes();
+      this.getAllTrashedNotes();
+      this.getAllArchiveNotes();
+    });
+
+    
     
     // this.param=this._route.snapshot.paramMap.get('note');
     this._route.paramMap.subscribe(
@@ -44,10 +45,13 @@ private param:any;
     )
     if (this.param == "archive") 
     {
+      console.log('Inside Archive ');
+      
       this.getAllArchiveNotes();
     }
     else if(this.param == "trash")
     {
+      console.log('Inside Trash ');
       this.getAllTrashedNotes();
     }
     else
@@ -63,7 +67,7 @@ private param:any;
     .subscribe(
       (noteData:any)=>{
         this.notes=noteData;
-        this.notes.filter(othersNote=>othersNote.isPinned===false).map(othersNote=>this.otherNoteDetails.push(othersNote));
+        this.notes.filter(othersNote=>othersNote.isPinned===false&&othersNote.isArchived===false&&othersNote.isTrashed===false).map(othersNote=>this.otherNoteDetails.push(othersNote));
         console.log('Others Notes ',this.otherNoteDetails);
       } 
       );

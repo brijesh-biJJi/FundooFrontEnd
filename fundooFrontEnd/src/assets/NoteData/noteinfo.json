@@ -39,7 +39,7 @@
         "noteid":4,
         "title":"Fourth Note",
         "description":"Fourth note desc",
-        "isArchived":true,
+        "isArchived":false,
         "isPinned":false,
         "isTrashed":false,
         "createdAt":"9:20:07 AM",
@@ -65,7 +65,7 @@
         "description":"Sixth note desc qui cupiditate ipsam est nemo a?",
         "isArchived":false,
         "isPinned":false,
-        "isTrashed":true,
+        "isTrashed":false,
         "createdAt":"9:20:07 AM",
         "updatedAt":"",
         "colour":"#b0e0e6",
@@ -81,6 +81,30 @@
         "createdAt":"9:20:07 AM",
         "updatedAt":"",
         "colour":"#f1c40f",
+        "reminder":""
+    },
+    {
+        "noteid":8,
+        "title":"Eigth Note ",
+        "description":"Eigth note desc qui cupiditate ipsam est nemo a?",
+        "isArchived":false,
+        "isPinned":false,
+        "isTrashed":false,
+        "createdAt":"9:20:07 AM",
+        "updatedAt":"",
+        "colour":"#EF70E6",
+        "reminder":""
+    },
+    {
+        "noteid":9,
+        "title":"Ninth Note ",
+        "description":"Ninth note desc qui cupiditate ipsam est nemo a?",
+        "isArchived":false,
+        "isPinned":false,
+        "isTrashed":false,
+        "createdAt":"9:20:07 AM",
+        "updatedAt":"",
+        "colour":"rgba(0,0,255,0.3)",
         "reminder":""
     }
 ]

@@ -10,13 +10,14 @@ import { NoteModel } from 'src/app/model/note-model.model';
 })
 export class NoteServiceService {
 
-  private _refresh= new Subject();
-  get refresh() {
-    return this._refresh;
+  private _refreshNeeded$= new Subject<void>();
+  get refreshNeeded$() {
+    return this._refreshNeeded$;
   }
 
   private noteApiUrl=environment.noteApiURL;
   private createNoteUrl=environment.createNote;
+  private archiveNoteUrl=environment.archiveNote;
   private getAllNotesUrl=environment.getAllNotes;
 
   private archiveNoteList = new Subject<any>();
@@ -38,6 +39,27 @@ export class NoteServiceService {
       {
         return this._httpClient.get<any>(this._getNotesUrl);
       }
+
+      archiveNote(noteId: any)
+      {
+          return this._httpService.putRequest(`${this.noteApiUrl}/${this.archiveNoteUrl}?id=${noteId}`, {},{headers:new HttpHeaders({'token':localStorage.token})});
+      }
+
+      pinNote(noteId: any)
+      {
+          return this._httpService.putRequest(`${this.noteApiUrl}/${environment.pinNote}?id=${noteId}`, {},{headers:new HttpHeaders({'token':localStorage.token})});
+      }
+
+      moveToTrash(noteId:any){
+        return this._httpService.putRequest(`${this.noteApiUrl}/${environment.trashNote}?id=${noteId}`, {},{headers:new HttpHeaders({'token':localStorage.token})});
+      }
+
+      changeColor(noteId,color){
+        return this._httpService.putRequest(`${this.noteApiUrl}/${environment.changecolor}?noteId=${noteId}&color=${color}`, {},{headers:new HttpHeaders({'token':localStorage.token})});
+      }
+
+
+
 
       // setArchiveNotesList(message:  NoteModel[]) {
       //   console.log("Set Archive Note");
