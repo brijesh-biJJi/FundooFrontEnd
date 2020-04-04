@@ -2,6 +2,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute} from '@angular/router';
+import { NoteServiceService } from 'src/app/services/note-service.service';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
@@ -11,8 +12,9 @@ import { Router, ActivatedRoute} from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   value = '';
+  title:string;
 
-  constructor(private _router:Router,private route:ActivatedRoute) { }
+  constructor(private _router:Router,private route:ActivatedRoute,private _noteService:NoteServiceService) { }
 
   ngOnInit() {
   }
@@ -20,6 +22,13 @@ export class DashboardComponent implements OnInit {
   onSignout() {
     localStorage.clear();
   }
+
+  onClickSearch(){
+    // this._noteservice.setSearchNote(this.title);
+    this._noteService.setSearchNote(this.title);
+  }
+
+ 
 
   onClickNote(){
     this._router.navigateByUrl('dashboard');

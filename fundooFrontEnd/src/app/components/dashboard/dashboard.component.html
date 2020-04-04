@@ -9,7 +9,7 @@
             
                 <!-- <div class="mat-typography"><h1 class="keep">Fundoo</h1></div> -->
             
-            <div class="tl" class="card">
+            <!-- <div class="tl" class="card">
                 <button class="tl" mat-icon-button class="search" (click)="searchTermView()">
                   <mat-icon class="tl" matTooltip="Search"class="iconGrey">search</mat-icon>
                 </button>
@@ -20,10 +20,19 @@
                       <mat-icon class="iconGrey">close</mat-icon>
                     </button>
                   </mat-form-field>
+              </div> -->
 
-                  
-                  
+              <div class="search">
+                <mat-card>
+                  <div class="searchicon">
+                    <mat-icon style="font-size: 30px;" prefix>search</mat-icon>
+                  </div>
+                  <div class="searchboxinput">
+                    <input type="text" (click)="searchArchive()" placeholder="Search" [(ngModel)]="title" (input)="onClickSearch()" style="height: 40px;width: 800px;">
+                  </div>
+                </mat-card>
               </div>
+
               <div class="nav">
                 <button class="navIcon" matTooltip="Refresh" mat-icon-button><mat-icon class="iconGrey">refresh</mat-icon></button>  
             </div>

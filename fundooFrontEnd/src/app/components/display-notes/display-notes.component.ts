@@ -3,7 +3,9 @@ import { NoteServiceService } from 'src/app/services/note-service.service';
 import { NoteModel } from 'src/app/model/note-model.model';
 import { GetNotesService } from 'src/app/services/get-notes.service';
 import {ActivatedRoute,Router,ParamMap} from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { Note } from 'src/app/model/note.model';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-display-notes',
@@ -12,11 +14,12 @@ import { Note } from 'src/app/model/note.model';
 })
 export class DisplayNotesComponent implements OnInit {
 
-  constructor(private _router:Router,private _route:ActivatedRoute,private _noteService:NoteServiceService,private _getNoteService:GetNotesService) {
+  constructor(private _router:Router,private _route:ActivatedRoute,private _noteService:NoteServiceService,private _getNoteService:GetNotesService,private matdialog: MatDialog) {
     
    }
   trashedNotes: boolean = false;
   archiveNotes: boolean = false;
+  searchNotes:boolean=false;
 
  //varialble for storing NOte Data
 //  private noteDetails:NoteModel[];
@@ -24,7 +27,8 @@ export class DisplayNotesComponent implements OnInit {
 private notes:NoteModel[];
  private noteDetails=new Array<NoteModel>();
 private pinNotes=new Array<NoteModel>();
-private otherNoteDetails=new Array<NoteModel>();
+// private otherNoteDetails=new Array<NoteModel>();
+private searchnote:any;
 
 private param:any;
   ngOnInit() 
@@ -35,6 +39,7 @@ private param:any;
       this.getAllArchiveNotes();
     });
 
+    this.getSearchNote();
     
     
     // this.param=this._route.snapshot.paramMap.get('note');
@@ -67,8 +72,8 @@ private param:any;
     .subscribe(
       (noteData:any)=>{
         this.notes=noteData;
-        this.notes.filter(othersNote=>othersNote.isPinned===false&&othersNote.isArchived===false&&othersNote.isTrashed===false).map(othersNote=>this.otherNoteDetails.push(othersNote));
-        console.log('Others Notes ',this.otherNoteDetails);
+        this.notes.filter(othersNote=>othersNote.isPinned===false&&othersNote.isArchived===false&&othersNote.isTrashed===false).map(othersNote=>this.noteDetails.push(othersNote));
+        console.log('Others Notes ',this.noteDetails);
       } 
       );
 
@@ -116,5 +121,17 @@ private param:any;
                   }
           }
         )
+  }
+
+  getSearchNote(){
+    this._noteService.getSearchNote().subscribe(
+      (message:any)=>{
+        console.log("search data ",message.notes);
+        this.searchnote=message.notes;
+        this.searchNotes=true;
+        if(message.notes==""){
+          this.searchNotes=false;
+        }
+    });
   }
 }

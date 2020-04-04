@@ -1,29 +1,32 @@
-<div id="container" fxLayout="column wrap" fxLayout.xs="coloum wrap" *ngIf="!trashedNotes && !archiveNotes">
+<div id="container" fxLayout="column wrap" fxLayout.xs="coloum wrap" *ngIf="!trashedNotes && !archiveNotes ">
     <app-createnote></app-createnote>
-        <div>
-            PINNED NOTES
+        <div *ngIf="!searchNotes">
+            PINNED 
         </div> 
         <div class="items"  fxLayout="row wrap" >
-            <div  *ngFor="let noteD of pinNotes"  >
+            <div  *ngFor="let noteD of pinNotes | note:searchnote"  >
                 <app-single-note [noteDetail]="noteD" ></app-single-note>
             </div>
          </div>
     
-        <div>
+        <!-- <div>
             OTHER'S
         </div>  
         <div class="items" fxLayout="row wrap" >
             <div   *ngFor="let noteD of otherNoteDetails"  >
                 <app-single-note [noteDetail]="noteD" ></app-single-note>
             </div>
-        </div>
+        </div> -->
 </div>
 
-<div id="container" fxLayout="column wrap" fxLayout.xs="coloum wrap" *ngIf="trashedNotes || archiveNotes">
+<div id="container" fxLayout="column wrap" fxLayout.xs="coloum wrap" >
     <div *ngIf="trashedNotes">TRASHED</div>
-    <div *ngIf="archiveNotes">ARCHIVED</div> 
+    <div *ngIf="archiveNotes">ARCHIVE</div> 
+    <div *ngIf="!trashedNotes && !archiveNotes && !searchNotes">
+        OTHERS
+    </div>
     <div class="items"  fxLayout="row wrap">
-        <div   *ngFor="let noteD of noteDetails"  >
+        <div   *ngFor="let noteD of noteDetails | note:searchnote" >
             <app-single-note [noteDetail]="noteD" ></app-single-note>
         </div>
     </div>

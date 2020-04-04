@@ -17,7 +17,7 @@ export class SingleNoteComponent implements OnInit {
 
   isPinned:boolean;
   isArchive:boolean=false;
-  constructor(private _noteService:NoteServiceService,private snackBar: MatSnackBar) { }
+  constructor(private _noteService:NoteServiceService,private snackBar: MatSnackBar,private matDialog: MatDialog) { }
 
   ngOnInit() {
     console.log(this.noteDetail);

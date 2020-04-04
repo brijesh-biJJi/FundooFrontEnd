@@ -17,6 +17,11 @@ export class HttpserviceService {
   public getRequest(url :any):any{
     return this._httpClient.get(url);
   }
+  public get(url :any,headContent:any):any{
+    return this._httpClient.get(url,headContent);
+  }
+  
+
   public postRequest(url :any, data: any ,headContent:any):Observable<any>{
     return this._httpClient
             .post(url,data,headContent)

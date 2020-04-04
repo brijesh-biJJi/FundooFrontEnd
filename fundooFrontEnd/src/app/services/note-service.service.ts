@@ -21,6 +21,7 @@ export class NoteServiceService {
   private getAllNotesUrl=environment.getAllNotes;
 
   private archiveNoteList = new Subject<any>();
+  private searchNote=new Subject<any>();
   
   private httpContent={
     headers:new HttpHeaders({'content-type':'application/json'})
@@ -58,6 +59,14 @@ export class NoteServiceService {
         return this._httpService.putRequest(`${this.noteApiUrl}/${environment.changecolor}?noteId=${noteId}&color=${color}`, {},{headers:new HttpHeaders({'token':localStorage.token})});
       }
 
+      setSearchNote(message:any){
+        // return this._httpService.get(`${this.noteApiUrl}/${environment.searchNote}?title=${title}`,{headers:new HttpHeaders({'token':localStorage.token})});
+        this.searchNote.next({notes:message});
+      }
+
+      getSearchNote():Observable<any>{
+        return this.searchNote.asObservable();
+      }
 
 
 
