@@ -10,6 +10,7 @@ import { CreatenoteComponent } from './components/createnote/createnote.componen
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 import {SingleNoteComponent} from './components/single-note/single-note.component';
 import {NotesComponent} from './components/notes/notes.component';
+import { UpdateNoteComponent } from './components/update-note/update-note.component';
 
 const routes: Routes = [
   {path:'' ,redirectTo:'/login', pathMatch:'full'},
@@ -37,7 +38,7 @@ const routes: Routes = [
     ]},
    
     // {path:'note',component:NotesComponent},
-   
+   {path:'updatenote',component:UpdateNoteComponent},
    {path:'singlenote',component:SingleNoteComponent},  
   {path:'**',component:PageNotFoundComponent}
 ];

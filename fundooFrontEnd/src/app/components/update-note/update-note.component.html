@@ -1,0 +1,11 @@
+<div class="container"  mat-dialog-content  >
+    <textarea id="title" [(ngModel)]="noteModel.title" style="border: none;" matInput type="text" class="input sizeof"
+        placeholder="Title"></textarea>
+    <textarea id="desc" style="border: none; " matInput type="text" class="input sizeof" placeholder="Take a note"
+        [(ngModel)]="noteModel.description"></textarea>
+    
+    <div class="icon" mat-dialog-actions>
+        <div class="div-button" button (click)="onClickSubmit()||open=!open">
+            <button >Close</button></div>
+    </div>
+</div>

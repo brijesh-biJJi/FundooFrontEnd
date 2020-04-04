@@ -19,6 +19,8 @@ import { SingleNoteComponent } from './components/single-note/single-note.compon
 import { NotesComponent } from './components/notes/notes.component';
 import { NoteIconComponent } from './components/note-icon/note-icon.component';
 import { NotePipe } from './pipes/note.pipe';
+import { UpdateNoteComponent } from './components/update-note/update-note.component';
+import {MatDialogModule, MatDialog, MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,8 @@ import { NotePipe } from './pipes/note.pipe';
     SingleNoteComponent,
     NotesComponent,
     NoteIconComponent,
-    NotePipe
+    NotePipe,
+    UpdateNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +46,13 @@ import { NotePipe } from './pipes/note.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    { provide: MatDialogRef, useValue: {} },
+	{ provide: MAT_DIALOG_DATA, useValue: [] },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

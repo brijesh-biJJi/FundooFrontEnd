@@ -68,6 +68,9 @@ export class NoteServiceService {
         return this.searchNote.asObservable();
       }
 
+      updateNote(noteDetails:any){
+        return this._httpService.putRequest(`${this.noteApiUrl}/${environment.updateNote}`,noteDetails,{headers:new HttpHeaders({'token':localStorage.token})});
+      }
 
 
       // setArchiveNotesList(message:  NoteModel[]) {

@@ -3,6 +3,7 @@ import { NoteModel } from 'src/app/model/note-model.model';
 import { DisplayNotesComponent } from '../display-notes/display-notes.component';
 import { NoteServiceService } from 'src/app/services/note-service.service';
 import { MatTooltip, MatSnackBar, MatDialog } from '@angular/material';
+import { UpdateNoteComponent } from '../update-note/update-note.component';
 
 @Component({
   selector: 'app-single-note',
@@ -24,6 +25,23 @@ export class SingleNoteComponent implements OnInit {
     
     
   }
+
+
+  openMatDialog(noteDetail){
+    console.log('Note Details ',noteDetail);
+    const matDialogRef=this.matDialog.open(
+      UpdateNoteComponent,
+      {
+        panelClass:'custom_dialog_container',
+        width:'auto',
+        data:{noteDetail}
+      });
+    matDialogRef.afterClosed().subscribe(msg=>{
+      console.log('Dialog closed');
+      
+    });
+  }
+
 
   onClickPin(noteId){
     console.log('Note Id ',noteId);

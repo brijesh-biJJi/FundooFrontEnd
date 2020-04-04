@@ -22,7 +22,8 @@ export const environment = {
   pinNote:'pin',
   trashNote:'delete',
   changecolor:'changecolor',
-  searchNote:'search'
+  searchNote:'search',
+  updateNote:'updatenote'
 };
 
 /*
