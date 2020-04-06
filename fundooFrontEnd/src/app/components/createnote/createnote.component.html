@@ -1,5 +1,5 @@
 <div id="container" >
-    <mat-card  class="before" *ngIf="!hide" (click)="onClick()" >
+    <mat-card  class="before" *ngIf="!hide" (click)="onClick()" fxLayout="row">
         <div>
         <input matInput class="searchBar" placeholder="Take a note...">
     </div>
@@ -13,12 +13,17 @@
          <textarea class="title"   [formControl] ="title" matInput type="text" class="input" placeholder="Title" style="border: none;"></textarea>
         
            
-         <textarea class="description"  [formControl] ="description" matInput type="text" class="input" placeholder="Take a note" style="border: none; " ></textarea>
+         <textarea class="description"  [formControl] ="description" matInput type="text" class="input" placeholder="Take a note" style="border: none; margin-bottom: 1rem;" ></textarea>
       
-         
+         <div class="noteicon">
+            <div class="noteI">
+                <app-note-icon [noteIconDetail]="noteModel"></app-note-icon>
+            </div>
+            <div class="btn">
                 <div (click)="hide=!hide">
                     <button class="closeBtn" (click)="onClickCreateNote()" >Close</button>
                 </div>
-          
+            </div>
+        </div>
     </mat-card>
 </div>

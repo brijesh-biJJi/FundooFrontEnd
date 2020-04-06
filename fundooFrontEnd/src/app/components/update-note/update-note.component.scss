@@ -1,17 +1,33 @@
 .container{
-    height: 13em; 
-    width: 25rem; 
+    height: auto; 
+    width: 35rem; 
     padding: 0px;
     margin: 0px ;
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
 }
-.mat-form-field-underline .mat-form-field-ripple {
-    background: orange !important;
-    border: none;
-    outline: none;
+// .mat-form-field-underline .mat-form-field-ripple {
+//     background: orange !important;
+//     border: none;
+//     outline: none;
+//   }
+  .noteicon{
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-around;
+    align-items: flex-end;
   }
-  
+  .noteI{
+    
+    // width: 28rem;
+    width: 75%; 
+  }
+  .btn{
+    // margin: 0 3rem;
+    padding-left: 2rem;
+    width: 25%;
+    border-radius: 0.75rem;
+  }
   
   
   mat-card {
@@ -76,17 +92,11 @@
     align-items: flex-end;
   }
   
-  .div-button {
-    // margin-right: 28px;
-    // margin-bottom: 10px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    margin-top: 3rem;
-  }
+  
   button {
-    background-color: whitesmoke; /* Green */
+    background-color: #f4f4f4; /* Green */
     border: none;
+    border-radius: 2rem;
     color: black;
     text-align: center;
     text-decoration: none;
@@ -98,6 +108,11 @@
     font-weight: bold;
     outline: none;
     
+  }
+
+  button:hover{
+    background-color:grey
+    ;
   }
   button:active {
     background-color: gainsboro;

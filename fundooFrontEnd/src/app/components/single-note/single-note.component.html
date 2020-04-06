@@ -21,28 +21,29 @@
                 </mat-card-content>
             </div>
             <div class="noteIcon">
-                <div>
+                <!-- <div>
                 <button mat-icon-button matTooltip="Add Reminder">
                     <mat-icon>notifications</mat-icon>
                 </button>
-            </div>
+                </div>
                 <div>
                 <button mat-icon-button matTooltip="Add Collobrate">
                     <mat-icon>person_add</mat-icon>
                 </button>
-            </div>
+                 </div>
                 <div>
                 <button mat-icon-button [matMenuTriggerFor]="ChangeColor" matTooltip="Add Color">
                     <mat-icon>color_lens</mat-icon>
                 </button >
-            </div>
+                 </div>
             <mat-menu #ChangeColor="matMenu" [overlapTrigger]="false">
                 <ng-template matMenuContent>
                     <div>
                         <div fxLayout="row" fxLayoutGap="10px" style="margin: 0.5rem" *ngFor="let colors of colorArray">
                             <div *ngFor="let color of colors">
                                 <button [ngStyle]="{ 'background-color': color.color }" (click)="changeColor(noteDetail.noteid,color.color)"
-                                    matTooltip="{{ color.name }}" mat-mini-fab></button>
+                                    matTooltip="{{ color.name }}" mat-mini-fab>
+                                </button>
             
                             </div>
                         </div>
@@ -75,7 +76,8 @@
             <mat-menu #label="matMenu">
                 <p style="padding: 1rem;">Label</p>
               </mat-menu>
-            </div>
+            </div> -->
+            <app-note-icon [noteIconDetail]="noteDetail"></app-note-icon>
             </div>
         </div>
         </mat-card>

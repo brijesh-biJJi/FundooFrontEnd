@@ -39,7 +39,8 @@
     display: flex;
   }
   mat-sidenav-content{
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
     overflow: scroll;
     background-color: white;
   }

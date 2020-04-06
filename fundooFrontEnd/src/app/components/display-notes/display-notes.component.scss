@@ -1,11 +1,14 @@
 #container{
     margin: 0 5rem;
-    // display: flex;
-    // flex-direction: column;
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    height:auto ;
+    width: 100%;
 }
 
-.items{
+.item{
+    display: flex;
+    flex-flow: row wrap;
     margin-bottom: 3rem;
     justify-content: flex-start;
 }

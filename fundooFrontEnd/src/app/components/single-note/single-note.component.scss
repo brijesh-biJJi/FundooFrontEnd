@@ -35,15 +35,14 @@ mat-card{
     background-color: transparent;
 }
 
-.noteIcon{
-    display: flex;
-    justify-content: space-around;
-    
-}
+// .noteIcon{
+//     display: flex;
+//     flex-direction: column;
+// }
 
 .matdiv {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: column wrap;
   }
 
 img {
