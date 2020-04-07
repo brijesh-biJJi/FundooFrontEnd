@@ -80,17 +80,29 @@
               </div>
               <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;"></mat-divider>
               <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;" class="divider"></mat-divider>
-              <div>
-                <mat-card-subtitle >
-              <span class="label">LABELS</span> </mat-card-subtitle>
-            </div>
-              <div>
-                <button class="navButton" mat-raised-button (click)="openLabelDialog()" type="submit">
-                  <mat-icon class="matSidenavIcon" >create</mat-icon>
-                  <span>Edit labels</span>
-                </button>
+             <div class="Lab">
+                <div>
+                  <mat-card-subtitle >
+                <span class="label">LABELS</span> </mat-card-subtitle>
               </div>
-        
+              <div class="labelList">
+              <div *ngFor="let label of labels">
+                <div style="margin-bottom: 0.75rem;margin-top: 0.75rem; ">
+                <a class="navButton" >
+                    <img class="matSidenavIcon" src="assets/icon/nlabel.svg" (click)="onClickLabel(label.labelId)">
+                    <span style="padding-top: 0; padding-bottom: 0.5rem;" (click)="onClickLabel(label.labelId)">  {{label.labelName}}</span>
+                </a>
+              </div>
+              </div>
+            </div>
+                <div>
+                  <button class="navButton" mat-raised-button (click)="openLabelDialog(labels)" type="submit">
+                    <!-- <mat-icon class="matSidenavIcon" >create</mat-icon> -->
+                    <img class="matSidenavIcon" src="assets/icon/edit.svg">
+                    <span>Edit labels</span>
+                  </button>
+                </div>
+            </div>
               <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;" class="divider"></mat-divider>
         
               <div>

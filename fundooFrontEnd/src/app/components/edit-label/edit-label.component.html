@@ -1,0 +1,29 @@
+
+<div class="container">
+    <div class="createlabel">
+        <div>
+            <input type="text" placeholder="Create Label" #labelInput [ngModel]="lname">
+        </div>
+        <div>
+            <a><img class="tick"  src="assets/icon/tickk.svg"
+                    (click)="onClickCreateLabel(labelInput.value)" matTooltip="Create Label"></a>
+        </div>
+    </div>
+    <div class="labellist">
+        <div *ngFor="let label of labels" style="display: flex; justify-content: space-evenly; flex-direction: row;">
+         
+            <div  style="display: flex; justify-content: flex-start;" >
+                <img    (click)="onClickDeleteLabel(label.labelId)"
+                    src="assets/icon/delete.svg" style=" margin-top: 10px; height: 20px;margin-left: 0; width: 20px;"
+                    matTooltip="Delete Label">
+            </div>
+            <div style="text-align: left;">
+            <label mat-menu-item style=" font-size: large; font-weight: bolder;">{{label.labelName}}</label>
+            </div>
+            <div class="imgedit">
+                <img   src="assets/icon/edit.svg" style="margin-top: 10px;"
+                    matTooltip="Edit label">
+            </div>
+        </div>
+    </div>
+</div>

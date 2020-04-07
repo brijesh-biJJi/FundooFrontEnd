@@ -21,6 +21,7 @@ import { NoteIconComponent } from './components/note-icon/note-icon.component';
 import { NotePipe } from './pipes/note.pipe';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import {MatDialogModule, MatDialog, MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EditLabelComponent } from './components/edit-label/edit-label.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import {MatDialogModule, MatDialog, MatDialogRef,MAT_DIALOG_DATA } from '@angula
     NotesComponent,
     NoteIconComponent,
     NotePipe,
-    UpdateNoteComponent
+    UpdateNoteComponent,
+    EditLabelComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,9 @@ import {MatDialogModule, MatDialog, MatDialogRef,MAT_DIALOG_DATA } from '@angula
     { provide: MatDialogRef, useValue: {} },
 	{ provide: MAT_DIALOG_DATA, useValue: [] },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    EditLabelComponent
+ ]
 })
 export class AppModule { }

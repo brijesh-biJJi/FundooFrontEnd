@@ -23,7 +23,14 @@ export const environment = {
   trashNote:'delete',
   changecolor:'changecolor',
   searchNote:'search',
-  updateNote:'updatenote'
+  updateNote:'updatenote',
+  retrieveLabels:'retrieveLabels',
+
+  //Label URL
+  labelApiURL:'http://localhost:8080/label',
+  getAllLabels:'getAllLabels',
+  createLabel:'create',
+  deleteLabel:'delete'
 };
 
 /*
