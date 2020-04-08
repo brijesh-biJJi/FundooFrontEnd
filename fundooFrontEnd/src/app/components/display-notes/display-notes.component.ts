@@ -151,7 +151,9 @@ private param:any;
           this.noteDetails=response.notes;
       }
     )
+  }
 
-
+  getLabelByNoteId(){
+    
   }
 }

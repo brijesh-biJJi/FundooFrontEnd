@@ -62,7 +62,8 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
   bootstrap: [AppComponent],
   entryComponents: [
     EditLabelComponent,
-    LabelComponent
+    LabelComponent,
+    CollaboratorComponent
  ]
 })
 export class AppModule { }

@@ -1,0 +1,63 @@
+<div class="container">
+    <div style="margin-top: 0;" fxLayout="row" fxLayoutAlign="start center">
+        <h2>Collaborators</h2>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <div fxLayout="row"  fxLayoutAlign="start center">
+        <div  >
+            <img  src="assets/icon/profile.jpg" >
+        </div>
+        <div>
+            <div style="margin-left: 1.3rem;" fxLayout="row" fxLayoutAlign="start start" >
+                <div style="font-size: large; font-weight: bold; padding-bottom: 0;">{{ownerName}} &nbsp;(owner)</div>
+            </div>
+            <div  style="font-size: medium; margin-left: 1.3rem;">
+                {{userEmail}}
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="userModel">
+    <div style="margin-bottom: 3px;" *ngFor="let user of userModel">
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div style="margin-top: 10px; margin-left: 5px;">
+                <mat-icon matPrefix style="margin-left: 0; border: 1px solid grey; border-radius: 1.5rem; padding: 0.6rem;">person_outline</mat-icon>
+            </div>
+            <div >
+                <div style="margin-left: 1.6rem;" fxLayout="row" fxLayoutAlign="start start" >
+                    <div style="font-size: large; font-weight: bold; padding-bottom: 0;margin-top: 2px;">{{user.uName}}</div>
+                </div>
+                <div  style="font-size: medium; margin-left: 1.6rem;">
+                    {{user.email}}
+                </div>
+            </div>
+            <div style="margin-left: auto;">
+                <button  mat-icon-button>
+                    <mat-icon class="btnClear"  (click)="removeCollab(user.userId)">clear</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <div style="margin-top: 10px;" fxLayout="row"  fxLayoutAlign="start center">
+        <div style="margin-left: 5px;">
+          <mat-icon matPrefix style="margin-left: 0; border: 1px solid grey; border-radius: 1.5rem; padding: 0.6rem;">person_add</mat-icon>
+        </div>
+        <div>
+            <input style="margin-left: 25px;" class="input" matInput placeholder="Person or email to share with.." #email required>
+        </div>
+        <div style="margin-left: auto;">
+          <button mat-icon-button (click)="addCollab(email.value)">
+            <mat-icon>done</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="btnClose"  >
+        <button mat-button mat-dialog-close>Cancel</button>
+      </div>
+
+</div>

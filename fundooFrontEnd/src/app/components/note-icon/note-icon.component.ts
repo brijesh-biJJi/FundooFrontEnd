@@ -4,6 +4,7 @@ import { NoteServiceService } from 'src/app/services/note-service.service';
 import { MatTooltip, MatSnackBar, MatDialog } from '@angular/material';
 import { LabelComponent } from '../label/label.component';
 import { LabelService } from 'src/app/services/label.service';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 @Component({
   selector: 'app-note-icon',
@@ -61,7 +62,15 @@ export class NoteIconComponent implements OnInit {
   }
 
   openDialog(){
-    
+    const matDialogRef = this._matDialog.open(CollaboratorComponent, {
+      width: '38rem',
+      height: 'auto',
+      panelClass: 'custom-dialog-container',
+      data: { noteId: this.noteDetail.noteid }
+    });
+    matDialogRef.afterClosed().subscribe(result => {
+      console.log('The Dialog Box is  closed');
+    });
   }
 
   changeColor(noteId,color){

@@ -32,7 +32,12 @@ export const environment = {
   createLabel:'create',
   deleteLabel:'delete',
   addMapLabel:'addMapLabel',
-  getNotesByLabel:'getnotesbylabel'
+  getNotesByLabel:'getnotesbylabel',
+
+  //Collaborator
+  collaborator:'collaborator',
+  addCollab:'addcollab',
+  removeCollab:'removecollab'
 };
 
 /*
