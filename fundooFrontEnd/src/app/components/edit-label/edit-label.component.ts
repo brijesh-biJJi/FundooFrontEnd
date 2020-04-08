@@ -13,16 +13,20 @@ export class EditLabelComponent implements OnInit {
   changeIcon: boolean;
 
   constructor(public dialogRef: MatDialogRef<EditLabelComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,private _labelService:LabelService,private matSnackBar:MatSnackBar) { 
+    @Inject(MAT_DIALOG_DATA) public data: any,private _labelService:LabelService,private matSnackBar:MatSnackBar) 
+    { 
+      this._labelService.refreshNeeded$.subscribe(
+        ()=>{
+          this.labels=data.labels;
+      })
       this.labels=data.labels;
-      this.changeIcon = false;
     }
 
   ngOnInit() {
+    
    
   }
   onClickCreateLabel(InputLabel){
-    console.log(InputLabel,"label input");
     let label={
       "labelName":InputLabel
     }
@@ -35,6 +39,13 @@ export class EditLabelComponent implements OnInit {
     this._labelService.deleteLabel(label).subscribe(
       (response)=>{
       this.matSnackBar.open("Label Deleted","Ok",{duration:5000});
+    });
+  }
+
+  onClickEditLabel(label){
+    this._labelService.editLabel(label).subscribe(
+      (response)=>{
+      this.matSnackBar.open("Label Edited","Ok",{duration:5000});
     });
   }
 }

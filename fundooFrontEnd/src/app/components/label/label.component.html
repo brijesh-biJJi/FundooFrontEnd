@@ -1,0 +1,17 @@
+<div class="container">
+    <h3>Label Note</h3>
+    <div class="createlabel">
+        <div>
+            <input type="text" placeholder="Create Label" #labelInput [ngModel]="lname">
+        </div>
+        <div>
+            <a><img class="tick"  src="assets/icon/tickk.svg"
+                    (click)="onClickCreateLabel(labelInput.value)" matTooltip="Create Label"></a>
+        </div>
+    </div>
+    <div class="labellist">
+        <div class="listFor" *ngFor="let label of labels">
+            <mat-checkbox style="margin: 0.5rem;" (click)="onAddLabel(label)"> <h4 style="color: #333; margin: 0.5rem; padding-left: 1rem;"> {{label.labelName}}</h4></mat-checkbox>
+        </div>
+    </div>
+</div>

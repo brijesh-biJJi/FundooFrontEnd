@@ -54,9 +54,17 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  onClickLabel(labelId){
-    console.log('Label ',labelId);
-    
+  onClickLabel(labelName){
+    console.log('Label ',labelName);
+    this._labelService.getNotesByLabel(labelName).subscribe(
+      (response)=>{
+        this.setLabelNotes(response);
+      }
+    );
+  }
+
+  setLabelNotes(notes){
+    this._labelService.setLabelNotes(notes);
   }
 
   openLabelDialog(labels:Label[]): void {

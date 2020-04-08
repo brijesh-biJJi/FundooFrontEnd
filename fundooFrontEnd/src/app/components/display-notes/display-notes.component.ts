@@ -6,6 +6,7 @@ import {ActivatedRoute,Router,ParamMap} from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { Note } from 'src/app/model/note.model';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { LabelService } from 'src/app/services/label.service';
 
 @Component({
   selector: 'app-display-notes',
@@ -14,11 +15,12 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class DisplayNotesComponent implements OnInit {
 
-  constructor(private _router:Router,private _route:ActivatedRoute,private _noteService:NoteServiceService,private _getNoteService:GetNotesService,private matdialog: MatDialog) {
+  constructor(private _router:Router,private _route:ActivatedRoute,private _noteService:NoteServiceService,private _getNoteService:GetNotesService,private matdialog: MatDialog,private _labelService:LabelService) {
     
    }
   trashedNotes: boolean = false;
   archiveNotes: boolean = false;
+  labelNotes: boolean = false;
   searchNotes:boolean=false;
 
  //varialble for storing NOte Data
@@ -58,6 +60,11 @@ private param:any;
     {
       console.log('Inside Trash ');
       this.getAllTrashedNotes();
+    }
+    else if(this.param == "labels")
+    {
+      console.log('Inside Labels ');
+      this.getAllLabelNotes();
     }
     else
     {
@@ -133,5 +140,18 @@ private param:any;
           this.searchNotes=false;
         }
     });
+  }
+
+  getAllLabelNotes(){
+    this.labelNotes=true;
+    this.trashedNotes =false;
+    this.archiveNotes = false;
+    this._labelService.getLabelNotes().subscribe(
+      (response:any)=>{
+          this.noteDetails=response.notes;
+      }
+    )
+
+
   }
 }

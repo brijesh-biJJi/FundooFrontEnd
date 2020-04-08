@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NoteModel } from 'src/app/model/note-model.model';
 import { NoteServiceService } from 'src/app/services/note-service.service';
 import { MatTooltip, MatSnackBar, MatDialog } from '@angular/material';
+import { LabelComponent } from '../label/label.component';
+import { LabelService } from 'src/app/services/label.service';
 
 @Component({
   selector: 'app-note-icon',
@@ -14,7 +16,7 @@ export class NoteIconComponent implements OnInit {
   noteDetail:NoteModel;
 
   isArchive:boolean=false;
-  constructor(private _noteService:NoteServiceService,private snackBar: MatSnackBar) { }
+  constructor(private _matDialog:MatDialog,private _noteService:NoteServiceService,private snackBar: MatSnackBar,private _labelService:LabelService) { }
 
   ngOnInit() {
   }
@@ -38,6 +40,28 @@ export class NoteIconComponent implements OnInit {
       error => {
         this.snackBar.open("Error in Note", "OK", { duration: 5000 });
       });
+  }
+
+  openLabelDialog(noteDetail){
+    console.log('note Id:' , noteDetail.noteid);
+    const matDialogRef=this._matDialog.open(LabelComponent,{
+      width:'20rem',
+      height:'auto',
+      data:{noteDetail}
+    });
+    matDialogRef.afterClosed().subscribe(res=>{
+      console.log('Dialog Box Closed');
+      
+    });
+  }
+
+  onClickSetNoteId(noteid){
+    this._labelService.setNoteId(noteid);
+    
+  }
+
+  openDialog(){
+    
   }
 
   changeColor(noteId,color){

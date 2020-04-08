@@ -1,8 +1,3 @@
-// .createlabel {
-//     display: flex;
-//     justify-content: center;
-//     padding-top: 10px;
-//   }
 
 .imgedit {
        align-items: flex-end;   }
@@ -30,4 +25,10 @@ input{
 
 .createlabel{
   display: flex;
+}
+
+.listFor{
+  display: flex; 
+  justify-content: space-evenly;
+   flex-direction: row;
 }

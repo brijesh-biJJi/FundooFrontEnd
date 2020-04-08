@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+  }
+  input{
+    width: 15rem;
+    height: 1.8rem;
+  }
+  
+  .tick{
+    height: 1.5rem;
+     width: 1.5rem; 
+     margin-left: 0.2rem;
+     padding: 10px;
+     border-radius: 3rem;
+  }
+  
+  .tick:hover{
+    background-color: grey;
+  }
+  
+  .createlabel{
+    display: flex;
+  }

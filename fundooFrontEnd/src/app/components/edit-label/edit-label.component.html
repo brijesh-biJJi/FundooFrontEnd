@@ -1,5 +1,6 @@
 
 <div class="container">
+    <h3>Edit Labels</h3>
     <div class="createlabel">
         <div>
             <input type="text" placeholder="Create Label" #labelInput [ngModel]="lname">
@@ -10,10 +11,10 @@
         </div>
     </div>
     <div class="labellist">
-        <div *ngFor="let label of labels" style="display: flex; justify-content: space-evenly; flex-direction: row;">
+        <div class="listFor" *ngFor="let label of labels">
          
-            <div  style="display: flex; justify-content: flex-start;" >
-                <img    (click)="onClickDeleteLabel(label.labelId)"
+            <div >
+                <img    (click)="onClickDeleteLabel(label.labelName)"
                     src="assets/icon/delete.svg" style=" margin-top: 10px; height: 20px;margin-left: 0; width: 20px;"
                     matTooltip="Delete Label">
             </div>
@@ -21,7 +22,7 @@
             <label mat-menu-item style=" font-size: large; font-weight: bolder;">{{label.labelName}}</label>
             </div>
             <div class="imgedit">
-                <img   src="assets/icon/edit.svg" style="margin-top: 10px;"
+                <img  (click)="OnclickEdit(label.labelName)" src="assets/icon/edit.svg" style="margin-top: 10px;"
                     matTooltip="Edit label">
             </div>
         </div>

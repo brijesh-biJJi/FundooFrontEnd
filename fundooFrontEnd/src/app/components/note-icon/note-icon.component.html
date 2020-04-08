@@ -3,7 +3,7 @@
     <a><img src="assets/icon/reminderr.svg" matTooltip="Add Reminder"> </a>
 </div>
 <div>
-    <a><img src="assets/icon/collab.svg" matTooltip="Add Collaborator"> </a>
+    <a><img src="assets/icon/collab.svg" (click)="openDialog()" matTooltip="Add Collaborator"> </a>
 </div>
 <div>
     <a><img src="assets/icon/colour.svg" [matMenuTriggerFor]="changecolor" matTooltip="Add Color"> </a>
@@ -32,15 +32,10 @@
     <a><img src="assets/icon/unarchiv.svg" (click)="onClickArchive(noteDetail.noteid)" *ngIf="noteDetail.isArchived"  matTooltip="UnArchive"></a>
 </div>
 <div>
-    <a><img mat-icon-button [matMenuTriggerFor]="menu" style="height: 1.5rem; width: 2rem;" src="assets/icon/moree.svg" matTooltip="More"></a>
-
-<mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="onClickDeleteNote(noteDetail.noteid)">Delete Note</button>
-    <button mat-menu-item [matMenuTriggerFor]="label">Add Label</button>
-</mat-menu>
-
-<mat-menu #label="matMenu">
-    <p style="padding: 1rem;">Label</p>
-  </mat-menu>
+    <a><img mat-icon-button [matMenuTriggerFor]="menu" style="height: 1.5rem; width: 2rem;" src="assets/icon/moree.svg" (click)="onClickSetNoteId(noteDetail.noteid)" matTooltip="More"></a>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onClickDeleteNote(noteDetail.noteid)">Delete Note</button>
+        <button mat-menu-item  (click)="openLabelDialog(noteDetail)">Add Label</button>
+    </mat-menu>
 </div>
 </div>

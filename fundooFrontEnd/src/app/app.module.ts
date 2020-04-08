@@ -22,6 +22,8 @@ import { NotePipe } from './pipes/note.pipe';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import {MatDialogModule, MatDialog, MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditLabelComponent } from './components/edit-label/edit-label.component';
+import { LabelComponent } from './components/label/label.component';
+import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,9 @@ import { EditLabelComponent } from './components/edit-label/edit-label.component
     NoteIconComponent,
     NotePipe,
     UpdateNoteComponent,
-    EditLabelComponent
+    EditLabelComponent,
+    LabelComponent,
+    CollaboratorComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,8 @@ import { EditLabelComponent } from './components/edit-label/edit-label.component
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    EditLabelComponent
+    EditLabelComponent,
+    LabelComponent
  ]
 })
 export class AppModule { }
