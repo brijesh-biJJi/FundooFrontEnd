@@ -8,7 +8,7 @@
         "isTrashed":false,
         "createdAt":"9:20:07 AM",
         "updatedAt":"",
-        "colour":"yellowgreen",
+        "colour":"#d7aefb",
         "reminder":""
     },
     {
@@ -20,7 +20,7 @@
         "isTrashed":false,
         "createdAt":"9:20:07 AM",
         "updatedAt":"",
-        "colour":"magenta",
+        "colour":"rgb(253,207,232,0.9)",
         "reminder":""
     },
     {
@@ -32,7 +32,7 @@
         "isTrashed":true,
         "createdAt":"9:20:07 AM",
         "updatedAt":"",
-        "colour":"lime",
+        "colour":"#ccff90",
         "reminder":""
     },
     {
@@ -44,7 +44,7 @@
         "isTrashed":false,
         "createdAt":"9:20:07 AM",
         "updatedAt":"",
-        "colour":"lightcoral",
+        "colour":"#e6c9a8",
         "reminder":""
     },
     {
@@ -68,7 +68,7 @@
         "isTrashed":false,
         "createdAt":"9:20:07 AM",
         "updatedAt":"",
-        "colour":"#b0e0e6",
+        "colour":"#ccff90",
         "reminder":""
     },
     {
@@ -80,7 +80,7 @@
         "isTrashed":false,
         "createdAt":"9:20:07 AM",
         "updatedAt":"",
-        "colour":"#f1c40f",
+        "colour":"rgba(241,196,15,0.8)",
         "reminder":""
     },
     {
@@ -104,7 +104,7 @@
         "isTrashed":false,
         "createdAt":"9:20:07 AM",
         "updatedAt":"",
-        "colour":"rgba(0,0,255,0.3)",
+        "colour":"rgba(174,203,250)",
         "reminder":""
     }
 ]

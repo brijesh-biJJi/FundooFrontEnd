@@ -89,19 +89,19 @@ console.log('Note Id ',noteId,' Color ',color);
     [
       { color: " rgb(0,0,255,0.3)", name: "Blue With Opacity" },
       { color: "yellowgreen", name: "Yellow Green" },
-      { color: "powderblue", name: "Powder Blue" },
+      { color: "rgba(174,203,250)", name: "Blue" },
       { color: "lightcoral", name: "Lightcoral" }
     ],
     [
-      { color: "magenta", name: "Magenta" },
+      { color: "#e6c9a8", name: "Brown" },
       { color: "slategray", name: "Grey" },
-      { color: "rgb(255, 255, 128)", name: "Dark Golden" },
+      { color: "rgb(253,207,232,0.9)", name: "pink" },
       { color: "rgb(200, 232, 104)", name: "Yellow" }
     ],
     [
-      { color: "lime", name: "Lime" },
+      { color: "#ccff90", name: "Green" },
       { color: "rgb(255, 153, 0)", name: "Orange" },
-      { color: "rgb(97, 191, 82)", name: "Green" },
+      { color: "#d7aefb", name: "Mauve" },
       { color: " rgb(158, 136, 191)", name: "Dark Yellow" },
       
     ]
