@@ -1,5 +1,5 @@
 
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute} from '@angular/router';
 import { NoteServiceService } from 'src/app/services/note-service.service';
@@ -7,6 +7,7 @@ import { Label } from 'src/app/model/label.model';
 import { LabelService } from 'src/app/services/label.service';
 import { MatSidenav, MatDialog } from '@angular/material';
 import { EditLabelComponent } from '../edit-label/edit-label.component';
+import { EventEmitter } from 'protractor';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
@@ -18,11 +19,27 @@ export class DashboardComponent implements OnInit {
   value = '';
   title:string;
   labels: Label[];
-
+  listview:boolean=false;
+  view:string;
+  uname:string="Brijesh Kanchan";
+  email:string="brijeshkanchan7@gmail.com"
   constructor(private _matDialog: MatDialog,private _router:Router,private route:ActivatedRoute,private _noteService:NoteServiceService,private _labelService:LabelService) { }
 
   ngOnInit() {
     this.getLabelList();
+  }
+
+
+
+  gridList(){
+    if(this.listview){
+      this.view="row";
+      this.listview=!this.listview;
+    }
+    else{
+      this.view="column";
+      this.listview=!this.listview;
+    }
   }
 
   onSignout() {

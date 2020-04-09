@@ -24,6 +24,7 @@ import {MatDialogModule, MatDialog, MatDialogRef,MAT_DIALOG_DATA } from '@angula
 import { EditLabelComponent } from './components/edit-label/edit-label.component';
 import { LabelComponent } from './components/label/label.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
+import { LabelPipe } from './pipes/label.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     UpdateNoteComponent,
     EditLabelComponent,
     LabelComponent,
-    CollaboratorComponent
+    CollaboratorComponent,
+    LabelPipe
   ],
   imports: [
     BrowserModule,

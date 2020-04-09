@@ -20,6 +20,17 @@
                     {{noteDetail.description}}
                 </mat-card-content>
             </div>
+
+            <div class="labels" >
+                <div *ngFor="let label of labelArray" style="margin-bottom: 0.9rem;">
+                    <label style=" background: transparent;background-clip: padding-box; border-radius: 1rem; background-color: rgba(0,0,0,.2);border: solid transparent; padding: 5px ;text-align: center;" >{{label.labelName}}</label>
+                    
+                </div>
+            </div>
+            
+    
+    
+
             <div class="noteIcon">
                 <!-- <div>
                 <button mat-icon-button matTooltip="Add Reminder">

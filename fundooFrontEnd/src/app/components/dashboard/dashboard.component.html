@@ -7,20 +7,7 @@
             
             <span class="tl" class="keep"><h1> Fundoo</h1></span>
             
-                <!-- <div class="mat-typography"><h1 class="keep">Fundoo</h1></div> -->
             
-            <!-- <div class="tl" class="card">
-                <button class="tl" mat-icon-button class="search" (click)="searchTermView()">
-                  <mat-icon class="tl" matTooltip="Search"class="iconGrey">search</mat-icon>
-                </button>
-               
-                <mat-form-field class="example-form-field" >
-                    <input placeholder="Search" matInput type="search" [(ngModel)]="value">
-                    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                      <mat-icon class="iconGrey">close</mat-icon>
-                    </button>
-                  </mat-form-field>
-              </div> -->
 
               <div class="search">
                 <mat-card>
@@ -37,7 +24,7 @@
                 <button class="navIcon" matTooltip="Refresh" mat-icon-button><mat-icon class="iconGrey">refresh</mat-icon></button>  
             </div>
             <div class="nav">
-                <button class="navIcon" matTooltip="List View" mat-icon-button><mat-icon class="iconGrey">list</mat-icon></button> 
+                <button (click)="gridList()" class="navIcon" matTooltip="List View" mat-icon-button><mat-icon class="iconGrey">list</mat-icon></button> 
             </div>
             <div class="nav">
                 <button class="navIcon" matTooltip="Settings"  mat-icon-button><mat-icon class="iconGrey">settings</mat-icon></button> 
@@ -45,18 +32,34 @@
             <div class="nav">
                 <button class="navIcon" matTooltip="Google Apps"  mat-icon-button><mat-icon class="iconGrey">apps</mat-icon></button> 
             </div>
-            <div>
-              <!-- <button class="navIcon" matTooltip="SignOut" class="iconGrey" [routerLink]="['']" (click)="onSignout()" mat-button class="signout-button">Signout</button> -->
-              <button  class="navIcon" matTooltip="SignOut" style="color: grey;"  mat-button [matMenuTriggerFor]="menu">
-                <mat-icon>person_outline</mat-icon>
-              </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item [routerLink]="['']" (click)="onSignout()">
-                    <mat-icon>exit_to_app</mat-icon>
-                    Sign Out
-                  </button>
-                </mat-menu>
+
+            <div >
+              <a><img src="assets/icon/account.svg" [matMenuTriggerFor]="menu" matTooltip="SignOut"  style=" color:grey;height: 40px;width: 40px; margin-left: 2rem;"></a>
             </div>
+              <div style="width:10em;" >
+                <mat-menu #menu="matMenu" style="width:auto">
+                  <div class="profile">
+                    <div class="image">
+                      <label for="file-input">
+                        <img src="assets/icon/profile.jpg" style="height: 110px;width: 110px; padding: 0px;margin: 0px;"/>
+                      </label>
+                      <input id="file-input" type="file" />
+                   </div>
+                  </div>
+                    <div class="user-details">
+                      <div>
+                        <h3 class="prou">{{uname}}</h3>
+                        <h4 class="proe">{{email}}</h4>
+                      </div>
+                    </div>
+                    <mat-divider style="margin-bottom: 0;"></mat-divider>
+                      <div class="signout">
+                          <button  [routerLink]="['']" (click)="onSignout()" mat-button class="btnSignout">Signout</button>
+                      </div>
+                      <mat-divider style=" margin-top: 0;"></mat-divider>
+                </mat-menu>
+              </div>
+            
              
         </mat-toolbar>
     </div>
@@ -78,7 +81,7 @@
                   <span>Reminders</span>
                 </button>
               </div>
-              <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;"></mat-divider>
+              <!-- <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;"></mat-divider> -->
               <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;" class="divider"></mat-divider>
              <div class="Lab">
                 <div>

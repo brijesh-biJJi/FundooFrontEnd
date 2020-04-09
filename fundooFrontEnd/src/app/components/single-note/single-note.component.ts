@@ -4,6 +4,7 @@ import { DisplayNotesComponent } from '../display-notes/display-notes.component'
 import { NoteServiceService } from 'src/app/services/note-service.service';
 import { MatTooltip, MatSnackBar, MatDialog } from '@angular/material';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
+import { LabelService } from 'src/app/services/label.service';
 
 @Component({
   selector: 'app-single-note',
@@ -18,14 +19,24 @@ export class SingleNoteComponent implements OnInit {
 
   isPinned:boolean;
     
-  constructor(private _noteService:NoteServiceService,private snackBar: MatSnackBar,private matDialog: MatDialog) { }
+  constructor(private _noteService:NoteServiceService,private snackBar: MatSnackBar,private matDialog: MatDialog,private _labelService:LabelService) { }
 
   ngOnInit() {
     console.log(this.noteDetail);
     
-    
+    this.getLabel();
   }
 
+  private labelArray:[];
+  getLabel(){
+    this._labelService.getAllLabels().subscribe(
+      (response:any)=>{
+          this.labelArray=response;
+          console.log('Labell ',this.labelArray);
+          
+      }
+    )
+  }
 
   openMatDialog(noteDetail){
     console.log('Note Details ',noteDetail);

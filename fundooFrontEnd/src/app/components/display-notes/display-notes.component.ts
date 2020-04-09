@@ -153,7 +153,5 @@ private param:any;
     )
   }
 
-  getLabelByNoteId(){
-    
-  }
+  
 }
