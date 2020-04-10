@@ -67,5 +67,14 @@ export class LabelService {
   getLabelNotes():Observable<any>{
     return this.labelsNotes.asObservable();
   }
+
+private tempNoteId:number;
+  setNoteIdd(noteid){
+    this.tempNoteId=noteid;
+  }
+
+  getNoteIdd(){
+    return this.tempNoteId;
+  }
 }
 

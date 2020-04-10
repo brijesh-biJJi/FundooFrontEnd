@@ -8,6 +8,7 @@ import { LabelService } from 'src/app/services/label.service';
 import { MatSidenav, MatDialog } from '@angular/material';
 import { EditLabelComponent } from '../edit-label/edit-label.component';
 import { EventEmitter } from 'protractor';
+import { DisplayNotesComponent } from '../display-notes/display-notes.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
@@ -33,12 +34,20 @@ export class DashboardComponent implements OnInit {
 
   gridList(){
     if(this.listview){
+      console.log('inside view row');
+      
       this.view="row";
+      this._noteService.setView(this.view);
       this.listview=!this.listview;
+      console.log('ListView ', this.listview);
     }
     else{
+      console.log('ListView b ', this.listview);
+      console.log('inside view col');
       this.view="column";
+      this._noteService.setView(this.view);
       this.listview=!this.listview;
+      console.log('ListView a', this.listview);
     }
   }
 
@@ -51,11 +60,19 @@ export class DashboardComponent implements OnInit {
     this._noteService.setSearchNote(this.title);
   }
 
+  onRefresh(){
+    window.location.reload() ;
+  }
  
 
   onClickNote(){
     this._router.navigateByUrl('dashboard');
   }
+
+  onClickReminder(){
+    this._router.navigate(['reminder'],{relativeTo:this.route});
+  }
+
   onClickArchive(){
     // this._router.navigate(['/dashboard/displaynote','archive']);
     this._router.navigate(['archive'],{relativeTo:this.route});
@@ -71,13 +88,17 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  onClickLabel(labelName){
-    console.log('Label ',labelName);
-    this._labelService.getNotesByLabel(labelName).subscribe(
-      (response)=>{
-        this.setLabelNotes(response);
-      }
-    );
+  onClickLabel(labelNote){
+    this._labelService.setNoteIdd(labelNote);
+     this._router.navigate(['label'],{relativeTo:this.route});
+    console.log('Labelll nOet ',labelNote);
+    // this._labelService.getNotesByLabel(labelName).subscribe(
+    //   (response)=>{
+    //     this.setLabelNotes(response);
+    //   }
+    // );
+   
+   
   }
 
   setLabelNotes(notes){

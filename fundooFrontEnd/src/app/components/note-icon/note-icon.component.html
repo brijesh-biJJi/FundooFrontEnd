@@ -1,6 +1,16 @@
 <div class="container">
 <div>
-    <a><img src="assets/icon/reminderr.svg" matTooltip="Add Reminder"> </a>
+    <a><img src="assets/icon/reminderr.svg" [matMenuTriggerFor]="remin"  matTooltip="Add Reminder"> </a>
+</div>
+
+<div style="width: auto;">
+<mat-menu #remin="matMenu" style="width:auto">
+    <div class="reminder">
+        <h3 >Reminder</h3>
+        
+        <angular2-date-picker   [(ngModel)]="date" [settings]="settings" style="width: auto;  padding: 0 2rem;"></angular2-date-picker>
+    </div>
+</mat-menu> 
 </div>
 <div>
     <a><img src="assets/icon/collab.svg" (click)="openDialog()" matTooltip="Add Collaborator"> </a>

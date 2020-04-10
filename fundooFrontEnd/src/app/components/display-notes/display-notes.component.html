@@ -1,11 +1,11 @@
-<div id="container"   *ngIf="!trashedNotes && !archiveNotes ">
-    <div>
+<div id="container"   *ngIf="!trashedNotes && !archiveNotes  ">
+    <div *ngIf=!labelNotes>
         <app-createnote></app-createnote>
     </div>
-        <div *ngIf="!searchNotes">
+        <div *ngIf="!searchNotes && !labelNotes &&!reminderNotes">
             PINNED 
         </div> 
-        <div class="item">
+        <div class="item" fxLayout="{{view}}">
             <div  *ngFor="let noteD of pinNotes | note:searchnote"  >
                 <app-single-note [noteDetail]="noteD" ></app-single-note>
             </div>
@@ -24,10 +24,10 @@
 <div id="container"   >
     <div *ngIf="trashedNotes">TRASHED</div>
     <div *ngIf="archiveNotes">ARCHIVE</div> 
-    <div *ngIf="!trashedNotes && !archiveNotes && !searchNotes">
+    <div *ngIf="!trashedNotes && !archiveNotes && !searchNotes && !labelNotes &&!reminderNotes">
         OTHERS
     </div>
-    <div class="item"  >
+    <div class="item" fxLayout="{{view}}" >
         <div   *ngFor="let noteD of noteDetails | note:searchnote" >
             <app-single-note [noteDetail]="noteD" ></app-single-note>
         </div>

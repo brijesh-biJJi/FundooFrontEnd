@@ -5,21 +5,41 @@ import { MatTooltip, MatSnackBar, MatDialog } from '@angular/material';
 import { LabelComponent } from '../label/label.component';
 import { LabelService } from 'src/app/services/label.service';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
-
+import { AmazingTimePickerService } from 'amazing-time-picker';
 @Component({
   selector: 'app-note-icon',
   templateUrl: './note-icon.component.html',
   styleUrls: ['./note-icon.component.scss']
 })
 export class NoteIconComponent implements OnInit {
-
+  // (click)="onClickReminder(noteDetail.noteid)"
   @Input('noteIconDetail')
   noteDetail:NoteModel;
-
+  
   isArchive:boolean=false;
-  constructor(private _matDialog:MatDialog,private _noteService:NoteServiceService,private snackBar: MatSnackBar,private _labelService:LabelService) { }
+  constructor(private _matDialog:MatDialog,private _noteService:NoteServiceService,private snackBar: MatSnackBar,private _labelService:LabelService,private atps: AmazingTimePickerService) { }
 
   ngOnInit() {
+  }
+
+  rem:boolean=false;
+
+  remm(){
+this.rem=!this.rem;
+  }
+
+  date:Date =new Date();
+  settings={
+    bigBanner:true,
+    timePicker:true,
+    format:'dd-MM-yyyy hh:mm a',
+    defaultOpen:false,
+    closeOnSelect:false
+  };
+  onClickReminder(noteid){
+
+
+
   }
 
   onClickArchive(noteId){

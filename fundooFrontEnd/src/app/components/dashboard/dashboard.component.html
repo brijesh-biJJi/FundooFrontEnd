@@ -21,7 +21,7 @@
               </div>
 
               <div class="nav">
-                <button class="navIcon" matTooltip="Refresh" mat-icon-button><mat-icon class="iconGrey">refresh</mat-icon></button>  
+                <button class="navIcon" matTooltip="Refresh" (click)="onRefresh()" mat-icon-button><mat-icon class="iconGrey">refresh</mat-icon></button>  
             </div>
             <div class="nav">
                 <button (click)="gridList()" class="navIcon" matTooltip="List View" mat-icon-button><mat-icon class="iconGrey">list</mat-icon></button> 
@@ -92,8 +92,8 @@
               <div *ngFor="let label of labels">
                 <div style="margin-bottom: 0.75rem;margin-top: 0.75rem; ">
                 <a class="navButton" >
-                    <img class="matSidenavIcon" src="assets/icon/nlabel.svg" (click)="onClickLabel(label.labelName)">
-                    <span style="padding-top: 0; padding-bottom: 0.5rem;" (click)="onClickLabel(label.labelName)">  {{label.labelName}}</span>
+                    <img class="matSidenavIcon" src="assets/icon/nlabel.svg" (click)="onClickLabel(label.noteId)">
+                    <span style="padding-top: 0; padding-bottom: 0.5rem;" (click)="onClickLabel(label.noteId)">  {{label.labelName}}</span>
                 </a>
               </div>
               </div>

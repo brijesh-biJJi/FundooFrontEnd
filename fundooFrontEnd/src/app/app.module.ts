@@ -25,6 +25,9 @@ import { EditLabelComponent } from './components/edit-label/edit-label.component
 import { LabelComponent } from './components/label/label.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 import { LabelPipe } from './pipes/label.pipe';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
+import{AngularDateTimePickerModule} from 'angular2-datetimepicker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +58,9 @@ import { LabelPipe } from './pipes/label.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
+    AmazingTimePickerModule,
+    AngularDateTimePickerModule
   ],
   providers: [
     { provide: MatDialogRef, useValue: {} },

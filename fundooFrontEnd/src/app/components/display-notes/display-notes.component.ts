@@ -20,6 +20,7 @@ export class DisplayNotesComponent implements OnInit {
    }
   trashedNotes: boolean = false;
   archiveNotes: boolean = false;
+  reminderNotes:boolean=false;
   labelNotes: boolean = false;
   searchNotes:boolean=false;
 
@@ -35,6 +36,8 @@ private searchnote:any;
 private param:any;
   ngOnInit() 
   {
+
+
     this._noteService.refreshNeeded$.subscribe(() => {
       this.displayNotes();
       this.getAllTrashedNotes();
@@ -61,15 +64,32 @@ private param:any;
       console.log('Inside Trash ');
       this.getAllTrashedNotes();
     }
-    else if(this.param == "labels")
+    else if(this.param == "label")
     {
       console.log('Inside Labels ');
       this.getAllLabelNotes();
     }
+    else if(this.param == "reminder")
+    {
+      console.log('Inside Reminder ');
+      this.reminder();
+    }
     else
     {
       this.displayNotes();
+      this.getView();
     }
+  }
+
+  view:string;
+  getView(){
+    this._noteService.getView().subscribe(
+      (response:any)=>{
+               this.view=response.view;
+           }
+    );
+    console.log('View ',this.view);
+    
   }
 
   displayNotes(){
@@ -142,16 +162,38 @@ private param:any;
     });
   }
 
+  private tempNoteId:number;
   getAllLabelNotes(){
     this.labelNotes=true;
     this.trashedNotes =false;
     this.archiveNotes = false;
-    this._labelService.getLabelNotes().subscribe(
-      (response:any)=>{
-          this.noteDetails=response.notes;
-      }
-    )
+    // this._labelService.getLabelNotes().subscribe(
+    //   (response:any)=>{
+    //       this.noteDetails=response.notes;
+    //   }
+    // )
+    this.tempNoteId=this._labelService.getNoteIdd();
+    console.log("check label NNoteId",this.tempNoteId);
+
+    
+    this._noteService.getAllNotes()
+        .subscribe(
+          (allNotes:any)=>{
+              this.notes=allNotes;
+                  if (this.notes != undefined) { 
+                    this.notes.filter(trashNote=>trashNote.noteid===this.tempNoteId ).map(trashNote=>this.noteDetails.push(trashNote));
+                    console.log('Label Notes ',this.noteDetails);
+                  }
+          }
+        )
+
   }
 
-  
+  reminder(){
+    console.log('Reminder meth');
+    this.reminderNotes=true;
+    this.labelNotes=false;
+    this.trashedNotes =false;
+    this.archiveNotes = false;
+  }
 }

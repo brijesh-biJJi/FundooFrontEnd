@@ -11,6 +11,7 @@ import { NoteModel } from 'src/app/model/note-model.model';
 export class NoteServiceService {
 
   private _refreshNeeded$= new Subject<void>();
+  private view=new Subject<any>();
   get refreshNeeded$() {
     return this._refreshNeeded$;
   }
@@ -28,6 +29,21 @@ export class NoteServiceService {
   };
   
    constructor(private _httpClient:HttpClient,private _httpService:HttpserviceService) { }
+
+
+  
+   setView(data:any){
+     console.log('Service set ');
+     
+    this.view.next({view:data});
+    console.log('data ',this.view);
+    
+  }
+
+  getView():Observable<any>{
+    console.log('Service get');
+    return this.view.asObservable();
+  }
 
    createNote(noteDetails:any):Observable<any>
    {

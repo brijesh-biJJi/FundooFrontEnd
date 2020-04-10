@@ -21,9 +21,13 @@
                 </mat-card-content>
             </div>
 
+            <div style="margin-bottom: 0.9rem;" class="reminder" *ngIf="noteDetail.reminder">
+                <label style=" background: transparent;background-clip: padding-box; border-radius: 1rem; background-color: rgba(0,0,0,.1);border: solid transparent; padding: 5px ;text-align: center;" >{{noteDetail.reminder}}</label>
+            </div>
+
             <div class="labels" >
                 <div *ngFor="let label of labelArray | label:noteDetail.noteid" style="margin-bottom: 0.9rem;">
-                    <label style=" background: transparent;background-clip: padding-box; border-radius: 1rem; background-color: rgba(0,0,0,.2);border: solid transparent; padding: 5px ;text-align: center;" >{{label.labelName}}</label>
+                    <label style=" background: transparent;background-clip: padding-box; border-radius: 1rem; background-color: rgba(0,0,0,.1);border: solid transparent; padding: 5px ;text-align: center;" >{{label.labelName}}</label>
                     
                 </div>
             </div>
