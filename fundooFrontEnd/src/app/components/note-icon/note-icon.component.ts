@@ -22,11 +22,6 @@ export class NoteIconComponent implements OnInit {
   ngOnInit() {
   }
 
-  rem:boolean=false;
-
-  remm(){
-this.rem=!this.rem;
-  }
 
   date:Date =new Date();
   settings={
@@ -38,7 +33,14 @@ this.rem=!this.rem;
   };
   onClickReminder(noteid){
 
-
+    // this._noteService.addReminder(noteid).subscribe((response) =>
+    // { 
+    //    this.snackBar.open(response.message, "OK", { duration: 2000 });
+    //  },
+    //  error => {
+    //    this.snackBar.open("Error in Note", "OK", { duration: 5000 });
+    //  });
+console.log('Remind Note',noteid,'date',this.date);
 
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute ,ParamMap} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService } from 'src/app/services/note-service.service';
 import { Note } from 'src/app/model/note.model';
@@ -13,11 +13,27 @@ import { NoteModel } from 'src/app/model/note-model.model';
 })
 export class CreatenoteComponent implements OnInit {
 
-  constructor(private formBuilder:FormBuilder,private router:Router,private matSnackBar:MatSnackBar,private _noteService:NoteServiceService) { }
+  constructor(private formBuilder:FormBuilder,private router:Router,private matSnackBar:MatSnackBar,private _noteService:NoteServiceService,private _route:ActivatedRoute) { }
   hide: boolean = false;
+  date:Date =new Date();
+  reminder:boolean=false;
+  private param:any;
 
   noteModel:NoteModel=new NoteModel();
   ngOnInit() {
+    this._route.paramMap.subscribe(
+      (params:ParamMap)=>{
+        this.param=params.get('note');
+      }
+    )
+    if (this.param == "reminder") 
+    {
+      console.log('Inside create reminder ');
+      
+      this.reminder=true;
+      console.log('Date ',this.date);
+      
+    }
   }
 
   title=new FormControl('',[Validators.required]);

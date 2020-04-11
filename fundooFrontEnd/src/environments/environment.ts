@@ -37,7 +37,8 @@ export const environment = {
   //Collaborator
   collaborator:'collaborator',
   addCollab:'addcollab',
-  removeCollab:'removecollab'
+  removeCollab:'removecollab',
+  addReminder:'addreminder'
 };
 
 /*
