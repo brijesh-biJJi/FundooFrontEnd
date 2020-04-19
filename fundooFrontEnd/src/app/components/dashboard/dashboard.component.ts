@@ -70,6 +70,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onClickReminder(){
+    
     this._router.navigate(['reminder'],{relativeTo:this.route});
   }
 

@@ -1,18 +1,17 @@
 <div class="container">
-<div>
-    <a><img src="assets/icon/reminderr.svg" [matMenuTriggerFor]="remin"  matTooltip="Add Reminder"> </a>
-    
-    <mat-menu #remin="matMenu" class="matMennu">
-        <div class="reminder">
-            <h3 >Reminder</h3>
-            
-            <angular2-date-picker   [(ngModel)]="date" [settings]="settings" style="width: auto;  padding: 0 2rem;"></angular2-date-picker>
-            DAte:{{date | date:'medium'}}
-        </div>
+    <div>
+        <a><img src="assets/icon/reminderr.svg" [matMenuTriggerFor]="reminder" matTooltip="Add Reminder"> </a>
+    </div>
+    <mat-menu #reminder="matMenu" [overlapTrigger]="false">
+        <div class="remin">
+            <h3 style="padding-left: 1rem;"> Reminder:</h3>
+            <button mat-menu-item (click) = "today(noteDetail.noteid)">   Later today&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;8:00PM</button>
+            <button mat-menu-item (click) = "tomorrow(noteDetail.noteid)">Tomorrow&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8:00AM</button>
+            <button mat-menu-item (click) = "nextweek(noteDetail.noteid)">Next week&nbsp;&nbsp;&nbsp;&nbsp;Mon, 8:00AM</button>
+            <button mat-menu-item (click) = "pickdatetime(noteDetail)" ><mat-icon style="margin-right: 5px;">access_time</mat-icon>Pick date & time</button>
+           
+         </div>
     </mat-menu>
-
-</div>
-
 
 
 

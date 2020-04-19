@@ -1,13 +1,14 @@
-
-.imgedit {
-       align-items: flex-end;   }
-
 .container{
   display: flex;
   flex-direction: column;
+  padding-left: 10px;
 }
+.imgedit {
+       align-items: flex-end;   }
+
+
 input{
-  width: 17rem;
+  width: 17.5rem;
   height: 1.8rem;
 }
 
@@ -29,6 +30,5 @@ input{
 
 .listFor{
   display: flex; 
-  justify-content: space-evenly;
-   flex-direction: row;
+
 }

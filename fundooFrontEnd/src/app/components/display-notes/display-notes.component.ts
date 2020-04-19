@@ -72,7 +72,7 @@ private param:any;
     else if(this.param == "reminder")
     {
       console.log('Inside Reminder ');
-      this.reminder();
+      this.getAllReminderNotes();
     }
     else
     {
@@ -189,11 +189,22 @@ private param:any;
 
   }
 
-  reminder(){
+  getAllReminderNotes(){
     console.log('Reminder meth');
     this.reminderNotes=true;
     this.labelNotes=false;
     this.trashedNotes =false;
     this.archiveNotes = false;
+    this._noteService.getAllNotes()
+        .subscribe(
+          (allNotes:any)=>{
+              this.notes=allNotes;
+              console.log('All Notes',this.notes);
+                  if (this.notes != undefined) { 
+                    this.notes.filter(trashNote=>trashNote.reminder!=null ).map(trashNote=>this.noteDetails.push(trashNote));
+                    console.log('Reminder Notes ',this.noteDetails);
+                  }
+          }
+        )
   }
 }

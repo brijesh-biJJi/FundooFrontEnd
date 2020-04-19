@@ -27,6 +27,7 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
 import { LabelPipe } from './pipes/label.pipe';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 import{AngularDateTimePickerModule} from 'angular2-datetimepicker';
+import { ReminderComponent } from './components/reminder/reminder.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import{AngularDateTimePickerModule} from 'angular2-datetimepicker';
     EditLabelComponent,
     LabelComponent,
     CollaboratorComponent,
-    LabelPipe
+    LabelPipe,
+    ReminderComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import{AngularDateTimePickerModule} from 'angular2-datetimepicker';
   entryComponents: [
     EditLabelComponent,
     LabelComponent,
-    CollaboratorComponent
+    CollaboratorComponent,
+    ReminderComponent
  ]
 })
 export class AppModule { }

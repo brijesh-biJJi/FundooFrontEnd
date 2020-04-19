@@ -1,0 +1,38 @@
+
+<mat-card class="datetimepick">
+
+    <div fxLayout = "row">
+        <button  matTooltip="Go back" style="border: none;outline: none; background-color: whitesmoke; margin: 0;"> <img src= "assets/icon/back.svg" (click) = "back()">  </button>
+        <button mat-menu-item><h3 style="margin: auto;background-color: whitesmoke;"> Pick date & time</h3> </button>
+    </div> 
+    <mat-form-field>
+        <input matInput [matDatepicker]="dp" [formControl]="date" value="matDatepicker" #cal>
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp></mat-datepicker>
+      </mat-form-field>
+        <br>
+        <mat-form-field >
+            <mat-label>8:00 AM</mat-label>
+          <mat-select>
+            <mat-option value="8:00 AM" (click) = "time(morn.value)" #morn>Morning 8:00 AM</mat-option>
+            <mat-option value="1:00 PM" (click) = "time(after.value)" #after>Afternoon 1:00 PM</mat-option>
+            <mat-option value="6:00 PM" (click) = "time(even.value)" #even>Evening 6:00 PM</mat-option>
+            <mat-option value="8:00 PM" (click) = "time(night.value)" #night>Night 8:00 PM</mat-option>
+            <mat-option value="8:00 AM" (click) = "time(custom.value)" #custom>Custom</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field >
+            <mat-label>Does not repeat</mat-label>
+            <mat-select>
+              <mat-option value="option">Does not repeat</mat-option>
+              <mat-option value="option">Daily</mat-option>
+              <mat-option value="option">Weekly</mat-option>
+              <mat-option value="option">Monthly</mat-option>
+              <mat-option value="option">Yearly</mat-option>
+            </mat-select>
+          </mat-form-field>
+    <button class="button" mat-button (click) = "addreminder(cal.value, data.notes.noteid)">Save</button>
+    </mat-card>
+           
+    

@@ -57,8 +57,8 @@ export class NoteServiceService {
         return this._httpClient.get<any>(this._getNotesUrl);
       }
 
-      addReminder(noteId:any){
-        return this._httpService.putRequest(`${this.noteApiUrl}/${this.addReminder}?id=${noteId}`, {},{headers:new HttpHeaders({'token':localStorage.token})});
+      addReminder(noteId:any,data:any){
+        return this._httpService.putRequest(`${this.noteApiUrl}/${this.addReminder}?id=${noteId}`, {data},{headers:new HttpHeaders({'token':localStorage.token})});
       }
 
       archiveNote(noteId: any)

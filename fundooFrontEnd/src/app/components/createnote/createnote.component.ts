@@ -18,6 +18,7 @@ export class CreatenoteComponent implements OnInit {
   date:Date =new Date();
   reminder:boolean=false;
   private param:any;
+  dd:number
 
   noteModel:NoteModel=new NoteModel();
   ngOnInit() {
@@ -31,7 +32,9 @@ export class CreatenoteComponent implements OnInit {
       console.log('Inside create reminder ');
       
       this.reminder=true;
+      
       console.log('Date ',this.date);
+
       
     }
   }
