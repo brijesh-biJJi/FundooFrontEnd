@@ -3,6 +3,7 @@ import {environment} from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {HttpserviceService} from 'src/app/services/httpservice.service';
 import { Observable ,Subject, BehaviorSubject} from 'rxjs';
+import {tap} from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Observable ,Subject, BehaviorSubject} from 'rxjs';
 export class LabelService {
 
   private noteId = new Subject<any>();
-  private _refreshNeeded$= new Subject();
+  private _refreshNeeded$= new Subject<any>();
   private labelsNotes=new Subject<any>();
   
 
@@ -30,19 +31,47 @@ export class LabelService {
   getAllLabels():Observable<any>{
     console.log('hi');
     
-    // return this._httpService.get(`${environment.labelApiURL}/${environment.getAllLabels}`, {headers:new HttpHeaders({'token':localStorage.token})});
-    return this._httpClient.get<any>(this._getLabelsUrl); 
+     return this._httpService.get(`${environment.labelApiURL}/${environment.getAllLabels}`, {headers:new HttpHeaders({'token':localStorage.token})});
+    // return this._httpClient.get<any>(this._getLabelsUrl); 
   }
 
-  createLabel(label):Observable<any>{
-    return this._httpService.postRequest(`${environment.labelApiURL}/${environment.createLabel}`, label,{headers:new HttpHeaders({'token':localStorage.token})});
+  createLabel(label:any):Observable<any>{
+    return this._httpService
+                .postRequest(`${environment.labelApiURL}/${environment.createLabel}`, label,{headers:new HttpHeaders({'token':localStorage.token})})
+                .pipe(
+                 tap(()=>
+                 {
+                    this._refreshNeeded$.next();
+                 }));
   }
-  deleteLabel(label):Observable<any>{
-    return this._httpService.putRequest(`${environment.labelApiURL}/${environment.deleteLabel}`, label,{headers:new HttpHeaders({'token':localStorage.token})}); 
+  deleteLabel(labelName:any):Observable<any>{
+    return this._httpService
+                .deleteRequest(`${environment.labelApiURL}/${environment.deleteLabel}/${labelName}`,{headers:new HttpHeaders({'token':localStorage.token})})
+                .pipe(
+                  tap(()=>
+                  {
+                     this._refreshNeeded$.next();
+                  })); 
   }
 
-  editLabel(label):Observable<any>{
-    return this._httpService.putRequest(`${environment.labelApiURL}/${environment.deleteLabel}`, label,{headers:new HttpHeaders({'token':localStorage.token})}); 
+  editLabel(label:any):Observable<any>{
+    return this._httpService
+                  .putRequest(`${environment.labelApiURL}/${environment.editLabel}`, label,{headers:new HttpHeaders({'token':localStorage.token})})
+                  .pipe(
+                    tap(()=>
+                    {
+                       this._refreshNeeded$.next();
+                    }));
+  }
+
+  removelabel(label:any,noteId:number):Observable<any>{
+    return this._httpService
+                  .putRequest(`${environment.labelApiURL}/${environment.removeNoteLabel}/${noteId}`, label,{headers:new HttpHeaders({'token':localStorage.token})})
+                  .pipe(
+                    tap(()=>
+                    {
+                       this._refreshNeeded$.next();
+                    })); 
   }
 
   setNoteId(noteid){
@@ -53,11 +82,23 @@ export class LabelService {
   }
 
   addMapLabel(label,noteId){
-    return  this._httpService.postRequest(`${environment.labelApiURL}/${environment.addMapLabel}?noteId=${noteId}`,label,{headers:new HttpHeaders({'token':localStorage.token})});
+    return  this._httpService
+                  .putRequest(`${environment.labelApiURL}/${environment.addMapLabel}?noteId=${noteId}`,label,{headers:new HttpHeaders({'token':localStorage.token})})
+                  .pipe(
+                    tap(()=>
+                    {
+                       this._refreshNeeded$.next();
+                    }));
   }
 
   getNotesByLabel(labelName){
-    return this._httpService.get(`${environment.labelApiURL}/${environment.getNotesByLabel}?labelName=${labelName}`,{headers:new HttpHeaders({'token':localStorage.token})});
+    return this._httpService
+                  .get(`${environment.labelApiURL}/${environment.retrieveNotes}/${labelName}`,{headers:new HttpHeaders({'token':localStorage.token})})
+                  .pipe(
+                    tap(()=>
+                    {
+                       this._refreshNeeded$.next();
+                    }));
   }
 
   setLabelNotes(data:any){

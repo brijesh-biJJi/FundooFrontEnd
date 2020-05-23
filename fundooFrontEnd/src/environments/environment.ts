@@ -16,29 +16,40 @@ export const environment = {
 
   // Note URL
   noteApiURL:'http://localhost:8080/note',
-  createNote:'/create',
-  getAllNotes:'/getAllNotes',
+  createNote:'create',
+  getOtherNotes:'getOtherNotes',
+  getAllNotes:'getAllNotes',
   archiveNote:'archive',
+  getAllArchiveNotes:'getArchivedNotes',
   pinNote:'pin',
+  getPinnedNotes:'getPinnedNotes',
   trashNote:'delete',
+  deletePermanently:'deletePermanently',
+  getAllTrashNotes:'getTrashedNotes',
   changecolor:'changecolor',
   searchNote:'search',
-  updateNote:'updatenote',
+  updateNote:'update',
   retrieveLabels:'retrieveLabels',
+  addReminder:'addReminder',
+  removeReminder:'removeReminder',
 
   //Label URL
   labelApiURL:'http://localhost:8080/label',
-  getAllLabels:'getAllLabels',
-  createLabel:'create',
-  deleteLabel:'delete',
+  getAllLabels:'getAllLabel',
+  editLabel:'editLabel',
+  createLabel:'createLabel',
+  deleteLabel:'deleteUserLabel',
   addMapLabel:'addMapLabel',
   getNotesByLabel:'getnotesbylabel',
+  removeNoteLabel:'removeNoteLabel',
+  retrieveNotes:'retrieveNotes',
+
 
   //Collaborator
   collaborator:'collaborator',
   addCollab:'addcollab',
   removeCollab:'removecollab',
-  addReminder:'addreminder'
+  
 };
 
 /*

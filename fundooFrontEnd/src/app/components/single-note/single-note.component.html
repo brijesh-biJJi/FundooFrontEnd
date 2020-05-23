@@ -4,96 +4,62 @@
             <div id="matdiv">
             <div class="pindiv" >
                 <!-- <a><img id="pin" src="assets/icon/unpin.svg"  (click)="onPin(noteDetail.id)"/></a> -->
-                <a matTooltip="Pin Note"><img id="pin" src="assets/icon/unpin.svg" (click)="onClickPin(noteDetail.noteid)"  *ngIf="!noteDetail.isPinned" /></a>
-                <a matTooltip="UnPin Note"><img id="pin" src="assets/icon/pin.svg" (click)="onClickPin(noteDetail.noteid)" *ngIf="noteDetail.isPinned"/></a>
+                <a matTooltip="Pin Note"><img id="pin" src="assets/icon/unpin.svg" (click)="onClickPin(noteDetail.noteid)"  *ngIf="!noteDetail.pinned" /></a>
+                <a matTooltip="UnPin Note"><img id="pin" src="assets/icon/pin.svg" (click)="onClickPin(noteDetail.noteid)" *ngIf="noteDetail.pinned"/></a>
             </div>
             <!-- <div class="pindiv" *ngIf="!pinn">
                 <a><img id="pin" src="assets/icon/pin.svg"  (click)="onPin(noteDetail.id)"/></a>
             </div> -->
             <div class="matTitle">
-                <mat-card-title (click)="openMatDialog(noteDetail)">
+                <mat-card-title id="matTitle" (click)="openMatDialog(noteDetail)">
                     {{noteDetail.title}}
                 </mat-card-title>
             </div>
             <div class="matDesc">
-                <mat-card-content (click)="openMatDialog(noteDetail)">
+                <mat-card-content id="matDesc" (click)="openMatDialog(noteDetail)">
                     {{noteDetail.description}}
                 </mat-card-content>
             </div>
 
-            <div style="margin-bottom: 0.9rem;" class="reminder" *ngIf="noteDetail.reminder">
+            <!-- <div style="margin-bottom: 0.9rem;" class="reminder" *ngIf="noteDetail.reminder">
                 <label style=" background: transparent;background-clip: padding-box; border-radius: 1rem; background-color: rgba(0,0,0,.1);border: solid transparent; padding: 5px ;text-align: center;" >{{noteDetail.reminder}}</label>
-            </div>
-
-            <div class="labels" >
-                <div *ngFor="let label of labelArray | label:noteDetail.noteid" style="margin-bottom: 0.9rem;">
-                    <label style=" background: transparent;background-clip: padding-box; border-radius: 1rem; background-color: rgba(0,0,0,.1);border: solid transparent; padding: 5px ;text-align: center;" >{{label.labelName}}</label>
-                    
-                </div>
-            </div>
-            
-    
-    
-
-            <div class="noteIcon">
-                <!-- <div>
-                <button mat-icon-button matTooltip="Add Reminder">
-                    <mat-icon>notifications</mat-icon>
-                </button>
-                </div>
-                <div>
-                <button mat-icon-button matTooltip="Add Collobrate">
-                    <mat-icon>person_add</mat-icon>
-                </button>
-                 </div>
-                <div>
-                <button mat-icon-button [matMenuTriggerFor]="ChangeColor" matTooltip="Add Color">
-                    <mat-icon>color_lens</mat-icon>
-                </button >
-                 </div>
-            <mat-menu #ChangeColor="matMenu" [overlapTrigger]="false">
-                <ng-template matMenuContent>
-                    <div>
-                        <div fxLayout="row" fxLayoutGap="10px" style="margin: 0.5rem" *ngFor="let colors of colorArray">
-                            <div *ngFor="let color of colors">
-                                <button [ngStyle]="{ 'background-color': color.color }" (click)="changeColor(noteDetail.noteid,color.color)"
-                                    matTooltip="{{ color.name }}" mat-mini-fab>
-                                </button>
-            
-                            </div>
-                        </div>
-                    </div>
-                </ng-template>
-            </mat-menu>
-            <div>
-                <button mat-icon-button matTooltip="Add Image">
-                    <mat-icon>crop_original</mat-icon>
-                </button>
-            </div>
-            <div>
-                <button  mat-icon-button (click)="onClickArchive(noteDetail.noteid)" *ngIf="!noteDetail.isArchived" (click)="isArchive=!isArchive" matTooltip="Archive">
-                    <mat-icon>archive</mat-icon>
-                </button>
-            </div>
-            <div>
-                <button  mat-icon-button (click)="onClickArchive(noteDetail.noteid)" *ngIf="noteDetail.isArchived" (click)="isArchive=!isArchive" matTooltip="UnArchive">
-                    <mat-icon>unarchive</mat-icon>
-                </button>
-            </div>
-            <div>
-                <a><img mat-icon-button [matMenuTriggerFor]="menu" style="height: 1.5rem; width: 2rem; margin-top: 0.5rem;" src="assets/icon/more.svg" matTooltip="More"></a>
+            </div>-->
+            <div *ngIf="noteDetail.reminder != null" style="margin: 0px;">
+                <mat-card-content class="content" id="remainder-box">
+                    <mat-chip class="textArea" style="margin: 0px; background: transparent;background-clip: padding-box; border-radius: 1rem; background-color: rgba(0,0,0,.1);border: solid transparent; padding: 10px ;text-align: center;" >
+                        {{ displayReminder }}
+                        <mat-icon matChipRemove (click)="removeReminder(noteDetail.noteid)" matTooltip="remove">cancel</mat-icon>
+                    </mat-chip>
+                </mat-card-content>
+              </div>
         
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="onClickDeleteNote(noteDetail.noteid)">Delete Note</button>
-                <button mat-menu-item [matMenuTriggerFor]="label">Add Label</button>
-            </mat-menu>
-        
-            <mat-menu #label="matMenu">
-                <p style="padding: 1rem;">Label</p>
-              </mat-menu>
-            </div> -->
-            <app-note-icon [noteIconDetail]="noteDetail"></app-note-icon>
+            <div  class="labels" >
+            <mat-chip-list>
+                
+                  <mat-chip *ngFor="let label of labels" style="margin: 0px 0px 0px 5px; background: transparent;background-clip: padding-box; border-radius: 1rem; background-color: rgba(0,0,0,.1);border: solid transparent; padding: 10px ;text-align: center;" >
+                      {{label.labelName}}
+                    <mat-icon matChipRemove (click)="removeNoteLabel(label.labelName,noteDetail.noteid)" matTooltip="remove">cancel</mat-icon>
+                    </mat-chip>
+                
+            </mat-chip-list>
+        </div>
+            <div class="noteIcon" *ngIf="!noteDetail.trashed; else trashedNote " >
+                <app-note-icon [noteIconDetail]="noteDetail"></app-note-icon>
             </div>
+            <ng-template #trashedNote>
+                <div class="trashcard">
+                  <!-- <mat-card-footer> -->
+                      <div>
+                    <button mat-icon-button (click)="deletePermanently(noteDetail.noteid)">
+                      <mat-icon matTooltip="Delete forever">delete_forever</mat-icon>
+                    </button></div>
+                  
+                    <button mat-icon-button matTooltip="Restore" (click)="deleteNote(noteDetail.noteid)">
+                      <mat-icon>restore_from_trash</mat-icon>
+                    </button>
+                  <!-- </mat-card-footer> -->
+                </div>
+              </ng-template>
         </div>
         </mat-card>
     </div>

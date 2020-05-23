@@ -47,7 +47,7 @@
              </div>
 
             <mat-card-actions>
-                <button mat-raised-button (click)="onRegistrationSubmit()" type="submit" [disabled]="nameErrorMessage() !='' || emailErrorMessage() != '' || passwordErrorMessage() != '' || confirmPasswordErrorMessage()!='' || phoneErrorMessage()!='' "> Registration</button><br/><br/><br><br>
+                <button mat-raised-button (click)="onRegistrationSubmit()" id="submit" type="submit" [disabled]="nameErrorMessage() !='' || emailErrorMessage() != '' || passwordErrorMessage() != '' || confirmPasswordErrorMessage()!='' || phoneErrorMessage()!='' "> Registration</button><br/><br/><br><br>
                 <a routerLink="/login">Sign in instead</a> 
             </mat-card-actions>
         </mat-card-content>

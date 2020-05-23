@@ -1,8 +1,8 @@
 <div id="container" >
     <mat-card  class="before" *ngIf="!hide" (click)="onClick()" fxLayout="row">
         <div>
-        <input matInput class="searchBar" placeholder="Take a note...">
-    </div>
+            <input matInput class="searchBar" id="takeANote" placeholder="Take a note...">
+        </div>
         <div class="icon">
             <mat-icon class="iconMargin" >event_available</mat-icon>
             <mat-icon class="iconMargin" >edit</mat-icon>
@@ -10,10 +10,10 @@
         </div>
     </mat-card>
     <mat-card class="after"  *ngIf="hide"  fxLayout="column">
-         <textarea class="title"   [formControl] ="title" matInput type="text" class="input" placeholder="Title" style="border: none;"></textarea>
+         <textarea class="title" id="noteTitle"  [formControl] ="title" matInput type="text"  class="input" placeholder="Title" style="border: none;"></textarea>
         
            
-         <textarea class="description"  [formControl] ="description" matInput type="text" class="input" placeholder="Take a note" style="border: none; margin-bottom: 1rem;" ></textarea>
+         <textarea class="description" id="noteDesc" [formControl] ="description" matInput type="text" class="input" placeholder="Take a note" style="border: none; margin-bottom: 1rem;" ></textarea>
       
          <div style="margin-bottom: 0.9rem;" class="reminde" *ngIf="reminder">
             <label style=" background: transparent;background-clip: padding-box; border-radius: 1rem; background-color: rgba(0,0,0,.1);border: solid transparent; padding: 5px ;text-align: center;" >Today, {{date | date:'shortTime'}}</label>
@@ -26,7 +26,7 @@
             </div>
             <div class="btn">
                 <div (click)="hide=!hide">
-                    <button class="closeBtn" (click)="onClickCreateNote()" >Close</button>
+                    <button class="closeBtn" id="submit" (click)="onClickCreateNote()" >Close</button>
                 </div>
             </div>
         </div>

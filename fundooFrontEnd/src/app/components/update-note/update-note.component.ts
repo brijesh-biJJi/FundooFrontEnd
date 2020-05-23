@@ -13,9 +13,11 @@ import { error } from 'util';
 export class UpdateNoteComponent implements OnInit {
 
   noteModel:NoteModel;
-  constructor(private matDialogref:MatDialogRef<UpdateNoteComponent>,@Inject(MAT_DIALOG_DATA) public data:any,private _noteService:NoteServiceService,private _matSnackBar:MatSnackBar) {
-    this.noteModel=this.data.noteDetail;
-   }
+  constructor(private matDialogref:MatDialogRef<UpdateNoteComponent>,
+              @Inject(MAT_DIALOG_DATA) public data:any,private _noteService:NoteServiceService,private _matSnackBar:MatSnackBar) 
+              {
+                  this.noteModel=this.data.noteDetail;
+              }
 
   ngOnInit() {
   }

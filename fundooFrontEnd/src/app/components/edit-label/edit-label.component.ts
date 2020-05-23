@@ -26,26 +26,36 @@ export class EditLabelComponent implements OnInit {
     
    
   }
+
+  private label:Label =new Label();
+  private lname:string;
   onClickCreateLabel(InputLabel){
-    let label={
-      "labelName":InputLabel
-    }
-      this._labelService.createLabel(label).subscribe(
+    this.dialogRef.close();
+      this.label.labelName=InputLabel;
+      this._labelService.createLabel(this.label).subscribe(
         (response)=>{
-        this.matSnackBar.open("Label Created","Ok",{duration:5000});
+        this.matSnackBar.open(response.message,"Ok",{duration:5000});
       });
   }
-  onClickDeleteLabel(label){
-    this._labelService.deleteLabel(label).subscribe(
+  onClickDeleteLabel(labelName:string){
+    console.log('del lab ',labelName);
+    
+    this.dialogRef.close();
+    this.label.labelName=labelName;
+    this._labelService.deleteLabel(this.label.labelName).subscribe(
       (response)=>{
-      this.matSnackBar.open("Label Deleted","Ok",{duration:5000});
+      this.matSnackBar.open(response.message,"Ok",{duration:5000});
     });
   }
 
-  onClickEditLabel(label){
-    this._labelService.editLabel(label).subscribe(
+  onClickEditLabel(labelId:number,labelName:string){
+    this.dialogRef.close();
+    this.label.labelName=labelName;
+    this.label.labelId=labelId;
+    
+    this._labelService.editLabel(this.label).subscribe(
       (response)=>{
-      this.matSnackBar.open("Label Edited","Ok",{duration:5000});
+      this.matSnackBar.open(response.message,"Ok",{duration:5000});
     });
   }
 }

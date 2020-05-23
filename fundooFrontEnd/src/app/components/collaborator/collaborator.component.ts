@@ -2,8 +2,7 @@ import { Component, OnInit ,Inject} from '@angular/core';
 import { MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { UserModel } from 'src/app/model/user-model.model';
-import { CollaboratorService } from 'src/app/services/collaborator.service';
-
+import {ActivatedRoute,Router,ParamMap} from '@angular/router';
 @Component({
   selector: 'app-collaborator',
   templateUrl: './collaborator.component.html',
@@ -15,27 +14,24 @@ export class CollaboratorComponent implements OnInit {
   userEmail:string='brijeshkanchan7@gmail.com';
   noteId:number;
   userModel:UserModel[];
-  constructor(private _matSnackbar:MatSnackBar,@Inject (MAT_DIALOG_DATA) public data:any,private _userService:UserServiceService ,private _colabService:CollaboratorService) {
+  constructor(private _route:ActivatedRoute,private _matSnackbar:MatSnackBar,@Inject (MAT_DIALOG_DATA) public data:any,private _userService:UserServiceService ) {
     this.noteId=data.noteId;
-    console.log('Check ',data.noteId);
-    
    }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    this._userService.refreshNeeded$.subscribe(()=>{
+      this.getCollaboratorsList();
+      })
     this.getCollaboratorsList();
   }
 
   getCollaboratorsList(){
-    // this._colabService.getCollaboratorsList(this.noteId).subscribe(
-    //   (response)=>{
-    //     this.userModel=response.users;
-    //   }
-    // )
-    this._colabService.getCollaboratorsList(this.noteId).subscribe(
+    this._userService.getCollaboratorsList(this.noteId).subscribe(
       (response:any)=>{
         console.log('Len ',response.length);
         
-        this.userModel=response;
+        this.userModel=response.obj;
         console.log('Collab ',this.userModel);
         
       }
@@ -45,15 +41,16 @@ export class CollaboratorComponent implements OnInit {
   addCollab(email){
     console.log('Email ',email,'note id ',this.noteId);
     
-    this._colabService.addCollab(email,this.noteId).subscribe(
+    this._userService.addCollab(email,this.noteId).subscribe(
       (response)=>{
+
      this._matSnackbar.open(response.message,"OK",{duration:5000});
     })
  }
- removeCollab(userid){
-   console.log('Colob Id',userid);
+ removeCollab(email){
+   console.log('Colob Id',email);
    
-  this._colabService.removeCollab(this.noteId,userid).subscribe(
+  this._userService.removeCollab(email,this.noteId).subscribe(
     (response)=>{
     this._matSnackbar.open(response.message,"OK",{duration:5000});
   })

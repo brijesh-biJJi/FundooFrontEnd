@@ -13,19 +13,19 @@ export class LabelComponent implements OnInit {
 
   notes: NoteModel[];
   labels: Label[];
+  private label:Label =new Label();
+  
   noteId: number;
   labelId;
   lname:string="";
   constructor(private _matDialogRef:MatDialogRef<LabelComponent>,@Inject(MAT_DIALOG_DATA) public data:any,private _labelService:LabelService,private _matSnackbar:MatSnackBar) {
-    console.log('Note Id',data.noteDetail.noteid);
+  
     this.noteId=data.noteDetail.noteid;
     this.getAllUserlabel();
    }
 
   ngOnInit() {
     this._labelService.refreshNeeded$.subscribe(()=>{
-      console.log('hello');
-      
       this.getAllUserlabel();
       this.getNoteId();
     })
@@ -34,24 +34,25 @@ export class LabelComponent implements OnInit {
 
   getAllUserlabel(){
     this._labelService.getAllLabels().subscribe((response)=>{
-      this.labels=response;
+      this.labels=response.obj;
       console.log('Labels List',this.labels);
     })
   }
 
-  onClickCreateLabel(labelInput){
-      let label={
-        'labelName':labelInput
-      }
-      this._labelService.createLabel(label).subscribe((response)=>{
-        this._matSnackbar.open('Label Created','Ok',{duration:5000});
-      })
+  onClickCreateAndMapLabel(labelInput){
+
+    this._matDialogRef.close();
+    this.label.labelName=labelInput;
+    this._labelService.addMapLabel(this.label,this.noteId).subscribe(
+      (response)=>{
+      this._matSnackbar.open(response.message,"Ok",{duration:5000});
+    });
   }
 
-  onAddLabel(label) {
-    console.log('Ts Noteid',this.noteId);
-    
-    this._labelService.addMapLabel(label,this.noteId ).subscribe((data) => {
+  onAddLabel(labelName) {
+    this._matDialogRef.close();
+    this.label.labelName=labelName;  
+    this._labelService.addMapLabel(this.label,this.noteId ).subscribe((data) => {
       this._matSnackbar.open(data.message, "Ok", { duration: 5000 });
     },
       (error) => {

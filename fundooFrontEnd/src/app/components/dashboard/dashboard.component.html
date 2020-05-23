@@ -1,41 +1,41 @@
-<div class="container">
-    <div class="toolbar">
-        <mat-toolbar >
-            <button class="tl" mat-icon-button matTooltip="Main menu" matTooltipHideDelay="1000" (click)="sidenav.toggle()"> <mat-icon class="iconGrey"> menu</mat-icon></button>
-           
+<div class="container" style="background-color: white;">
+    <div class="toolbar" style="background-color: white;" >
+        <mat-toolbar style="display: flex; justify-content: space-between;background-color: white;" >
+          <div>
+            <button class="tl" mat-icon-button matTooltip="Main menu" matTooltipHideDelay="1000" (click)="sidenav.toggle()"> <mat-icon id="sideMenu" class="iconGrey"> menu</mat-icon></button>
+          </div>
+          <div>
             <img class="tl" class="image" src="https://ssl.gstatic.com/keep/keep.ico" />
-            
+          </div>
+          <div>
             <span class="tl" class="keep"><h1> Fundoo</h1></span>
+          </div>
             
-            
-
-              <div class="search">
-                <mat-card>
-                  <div class="searchicon">
-                    <mat-icon style="font-size: 30px;" prefix>search</mat-icon>
-                  </div>
-                  <div class="searchboxinput">
-                    <input type="text" (click)="searchArchive()" placeholder="Search" [(ngModel)]="title" (input)="onClickSearch()" style="height: 40px;width: 800px;">
-                  </div>
-                </mat-card>
+          <div class="search">
+            <button mat-icon-button  class="search-icon">
+                <mat-icon matTooltip="search">search</mat-icon>
+            </button>
+            <input type="text"  placeholder="Search" class="search-input" [(ngModel)]="title" (input)="onClickSearch()">
+                 <!-- <button mat-icon-button matTooltip="Clear Search" class="clear">
+                  <mat-icon>clear</mat-icon>
+                </button> -->
+          </div>
+              <div class="nav">
+                <button class="navIcon" matTooltip="Refresh"  (click)="onRefresh()" mat-icon-button><mat-icon id="onClickRefresh" class="iconGrey">refresh</mat-icon></button>  
+              </div>
+              <div class="nav">
+                <button id="gridListView" (click)="gridList()" class="navIcon" matTooltip="List View" mat-icon-button><mat-icon class="iconGrey">list</mat-icon></button> 
+              </div>
+              <div class="nav">
+                <button class="navIcon" matTooltip="Settings"  mat-icon-button><mat-icon class="iconGrey">settings</mat-icon></button> 
+              </div>
+              <div class="nav">
+                <button class="navIcon" matTooltip="Google Apps"  mat-icon-button><mat-icon class="iconGrey">apps</mat-icon></button> 
               </div>
 
-              <div class="nav">
-                <button class="navIcon" matTooltip="Refresh" (click)="onRefresh()" mat-icon-button><mat-icon class="iconGrey">refresh</mat-icon></button>  
-            </div>
-            <div class="nav">
-                <button (click)="gridList()" class="navIcon" matTooltip="List View" mat-icon-button><mat-icon class="iconGrey">list</mat-icon></button> 
-            </div>
-            <div class="nav">
-                <button class="navIcon" matTooltip="Settings"  mat-icon-button><mat-icon class="iconGrey">settings</mat-icon></button> 
-            </div>
-            <div class="nav">
-                <button class="navIcon" matTooltip="Google Apps"  mat-icon-button><mat-icon class="iconGrey">apps</mat-icon></button> 
-            </div>
-
-            <div >
-              <a><img src="assets/icon/account.svg" [matMenuTriggerFor]="menu" matTooltip="SignOut"  style=" color:grey;height: 40px;width: 40px; margin-left: 2rem;"></a>
-            </div>
+              <div >
+                <a><img src="assets/icon/profile.jpg" [matMenuTriggerFor]="menu" matTooltip="SignOut"  style=" color:grey;height: 40px;width: 40px; margin-left: 2rem;"></a>
+              </div>
               <div style="width:10em;" >
                 <mat-menu #menu="matMenu" style="width:auto">
                   <div class="profile">
@@ -48,8 +48,8 @@
                   </div>
                     <div class="user-details">
                       <div>
-                        <h3 class="prou">{{uname}}</h3>
-                        <h4 class="proe">{{email}}</h4>
+                        <h3 class="prou">{{userName}}</h3>
+                        <h4 class="proe">{{userEmail}}</h4>
                       </div>
                     </div>
                     <mat-divider style="margin-bottom: 0;"></mat-divider>
@@ -59,71 +59,71 @@
                       <mat-divider style=" margin-top: 0;"></mat-divider>
                 </mat-menu>
               </div>
-            
-             
         </mat-toolbar>
     </div>
     <mat-divider class="divider"></mat-divider>
     <div style="height: 100%; width: 100%;   overflow: auto;">
-    <mat-sidenav-container style="width: 100%; height: 100%;  display: flex;">
-       
+      <mat-sidenav-container style="width: 100%; height: 100%;  display: flex;"> 
         <mat-sidenav style="border: transparent;" #sidenav mode="side" >
             <div>
-                <button mat-raised-button class="navButton" style="margin-bottom: 1em; " (click)="onClickNote()" type="submit">
-                  <mat-icon class="matSidenavIcon" >lightbulb_outline</mat-icon>
-                  <span >Notes</span>
-                </button>
-              </div>
+              <button mat-raised-button class="navButton"  id="onClickNote" (click)="onClickNote()" type="submit">
+                <mat-icon class="matSidenavIcon" >lightbulb_outline</mat-icon>
+                <span >Notes</span>
+              </button>
+            </div>
               
-              <div>
-                <button class="navButton"  mat-raised-button (click)="onClickReminder()" type="submit">
-                  <mat-icon  class="matSidenavIcon" >notifications</mat-icon>
-                  <span>Reminders</span>
-                </button>
-              </div>
+            <div>
+              <button class="navButton"  mat-raised-button (click)="onClickReminder()" id="onClickReminder" type="submit">
+                <mat-icon  class="matSidenavIcon" >notifications</mat-icon>
+                <span>Reminders</span>
+              </button>
+            </div>
               <!-- <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;"></mat-divider> -->
-              <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;" class="divider"></mat-divider>
-             <div class="Lab">
-                <div>
-                  <mat-card-subtitle >
-                <span class="label">LABELS</span> </mat-card-subtitle>
+            <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;" class="divider"></mat-divider>
+            <div class="Lab">
+              <div style="padding-left: 0px;">
+                <mat-card-subtitle >
+                  <span class="label">LABELS</span> 
+                </mat-card-subtitle>
               </div>
               <div class="labelList">
-              <div *ngFor="let label of labels">
-                <div style="margin-bottom: 0.75rem;margin-top: 0.75rem; ">
-                <a class="navButton" >
-                    <img class="matSidenavIcon" src="assets/icon/nlabel.svg" (click)="onClickLabel(label.noteId)">
-                    <span style="padding-top: 0; padding-bottom: 0.5rem;" (click)="onClickLabel(label.noteId)">  {{label.labelName}}</span>
-                </a>
-              </div>
-              </div>
-            </div>
-                <div>
-                  <button class="navButton" mat-raised-button (click)="openLabelDialog(labels)" type="submit">
-                    <!-- <mat-icon class="matSidenavIcon" >create</mat-icon> -->
-                    <img class="matSidenavIcon" src="assets/icon/edit.svg">
-                    <span>Edit labels</span>
+                <div *ngFor="let label of labels">
+                  <!-- <div style="margin-bottom: 0.5rem;margin-top: 0.5rem; ">
+                    <a class="navButton" style=" cursor: pointer;" >
+                        <img class="matSidenavIcon" style="margin-right: 0px; margin-bottom: 0px; margin-left: 1rem; height: 1.5rem; width: 1.5rem; " src="assets/icon/nlabel.svg" (click)="onClickLabel(label.labelName)">
+                        <span style="margin-left: 0.4rem; margin-top: 0px; padding-top: 0px;" (click)="onClickLabel(label.labelName)">  {{label.labelName}}</span>
+                    </a>
+                  </div> -->
+                  <button mat-button id="sidenav-button" (click)="onClickLabel(label.labelName)" class="navButton">
+                    <mat-icon class="matSidenavIcon" >label_outline</mat-icon>{{label.labelName }}
                   </button>
                 </div>
+              </div>
+              <div>
+                <button class="navButton" id="onClickEditLabel" mat-raised-button (click)="openLabelDialog(labels)" type="submit">
+                    <!-- <mat-icon class="matSidenavIcon" >create</mat-icon> -->
+                  <img class="matSidenavIcon" src="assets/icon/edit.svg">
+                  <span>Edit labels</span>
+                </button>
+              </div>
             </div>
               <mat-divider style="margin:10px 0 10px 0; padding: 0%; width: 99%;" class="divider"></mat-divider>
         
               <div>
-                <button class="navButton" mat-raised-button (click)="onClickArchive()" type="submit">
+                <button class="navButton" mat-raised-button (click)="onClickArchive()" id="onClickArchive" type="submit">
                   <mat-icon class="matSidenavIcon" >archive</mat-icon>
                   <span>Archive</span>
                 </button>
               </div>
               <div>
-                <button class="navButton" mat-raised-button (click)="onClickTrash()" type="submit">
+                <button class="navButton" mat-raised-button (click)="onClickTrash()" id="onClickTrash" type="submit">
                   <mat-icon class="matSidenavIcon" >delete</mat-icon>
                   <span>Trash</span>
                 </button>
               </div>
         </mat-sidenav>
        
-        <mat-sidenav-content style=" width: 100%; align-content: center;padding: 30px;">
-          
+        <mat-sidenav-content style=" width: 100%; align-content: center;padding: 30px;">    
           <!-- <app-createnote></app-createnote>
           <app-display-notes></app-display-notes> -->
           <router-outlet></router-outlet>

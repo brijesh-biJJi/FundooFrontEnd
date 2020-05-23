@@ -4,16 +4,16 @@
     // justify-content: space-around;
     // flex-wrap: wrap;
     font-family: 'Google Sans',Roboto,Arial,sans-serif;
-    margin: 0.75rem;
+     margin: 0.5rem;
     // margin-right: 5rem;
     // align-items: flex-end;
     width: auto;
 }
 
-.tim{
-    margin-top: 0.75rem;
-    margin-right: 3px;
-}
+// .tim{
+//     margin-top: 0.75rem;
+//     margin-right: 3px;
+// }
 .matDesc{
     font-family: 'Google Sans',Roboto,Arial,sans-serif;
 }
@@ -25,16 +25,16 @@ mat-card-content{
 
 .matDisplay{
     // display: flex;
-    width: 20rem;
+    width: 15rem;
     height: auto;
     //  justify-content: space-between;
    
 }
 
 mat-card{
-    border-radius: 15px;
+    border-radius: 10px;
     border: 1px solid transparent;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.2rem;
     margin-right: 0;
     background-color: transparent;
     background: transparent;
@@ -58,7 +58,7 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 17em;
+    // width: 17em;
     visibility: visible;
     margin: 0;
   }
@@ -67,6 +67,16 @@ img {
       display: flex;
       flex-flow: row wrap;
       justify-content: flex-start;
-      
+      margin-bottom: 0.3rem;
+      margin-top: 0px;
+  }
+
+  mat-card-footer {
+    margin: 0px;
+  }
+
+  .trashcard{
+    display: flex;
+    justify-content: center;
   }
 

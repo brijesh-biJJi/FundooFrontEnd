@@ -6,6 +6,7 @@
     // height: auto;
     margin-top: 1rem;
     margin-bottom: 4%;
+    margin-left: 0px;
 }
 
 .closeBtn:hover{
@@ -41,9 +42,9 @@
 .before{
     display: flex;
     justify-content: space-between;
-    width: 45rem;
+    width: 35rem;
     border-radius: 10px;
-    height: 4rem;
+    height: 3rem;
     // margin-top: 0;
     
 }
@@ -56,9 +57,9 @@
     display: flex;
     // justify-content: center;
     flex-direction: column;
-    width: 45rem;
+    width: 35rem;
     border-radius: 10px;
-    height: 12rem;
+    height: auto;
     // margin-top: 1rem;
     // margin-top: 0;
 } 

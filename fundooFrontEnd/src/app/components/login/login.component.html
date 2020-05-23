@@ -16,19 +16,19 @@
         <div>
            <mat-form-field appearance="outline" >
             <mat-label>Email</mat-label>
-              <input matInput placeholder="Ex. abc@example.com" type="email" [formControl]="emailId"   >
+              <input matInput placeholder="Ex. abc@example.com" id="email" type="email" [formControl]="emailId"   >
               <mat-error  *ngIf="emailId.invalid">{{emailErrorMessage()}}</mat-error>
            </mat-form-field>
         </div>
         <div>
            <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" type="password" [formControl]="password"   >
+                <input matInput placeholder="Password" id="pass" type="password" [formControl]="password"   >
                 <mat-error  *ngIf="password.invalid">{{passwordErrorMessage()}}</mat-error>
             </mat-form-field>
         </div>
         <mat-card-actions>
-            <button mat-raised-button class="loginBtn" color="primary" (click)="onLoginSubmit()" type="submit"  [disabled]="emailErrorMessage() != '' || passwordErrorMessage() != ''"> Login</button><br/><br/>
+            <button mat-raised-button class="loginBtn" color="primary" (click)="onLoginSubmit()" type="submit" id="submit" [disabled]="emailErrorMessage() != '' || passwordErrorMessage() != ''"> Login</button><br/><br/>
             <a routerLink="/register">Create Account</a> &nbsp;&nbsp;&nbsp;
             <a routerLink="/forgotPassword">Forgot password ?</a>
         </mat-card-actions>

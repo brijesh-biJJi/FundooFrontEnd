@@ -7,6 +7,8 @@ import { LabelService } from 'src/app/services/label.service';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { AmazingTimePickerService } from 'amazing-time-picker';
 import { ReminderComponent } from '../reminder/reminder.component';
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-note-icon',
   templateUrl: './note-icon.component.html',
@@ -18,44 +20,63 @@ export class NoteIconComponent implements OnInit {
   noteDetail:NoteModel;
   
   isArchive:boolean=false;
-  constructor(private _matDialog:MatDialog,private _noteService:NoteServiceService,private snackBar: MatSnackBar,private _labelService:LabelService,private atps: AmazingTimePickerService) { }
+  reminderDate:string;
+  datePipeString : string;
+  tommorrowDate:string;
+  setReminderDate:string;
+
+  constructor(private datePipe: DatePipe,private _matDialog:MatDialog,private _noteService:NoteServiceService,private snackBar: MatSnackBar,private _labelService:LabelService,private atps: AmazingTimePickerService) {
+    this.datePipeString = datePipe.transform(Date.now(),'yyyy-MM-dd');
+   }
 
   ngOnInit() {
   }
 
-  public selectedTime: string;
-  date:Date =new Date();
  
   today( noteId) {
-    console.log('Today ',noteId);
-    let data={
-      'date':"Today, 8:00PM"
+   
+    let time:string="9:00";
+    this.reminderDate = this.datePipeString+","+time+":00";
+    let newDate = new Date(this.reminderDate);
+    console.log("Formated date:",newDate);
+    let reminder={
+      reminder:newDate
     }
-
-        this._noteService.addReminder(noteId,data).subscribe( 
-          (response) => 
-          {
-            this.snackBar.open("Reminder Added Successfully..", "ok", {duration:3000});
-          },
-          error => {
-            this.snackBar.open("Error in Note", "OK", { duration: 5000 });
-          });
+    this._noteService.addReminder(noteId , reminder).subscribe( 
+      (response) => 
+      {
+        this.snackBar.open(response['message'], "ok", {duration:3000});
+      },
+      error => {
+        this.snackBar.open("Error in Note", "OK", { duration: 3000 });
+      });
   }
 
   tomorrow( noteId) {
-   
-    let data={
-      'date':"Tomorrow, 8:00AM"
-    }
-    console.log('Tom ',data);
-        this._noteService.addReminder(noteId,data).subscribe( 
-          (response) => 
-          {
-            this.snackBar.open("Reminder Added Successfully..", "ok", {duration:3000});
-          },
-          error => {
-            this.snackBar.open("Error in Note", "OK", { duration: 5000 });
-          });
+    let time:string="9:00";
+    const cal = new Date();
+    cal.setDate(cal.getDate() + 1);
+    this.reminderDate =cal.getMonth() + 1 + '/' + cal.getDate() + '/' + cal.getFullYear();
+    this.tommorrowDate = this.datePipe.transform(this.reminderDate,'yyyy-MM-dd');
+    console.log("tommorrow date:",this.tommorrowDate);
+    this.setReminderDate = this.tommorrowDate+","+time+":00";
+  
+  
+    // this.reminderDate = cal.getFullYear() + ':' + cal.getMonth() + ':' + cal.getDate();
+    console.log("set date:",this.setReminderDate);
+    let newDate = new Date(this.setReminderDate);
+  console.log("Formated date:",newDate);
+  let reminder={
+    reminder:newDate
+  }
+  this._noteService.addReminder(noteId , reminder).subscribe( 
+    (response) => 
+    {
+      this.snackBar.open(response['message'], "ok", {duration:3000});
+    },
+    error => {
+      this.snackBar.open("Error in Note", "OK", { duration: 3000 });
+    });
     }
 
     nextweek( noteId) {
@@ -80,9 +101,8 @@ export class NoteIconComponent implements OnInit {
     }
 
   pickdatetime( notesDetail) {
-    console.log("Note details " + notesDetail.noteid);
   this._matDialog.open(ReminderComponent , {
-    data : { notes : notesDetail },
+    data : { noteId : notesDetail.noteid },
     panelClass: 'custom-dialog-container'
   });
 
@@ -91,7 +111,7 @@ export class NoteIconComponent implements OnInit {
   onClickArchive(noteId){
     this._noteService.archiveNote(noteId).subscribe((response) =>
      { 
-        this.snackBar.open(response.message, "OK", { duration: 2000 });
+        this.snackBar.open(response.message, "OK", { duration: 5000 });
       },
       error => {
         this.snackBar.open("Error in Note", "OK", { duration: 5000 });

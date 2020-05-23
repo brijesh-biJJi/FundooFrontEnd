@@ -28,6 +28,13 @@ import { LabelPipe } from './pipes/label.pipe';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 import{AngularDateTimePickerModule} from 'angular2-datetimepicker';
 import { ReminderComponent } from './components/reminder/reminder.component';
+import {MatListModule,MatChipsModule} from '@angular/material';
+
+import {MatDatepickerModule , MatNativeDateModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -62,9 +69,17 @@ import { ReminderComponent } from './components/reminder/reminder.component';
     FlexLayoutModule,
     MatDialogModule,
     AmazingTimePickerModule,
-    AngularDateTimePickerModule
+    AngularDateTimePickerModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule
+
   ],
-  providers: [
+  providers: [ 
+    DatePipe,
     { provide: MatDialogRef, useValue: {} },
 	{ provide: MAT_DIALOG_DATA, useValue: [] },
   ],

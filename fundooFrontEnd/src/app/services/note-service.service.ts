@@ -4,13 +4,15 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {HttpserviceService} from 'src/app/services/httpservice.service';
 import { Observable ,Subject, BehaviorSubject} from 'rxjs';
 import { NoteModel } from 'src/app/model/note-model.model';
+import { Notes } from '../model/notes.model';
+import {tap} from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoteServiceService {
 
-  private _refreshNeeded$= new Subject<void>();
+  private _refreshNeeded$= new Subject<any>();
   private view=new Subject<any>();
   get refreshNeeded$() {
     return this._refreshNeeded$;
@@ -19,10 +21,14 @@ export class NoteServiceService {
   private noteApiUrl=environment.noteApiURL;
   private createNoteUrl=environment.createNote;
   private archiveNoteUrl=environment.archiveNote;
-  private getAllNotesUrl=environment.getAllNotes;
 
-  private archiveNoteList = new Subject<any>();
+
   private searchNote=new Subject<any>();
+
+  private notesList = new Subject<any>();
+  private pinNoteList = new Subject<any>();
+  private archiveNoteList = new Subject<any>();
+  private trashedNoteList = new Subject<any>();
   
   private httpContent={
     headers:new HttpHeaders({'content-type':'application/json'})
@@ -47,67 +53,172 @@ export class NoteServiceService {
 
    createNote(noteDetails:any):Observable<any>
    {
-      return this._httpService.postRequest(this.noteApiUrl+this.createNoteUrl,noteDetails,{headers:new HttpHeaders({'token':localStorage.token})});
+     console.log('Create Note Service ');
+      return this._httpService
+                 .postRequest(`${this.noteApiUrl}/${this.createNoteUrl}`,noteDetails,{headers:new HttpHeaders({'token':localStorage.token})})
+                 .pipe(
+                  tap(()=>
+                  {
+                     this._refreshNeeded$.next();
+                  }));
    }
 
-   //Url for retrieving Note Data
-   private _getNotesUrl:string='/assets/NoteData/noteinfo.json';
-      getAllNotes():Observable<any>
+   getAllNotes():Observable<any>
       {
-        return this._httpClient.get<any>(this._getNotesUrl);
+        
+        return this._httpService.get(`${this.noteApiUrl}/${environment.getAllNotes}`,{headers:new HttpHeaders({'token':localStorage.token})});       
+        // return this._httpClient.get<any>(this._getNotesUrl);
       }
 
-      addReminder(noteId:any,data:any){
-        return this._httpService.putRequest(`${this.noteApiUrl}/${this.addReminder}?id=${noteId}`, {data},{headers:new HttpHeaders({'token':localStorage.token})});
+      getOtherNotes():Observable<any>
+      {
+        
+        return this._httpService.get(`${this.noteApiUrl}/${environment.getOtherNotes}`,{headers:new HttpHeaders({'token':localStorage.token})});       
+        // return this._httpClient.get<any>(this._getNotesUrl);
       }
 
-      archiveNote(noteId: any)
+      getAllPinNotes():Observable<any>
       {
-          return this._httpService.putRequest(`${this.noteApiUrl}/${this.archiveNoteUrl}?id=${noteId}`, {},{headers:new HttpHeaders({'token':localStorage.token})});
+        
+        return this._httpService.get(`${this.noteApiUrl}/${environment.getPinnedNotes}`,{headers:new HttpHeaders({'token':localStorage.token})});       
+        // return this._httpClient.get<any>(this._getNotesUrl);
       }
 
-      pinNote(noteId: any)
+      getAllArchiveNotes():Observable<any>
       {
-          return this._httpService.putRequest(`${this.noteApiUrl}/${environment.pinNote}?id=${noteId}`, {},{headers:new HttpHeaders({'token':localStorage.token})});
+        console.log('Get Archive Not Url',`${this.noteApiUrl}/${environment.getAllArchiveNotes}`);
+        
+        return this._httpService.get(`${this.noteApiUrl}/${environment.getAllArchiveNotes}`,{headers:new HttpHeaders({'token':localStorage.token})});       
+        // return this._httpClient.get<any>(this._getNotesUrl);
+      }
+
+      getAllTrashedNotes():Observable<any>
+      {
+        console.log('Get Trashed Not Url' ,`${this.noteApiUrl}/${environment.getAllTrashNotes}`);
+        
+        return this._httpService.get(`${this.noteApiUrl}/${environment.getAllTrashNotes}`,{headers:new HttpHeaders({'token':localStorage.token})});       
+        // return this._httpClient.get<any>(this._getNotesUrl);
+      }
+
+      addReminder(noteId:number,data:any):Observable<any>{
+        return this._httpService
+                   .putRequest(`${this.noteApiUrl}/${environment.addReminder}/${noteId}`, data,{headers:new HttpHeaders({'token':localStorage.token})})
+                   .pipe(
+                    tap(()=>
+                    {
+                       this._refreshNeeded$.next();
+                    }));
+      }
+
+      removeReminder(noteId:number):Observable<any>{
+        return this._httpService
+                   .putRequest(`${this.noteApiUrl}/${environment.removeReminder}/${noteId}`, {},{headers:new HttpHeaders({'token':localStorage.token})})
+                   .pipe(
+                    tap(()=>
+                    {
+                       this._refreshNeeded$.next();
+                    }));
+      }
+
+      archiveNote(noteId: any):Observable<any>
+      {
+         return this._httpService
+                    .putRequest(`${this.noteApiUrl}/${this.archiveNoteUrl}/${noteId}`, {},{headers:new HttpHeaders({'token':localStorage.token})})
+                    .pipe(
+                      tap(()=>
+                      {
+                         this._refreshNeeded$.next();
+                      }));
+      }
+
+      pinNote(noteId: any):Observable<any>
+      {
+          return this._httpService
+                     .putRequest(`${this.noteApiUrl}/${environment.pinNote}/${noteId}`, {},{headers:new HttpHeaders({'token':localStorage.token})})
+                     .pipe(
+                      tap(()=>
+                      {
+                         this._refreshNeeded$.next();
+                      }));
       }
 
       moveToTrash(noteId:any){
-        return this._httpService.putRequest(`${this.noteApiUrl}/${environment.trashNote}?id=${noteId}`, {},{headers:new HttpHeaders({'token':localStorage.token})});
+        return this._httpService
+                   .deleteRequest(`${this.noteApiUrl}/${environment.trashNote}/${noteId}`, {headers:new HttpHeaders({'token':localStorage.token})})
+                   .pipe(
+                    tap(()=>
+                    {
+                       this._refreshNeeded$.next();
+                    }));
       }
 
-      changeColor(noteId,color){
-        return this._httpService.putRequest(`${this.noteApiUrl}/${environment.changecolor}?noteId=${noteId}&color=${color}`, {},{headers:new HttpHeaders({'token':localStorage.token})});
+      deleteNotePermanently(noteId:any){
+        return this._httpService
+                   .deleteRequest(`${this.noteApiUrl}/${environment.deletePermanently}/${noteId}`, {headers:new HttpHeaders({'token':localStorage.token})})
+                   .pipe(
+                    tap(()=>
+                    {
+                       this._refreshNeeded$.next();
+                    }));
+      }
+
+      changeColor(noteId,color):Observable<any>{
+        return this._httpService
+                   .putRequest(`${this.noteApiUrl}/${environment.changecolor}?noteId=${noteId}&color=${color}`, {},{headers:new HttpHeaders({'token':localStorage.token})})
+                   .pipe(
+                    tap(()=>
+                    {
+                       this._refreshNeeded$.next();
+                    }));
       }
 
       setSearchNote(message:any){
         // return this._httpService.get(`${this.noteApiUrl}/${environment.searchNote}?title=${title}`,{headers:new HttpHeaders({'token':localStorage.token})});
-        this.searchNote.next({notes:message});
+        this.searchNote.next(
+                              {
+                                  notes:message
+                              }
+                            );
       }
 
       getSearchNote():Observable<any>{
         return this.searchNote.asObservable();
       }
 
-      updateNote(noteDetails:any){
+      updateNote(noteDetails:any):Observable<any>{
         return this._httpService.putRequest(`${this.noteApiUrl}/${environment.updateNote}`,noteDetails,{headers:new HttpHeaders({'token':localStorage.token})});
       }
 
 
-      // setArchiveNotesList(message:  NoteModel[]) {
-      //   console.log("Set Archive Note");
-      //   this.archiveNoteList.next({ notes: message });
-      // }
-      // getArchiveNotesList(): Observable<any> {
-      //   console.log("Get Archive Note");
-      //   return this.archiveNoteList.asObservable();
-      // }
-
-   //Url for retrieving Note Data
-  //  private _getNotesUrl:string='/assets/NoteData/noteinfo.json';
-  //  getAllNotes():Observable<any>
-  //  {
-  //   return this._httpClient.get<any>(this._getNotesUrl);
-  //   //  return this._httpService.getRequest(this._getNotesUrl);
-  //   //  return this._httpService.getRequest(this.noteApiUrl+this.getAllNotesUrl);
-  //  }
+      setNotesList(message: Notes[]) {
+        console.log('Set Note Data in nOte service ',message);
+        
+        this.notesList.next({ notes: message });
+      }
+      getNotesList(): Observable<any> {
+        console.log("getNotesListService Call");
+        return this.notesList.asObservable();
+      }
+      setPinNotesList(message: Notes[]) {
+        this.pinNoteList.next({ notes: message });
+      }
+      getPinNotesList(): Observable<any> {
+        return this.pinNoteList.asObservable();
+      }
+      setTrashedNotesList(message: Notes[]) {
+        console.log("TrashNote Service set");
+        this.trashedNoteList.next({ notes: message });
+      }
+      getTrashedNotesList(): Observable<any> {
+        console.log("trashNote Service Get");
+        return this.trashedNoteList.asObservable();
+      }
+      setArchiveNotesList(message: Notes[]) {
+        console.log("archiveNote Service set");
+        this.archiveNoteList.next({ notes: message });
+      }
+      getArchiveNotesList(): Observable<any> {
+        console.log("getArchive Service Get");
+        return this.archiveNoteList.asObservable();
+      }
 }

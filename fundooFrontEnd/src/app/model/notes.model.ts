@@ -1,13 +1,13 @@
-export class NoteModel {
+export class Notes {
     noteid:number;
     title:string;
     description:string;
-    isArchived:boolean;
-    isPinned:boolean;
-    isTrashed:boolean;
+    archieved:boolean;
+    pinned:boolean;
+    trashed:boolean;
     createdAt:string;
     updatedAt:string;
     colour:string;
-    reminder:Date;
+    reminder:string;
     labelList:[];
 }

@@ -46,8 +46,9 @@ export class LoginComponent implements OnInit {
           console.log(" login token ",response.token);
           localStorage.setItem("token",response.token);
           this.router.navigate(["/dashboard"]);
+          this.snackBar.open('Login Successfull...',"OK",{duration:2000});
         }else{
-          this.snackBar.open('Login fail',"",{duration:2000});
+          this.snackBar.open('Login fail',"OK",{duration:2000});
         }
       },
       (error:any)=>{

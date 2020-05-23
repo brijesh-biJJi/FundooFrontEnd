@@ -3,27 +3,31 @@
     <h2>Edit Labels</h2>
     <div class="createlabel">
         <div>
-            <input type="text" placeholder="Create Label" #labelInput [ngModel]="lname">
+            <input type="text" id="onClickCreateLabel" placeholder="Create Label" #labelInput [ngModel]="lname">
         </div>
         <div>
-            <a><img class="tick"  src="assets/icon/tickk.svg"
+            <a><img class="tick" id="onClickSubmitLabel" src="assets/icon/tickk.svg"
                     (click)="onClickCreateLabel(labelInput.value)" matTooltip="Create Label"></a>
         </div>
     </div>
     <div class="labellist">
         <div  *ngFor="let label of labels" fxLayout="row" fxLayoutAlign="space-between center">
          
-                <div style=" width: 1rem; margin-bottom: 0;margin-top: 0;">
-                <img style="width: 20px;height: 20px;color: grey;"   (click)="onClickDeleteLabel(label.labelName)"
+                <div style=" width: 1rem; margin-bottom: 2px;margin-top: 0; margin-right: 10px;">
+                <img style="width: 20px;height: 20px;color: grey;" id="deleteLabel"  (click)="onClickDeleteLabel(label.labelName)"
                     src="assets/icon/delete.svg" 
                     matTooltip="Delete Label">
                 </div>
                 
-            <div style=" width: 8rem; margin-bottom: 0;margin-top: 0;">
-                <h3 style="color: grey;"> {{label.labelName}}</h3>
-                </div>
-            <div style="width: 1rem; margin-bottom: 0;margin-top: 0;">
-                <img style="color: grey;" (click)="OnclickEdit(label.labelName)" src="assets/icon/edit.svg" 
+            <div style="  margin-bottom: 2px;margin-top: 0;">
+                <!-- <h3 style="color: grey;"> {{label.labelName}}</h3> -->
+                <input style=" width: auto; font-size: 1rem; color: grey;font-weight: bold;
+                text-align: center; border: none; border-style: none;" #inputValue  [value]="label.labelName" id="inputLabel" matInput type="text" autocomplete="off"/>
+                
+            </div>
+
+            <div style="width: 1rem; margin-bottom: 2px;margin-top: 0;">
+                <img style="color: grey;" id="clickEdit" (click)="onClickEditLabel(label.labelId,inputValue.value)" src="assets/icon/edit.svg" 
                     matTooltip="Edit label">
                 </div>
         </div>

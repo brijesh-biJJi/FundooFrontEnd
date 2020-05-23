@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {environment} from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {HttpserviceService} from 'src/app/services/httpservice.service';
-import { Observable } from 'rxjs';
+import { Observable ,Subject, BehaviorSubject} from 'rxjs';
+import {tap} from 'rxjs/operators'
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +12,10 @@ export class UserServiceService
 
   private userApiUrl=environment.userApiUrl;
 
+  private _refreshNeeded$= new Subject<any>();
+  get refreshNeeded$() {
+    return this._refreshNeeded$;
+  }
   private httpContent={
     headers:new HttpHeaders({'content-type':'application/json'})
   };
@@ -44,4 +49,29 @@ export class UserServiceService
     
   }
  
+  getCollaboratorsList(noteId):Observable<any>{
+
+    return this._httpService.get(`${environment.userApiUrl}/${environment.collaborator}/${noteId}`,{headers:new HttpHeaders({'token':localStorage.token})});
+  }
+  
+  addCollab(email,noteId):Observable<any>{
+    return this._httpService
+               .postRequest(`${environment.userApiUrl}/${environment.addCollab}/${email}/${noteId}`," ",{headers:new HttpHeaders({'token':localStorage.token})})
+               .pipe(
+                tap(()=>
+                {
+                   this._refreshNeeded$.next();
+                }));
+  }
+  
+  removeCollab(email,noteId):Observable<any>{
+    return this._httpService
+               .putRequest(`${environment.userApiUrl}/${environment.removeCollab}/${email}/${noteId}`," ",{headers:new HttpHeaders({'token':localStorage.token})})
+               .pipe(
+                tap(()=>
+                {
+                   this._refreshNeeded$.next();
+                }));
+  }
+  
 }

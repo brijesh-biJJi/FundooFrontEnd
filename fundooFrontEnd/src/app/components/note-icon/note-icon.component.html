@@ -1,12 +1,12 @@
 <div class="container">
     <div>
-        <a><img src="assets/icon/reminderr.svg" [matMenuTriggerFor]="reminder" matTooltip="Add Reminder"> </a>
+        <a><img id="clickReminder"  src="assets/icon/reminderr.svg" [matMenuTriggerFor]="reminder" matTooltip="Add Reminder"> </a>
     </div>
     <mat-menu #reminder="matMenu" [overlapTrigger]="false">
         <div class="remin">
             <h3 style="padding-left: 1rem;"> Reminder:</h3>
-            <button mat-menu-item (click) = "today(noteDetail.noteid)">   Later today&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;8:00PM</button>
-            <button mat-menu-item (click) = "tomorrow(noteDetail.noteid)">Tomorrow&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8:00AM</button>
+            <button mat-menu-item id="remindToday" (click) = "today(noteDetail.noteid)">   Later today&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;8:00PM</button>
+            <button mat-menu-item id="remindTomorow" (click) = "tomorrow(noteDetail.noteid)">Tomorrow&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8:00AM</button>
             <button mat-menu-item (click) = "nextweek(noteDetail.noteid)">Next week&nbsp;&nbsp;&nbsp;&nbsp;Mon, 8:00AM</button>
             <button mat-menu-item (click) = "pickdatetime(noteDetail)" ><mat-icon style="margin-right: 5px;">access_time</mat-icon>Pick date & time</button>
            
@@ -16,16 +16,16 @@
 
 
 <div>
-    <a><img src="assets/icon/collab.svg" (click)="openDialog()" matTooltip="Add Collaborator"> </a>
+    <a><img id="clickCollab" src="assets/icon/collab.svg" (click)="openDialog()" matTooltip="Add Collaborator"> </a>
 </div>
 <div>
-    <a><img src="assets/icon/colour.svg" [matMenuTriggerFor]="changecolor" matTooltip="Add Color"> </a>
+    <a><img src="assets/icon/colour.svg" [matMenuTriggerFor]="changecolor" id="addColor" matTooltip="Add Color"> </a>
 </div>
 <mat-menu #changecolor="matMenu" [overlapTrigger]="false">
     <ng-template matMenuContent>
         <div fxLayout="row wrap" fxLayoutGap="0.75rem" style="margin: 0.5rem;" *ngFor="let colors of colorArray">
             <div *ngFor="let color of colors">
-                <button [ngStyle]="{'background-color':color.color}" (click)="changeColor(noteDetail.noteid,color.color)"
+                <button [ngStyle]="{'background-color':color.color}" id="clickColor" (click)="changeColor(noteDetail.noteid,color.color)"
                  matTooltip={{color.name}} mat-mini-fab>
 
                 </button>
@@ -39,16 +39,16 @@
 </div>
 
 <div>
-    <a><img src="assets/icon/archiv.svg" (click)="onClickArchive(noteDetail.noteid)" *ngIf="!noteDetail.isArchived" matTooltip="Archive" ></a>
+    <a><img src="assets/icon/archiv.svg" id="archiveIcon" (click)="onClickArchive(noteDetail.noteid)" *ngIf="!noteDetail.archieved" matTooltip="Archive" ></a>
 </div>
 <div>
-    <a><img src="assets/icon/unarchiv.svg" (click)="onClickArchive(noteDetail.noteid)" *ngIf="noteDetail.isArchived"  matTooltip="UnArchive"></a>
+    <a><img src="assets/icon/unarchiv.svg" id="archiveIcon" (click)="onClickArchive(noteDetail.noteid)" *ngIf="noteDetail.archieved"  matTooltip="UnArchive"></a>
 </div>
 <div>
-    <a><img mat-icon-button [matMenuTriggerFor]="menu" style="height: 1.5rem; width: 2rem;" src="assets/icon/moree.svg" (click)="onClickSetNoteId(noteDetail.noteid)" matTooltip="More"></a>
+    <a><img mat-icon-button [matMenuTriggerFor]="menu" id="moreIcon" style="height: 1.5rem; width: 2rem;" src="assets/icon/moree.svg" (click)="onClickSetNoteId(noteDetail.noteid)" matTooltip="More"></a>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="onClickDeleteNote(noteDetail.noteid)">Delete Note</button>
-        <button mat-menu-item  (click)="openLabelDialog(noteDetail)">Add Label</button>
+        <button mat-menu-item id="deleteIcon" (click)="onClickDeleteNote(noteDetail.noteid)">Delete Note</button>
+        <button mat-menu-item id="addLabel" (click)="openLabelDialog(noteDetail)">Add Label</button>
     </mat-menu>
 </div>
 </div>
